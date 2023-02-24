@@ -13,10 +13,25 @@
 
 
 
+.button {
+    text-align: center;
+    background-color: #0099ff;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+
+
+
+
+
+
  .floating-logo {
     position: fixed;
     bottom: 0;
-    right: 87%;
+    right: 100%;
     width: 50px;
     height: 50px;
     background-image: url('https://postcron.com/en/blog/wp-content/uploads/2018/01/trends-5.gif');
@@ -37,7 +52,7 @@
     height: 50px;
     background-color: white;
     border-radius: 50%;
-    animation: vibrate 0.10s linear infinite;
+    animation: vibrate 0.5s linear infinite;
   }
 
   @keyframes vibrate {
@@ -63,11 +78,20 @@
   border: 1px solid #987;
 }
 
+
+
+
 @media (min-width: 768px) {
   .container {
     flex-direction: row;
   }
 }
+
+
+
+
+
+
 
 img {
   width: 100%;
@@ -83,38 +107,12 @@ img {
 
   #logo {
     position: absolute;
-    top: 53%;
+    top: 70%;
     left: 90%;
     transform: translate(-50%, -50%);
     width: 50px;
     height: auto;
   }
-
-
-
-
-
-body {
-        background: linear-gradient(to right, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
-        background-size: 600% 600%;
-        animation: AnimationBackground 10s ease infinite;
-      }
-
-      @keyframes AnimationBackground {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-      
-
-
-
 
 
 
@@ -246,7 +244,7 @@ body {
     display: flex;
     padding: 0;
     width: 400%;
-    animation: slide 3s infinite;
+    animation: slide 5s infinite;
   }
 
   .slider li {
@@ -350,9 +348,3 @@ footer ul li {
             transform: translateY(0);
         }
     }
-
-
-
-
-
-    
