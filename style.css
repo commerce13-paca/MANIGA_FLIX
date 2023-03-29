@@ -15,6 +15,28 @@ font-family: 'Anton', sans-serif;
 
 
 
+.bouton {
+  background-color: green;
+  border: 2px solid yellow;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.bouton:hover {
+  background-color: yellow;
+  border-color: green;
+  color: green;
+}
+
+
+
+
+
+
 
   h1 {
       
