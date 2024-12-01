@@ -26,7 +26,7 @@
     <!-- Social Media: Open Graph pour partager sur Facebook, Twitter, etc. -->
     <meta property="og:title" content="Nasdas Profil Public Boutique">
     <meta property="og:description" content="Découvrez le profil public de Nasdas et explorez sa boutique en ligne proposant des produits uniques et de qualité.">
-    <meta property="og:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2e00b24b-8592-f8d7-84c4-407046ec00bf.jpg">
+    <meta property="og:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d12d81c5-4994-1d15-d5dc-dbb4d433828f.jpg">
     <meta property="og:url" content="https://web-site13015.github.io/nasdas_profil_boutique/">
     <meta property="og:type" content="website">
 
@@ -34,7 +34,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nasdas Profil Public Boutique">
     <meta name="twitter:description" content="Découvrez le profil public de Nasdas et explorez sa boutique en ligne proposant des produits uniques et de qualité.">
-    <meta name="twitter:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2e00b24b-8592-f8d7-84c4-407046ec00bf.jpg">
+    <meta name="twitter:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d12d81c5-4994-1d15-d5dc-dbb4d433828f.jpg">
 
     <!-- Charset et autres informations -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -214,44 +214,64 @@
         }
 
 
-        .shop-section {
-            display: none; /* Cachée par défaut */
-            margin-top: 20px; /* Ajout d'un espace */
-        }
+      .shop-section {
+    display: none;
+    
+    top: 0; /* S'assure que le modal commence en haut de la page */
+    left: 0; /* S'assure que le modal commence à gauche de la page */
+    width: 90%; /* Remplit toute la largeur de l'écran */
+    height: auto; /* Remplit toute la hauteur de l'écran */
+    background-color: #fff; /* Couleur de fond blanche */
+    border-radius: 0; /* Pas de coins arrondis pour remplir la page */
+    box-shadow: none; /* Pas d'ombre pour un effet de plein écran */
+   /* Toujours au-dessus du contenu */
+    padding: 20px; /* Un peu d'espace autour du contenu */
+    overflow: hidden; /* Pas de défilement */
+    text-align: center; /* Centre le contenu */
+}
 
-        .product {
-            background: #f1f1f1;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+.product {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden; /* Évite le dépassement de contenu */
+}
 
-  
 .product img {
     width: 100%;
     border-radius: 5px;
     height: auto; /* Permet à l'image de garder son rapport d'aspect */
-    max-height: 350px; /* Limite la hauteur de l'image pour éviter les débordements */
-     /* Ajuste l'image sans déformation */
+    max-height: 250px; /* Limite la hauteur de l'image pour éviter les débordements */
+    object-fit: cover; /* Ajuste l'image sans déformation */
 }
 
+.product-name {
+    font-weight: bold;
+    margin: 5px 0;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    overflow: hidden; /* Cache le texte qui déborde */
+    text-overflow: ellipsis; /* Affiche "..." si le texte déborde */
+}
 
-        .checkout-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            margin-top: 20px;
-        }
+.product-price {
+    color: #4CAF50;
+    font-weight: bold;
+}
 
-        .visible {
-            display: block; /* Affiche la section */
-        }
+.buy-button {
+    background-color: #ffeb3b;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Prend toute la largeur disponible */
+}
 
-
+.buy-button:hover {
+    background-color: #ffe600;
+}
         #about-content {
             font-size: 14px;
         }  
@@ -289,7 +309,9 @@
             cursor: pointer;
         }
    
-   
+   .visible {
+            display: block; /* Affiche la section */
+        }
 
 
 
@@ -344,7 +366,7 @@
 #checkoutForm input,
 #checkoutForm textarea,
 #checkoutForm select {
-    width: 100%; /* Largeur complète */
+    width: 90%; /* Largeur complète */
     padding: 10px; /* Espacement interne */
     margin: 10px 0; /* Marge en haut et en bas */
     border: 1px solid #ccc; /* Bordure grise */
@@ -496,6 +518,7 @@ p:hover {
             
         </div>
 
+
     <div class="content-section">
         <div class="content-title">Dernière mise à jour</div>
         <div class="last-updated">1er octobre 2024</div>
@@ -505,39 +528,38 @@ p:hover {
         <span class="material-symbols-outlined" id="storeIcon">storefront</span>
     </div>
 
-    <!-- Section boutique -->
+  
+<!-- Section de la boutique -->
     <div class="shop-section" id="shopSection">
-         <!-- Contenu de la page -->
-    <h1>Bienvenue sur la boutique officielle de Nasdas !</h1>
-   <p>Explorez notre boutique en ligne et découvrez des produits uniques qui vous ressemblent.</p>
-        <h3>Produits</h3>
+         <button class="close-cart" id="closeShop">X</button>
         
-        <!-- Produit exemple -->
+        <h2>Ma Boutique</h2>
+       
         <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/3c225e76-b88a-7df5-b825-93ed27abc38d.jpg" alt="OCB Slim Noir">
-            <div class="product-name">pull  30€</div>
-            <button onclick="addToCart('pull', 20)">Acheter</button>
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/3c225e76-b88a-7df5-b825-93ed27abc38d.jpg" alt="Produit 1">
+            <div class="product-name">Pull noir pour homme.</div>
+            <div class="product-price">€35.00</div>
+            <button class="buy-button" onclick="addToCart('Pull noir pour homme', 35)">Ajouter au Panier</button>
         </div>
-
-        <!-- Nouveau produit: Bonbonne Crème Deluxe -->
         <div class="product">
-             <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/cbe00ce1-5194-ded7-2f47-cdd43e816c68.jpg" alt="OCB Slim Noir">
-           
-            
-            <div class="product-name">Bob  20€</div>
-            <button onclick="addToCart('Bonbonne Crème Deluxe', 30)">Acheter</button>
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/cbe00ce1-5194-ded7-2f47-cdd43e816c68.jpg" alt="Produit 2">
+            <div class="product-name">Bob noir.</div>
+            <div class="product-price">€25.00</div>
+            <button class="buy-button" onclick="addToCart('bob noir ', 25)">Ajouter au Panier</button>
         </div>
-
+       
         
     </div>
 
-<!-- Modal du Panier et Formulaire -->
 <div id='cartModal'>
-     <img src='https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f4e95238-a0f1-f9f0-57d1-57e2bf9e28a4.jpg' alt='Miniature du produit' style='width: 90px; height: 90px; margin-bottom: -0px;'>
+     <img src='https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c28525f1-2674-2858-508b-89bfc18b175b.jpg' alt='Miniature du produit' style='width: 90px; height: 90px; margin-bottom: -0px;'>
  
     <h3>Mon Panier</h3>
     <div id='cartItems'></div>
     <button class='checkout-button' onclick='checkout()'>Passer à la caisse</button>
+
+<!-- Modal du Panier et Formulaire -->
+<!-- Modal du Panier et Formulaire -->
 
     <!-- Formulaire de commande -->
     <div id="checkoutForm">
@@ -722,6 +744,9 @@ window.onclick = function(event) {
         document.getElementById('checkoutForm').style.display = 'none'; // Cache le formulaire
     }
 };
+    document.getElementById('closeShop').onclick = function () {
+            shopSection.style.display = 'none';
+        };
 </script>
 
 </body>
