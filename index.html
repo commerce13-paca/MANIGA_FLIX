@@ -1,350 +1,671 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d12d81c5-4994-1d15-d5dc-dbb4d433828f.jpg" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutique de Locks - Rénovation et Styles</title>
-    
-    <!-- Balises Meta SEO -->
-    <meta name="description" content="HOLDEST Locks Boutique - Spécialiste en rénovation et styles de locks. Prenez rendez-vous dès maintenant pour un service de qualité.">
-    <meta name="keywords" content="locks, rénovation locks, styles locks, boutique locks, dreadlocks, coiffure">
-    <meta name="author" content="HOLDEST Locks Boutique">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="HOLDEST Locks Boutique - Rénovation et Styles">
-    <meta property="og:description" content="Transformez votre look avec nos services de rénovation et de style pour locks.">
-    <meta property="og:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/4d7739b7-f681-fcb2-5c87-918dcb0855e1.jpeg">
-    <meta property="og:url" content="https://holdest-locks.com">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="HOLDEST Locks Boutique">
-    <meta name="twitter:description" content="Services de rénovation et styles pour locks. Prenez rendez-vous dès aujourd'hui.">
-    <meta name="twitter:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/a3b7dd9e-987c-fade-9516-5dc6905b6201.jpeg">
-
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
-    <!-- Preload Fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Arial:400,700" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial:400,700"></noscript>
-
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "HOLDEST Locks Boutique",
-        "description": "Boutique spécialisée dans la rénovation et les styles de locks.",
-        "url": "https://holdest-locks.com",
-        "telephone": "0123-456-789",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "123 Rue Locks",
-            "addressLocality": "Paris",
-            "addressCountry": "FR"
-        },
-        "image": [
-            "https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/4d7739b7-f681-fcb2-5c87-918dcb0855e1.jpeg",
-            "https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/a3b7dd9e-987c-fade-9516-5dc6905b6201.jpeg"
-        ],
-        "openingHours": "Mo-Fr 09:00-19:00"
-    }
-    </script>
-
-    <!-- Style -->
+    <title>Profil Public Boutique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
-        /* Votre CSS ici (inchangé) */
-    body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212; /* Fond sombre */
-            margin: 0;
-            padding: 0;
-            color: #ffffff; /* Texte en blanc */
-        }
+    #background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* L'image ou la vidéo va couvrir toute la zone */
+    z-index: -1;        /* S'assurer que la vidéo est derrière le contenu */
+}
+        body {
+    display: flex;
+    flex-direction: column; /* Positionne les éléments en colonne */
+    justify-content: flex-start; /* Aligne les éléments depuis le haut */
+    align-items: center; /* Centre les éléments horizontalement */
+    background-color: #333;
+            
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    height: 100vh; /* S'assure que le body occupe toute la hauteur de l'écran */
+}
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
+.container {
+    background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6b6bf57f-1b05-3fb7-d8ff-81d8f58f66d7.jpg');
+    background-size: contain; /* Assure que l'image est entièrement visible */
+    background-repeat: no-repeat; /* Pas de répétition */
+    background-position: center; /* Centre l'image */
+    width: 300px; /* Largeur fixe ou ajustable */
+    height: 300px; /* Hauteur fixe ou ajustable */
+    margin-bottom: 20px; /* Ajoute un espace sous l'image */
+}
+
+.text {
+    color: white;
+    text-align: center;
+    margin-top: 20px; /* Ajoute un espace au-dessus du texte */
+}
+
+
+        
+ .profile-container {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
             padding: 20px;
-        }
-
-        header {
-            background: linear-gradient(to right, #ffb300, #007e33); /* Dégradé du drapeau jamaïcain */
-            color: white;
-            padding: 15px 0;
+            text-align: center;
             position: relative;
         }
 
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            text-align: center;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ffb300; /* Couleur au survol */
-        }
-
-        .services-section, .appointment-section, .contact-section {
-            background: #1f1f1f; /* Fond sombre pour les sections */
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        h2 {
-            text-align: center;
-            color: #ffb300; /* Couleur des titres */
-        }
-
-        .service-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: #2e2e2e; /* Fond pour les services */
-            border-radius: 5px;
-        }
-
-        .service-item img {
+        .profile-image {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            margin-right: 20px;
-            border: 3px solid #ffb300; /* Bordure autour des images */
+            border: 3px solid #ffeb3b;
+            margin: 10px auto;
+            object-fit: cover;
+            cursor: pointer;
         }
 
-        button {
-            background-color: #ffb300; /* Couleur du bouton */
-            color: black; /* Texte noir pour contraste */
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
+        .star {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 101px;
+            left: 60%;
+            transform: translate(-50%, 0);
+            background-color: #ffeb3b;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .star::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            clip-path: polygon(
+                50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
+                50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+            );
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .status {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        .toggle-button {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffeb3b;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: #ffdb00;
+        }
+
+        .toggle-button span {
+            margin-left: 8px;
+        }
+
+        .content-section {
+            display: none;
+            border-top: 1px solid #ddd;
+            margin-top: 15px;
+            padding-top: 10px;
+            text-align: left;
+        }
+
+       .content-title {
+    font-weight: bold;
+    color: #6200ea;
+    margin-bottom: 5px;
+    text-align: center; /* Ajout pour centrer le titre */
+}
+
+#storeIcon {
+    font-size: 48px; /* Augmente la taille de l'icône */
+    background: linear-gradient(to bottom, #FF6347 50%, #1E90FF 50%); /* Rouge en haut, bleu en bas */
+    -webkit-background-clip: text; /* Utilise le dégradé pour la couleur de l'icône */
+    color: transparent; /* Rend le texte transparent pour afficher le dégradé */
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+#storeIcon:hover {
+    transform: scale(1.2); /* Agrandit légèrement l'icône au survol */
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3)); /* Ajoute une ombre au survol */
+}
+
+
+        .follow-button {
+            display: inline-block;
+            background-color: #ffeb3b;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
-        button:hover {
-            background-color: #f9c300; /* Couleur au survol */
+        .follow-button:hover {
+            background-color: #ffe600;
         }
 
-        .modal {
+
+        .shop-section {
+            display: none; /* Cachée par défaut */
+            margin-top: 20px; /* Ajout d'un espace */
+        }
+
+        .product {
+            background: #f1f1f1;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+  
+.product img {
+    width: 100%;
+    border-radius: 5px;
+    height: auto; /* Permet à l'image de garder son rapport d'aspect */
+    max-height: 250px; /* Limite la hauteur de l'image pour éviter les débordements */
+     /* Ajuste l'image sans déformation */
+}
+
+
+        .checkout-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .visible {
+            display: block; /* Affiche la section */
+        }
+
+
+        #about-content {
+            font-size: 14px;
+        }  
+        .a2a_button_snapchat {
+            background-color: yellow;
+        }
+    
+    
+
+        #cartModal {
             display: none;
             position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.8);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: #2e2e2e; /* Fond de la modale */
-            margin: 5% auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
             padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
         }
 
-        .close-button {
-            color: #ffb300; /* Couleur du bouton de fermeture */
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: #f9c300;
-            text-decoration: none;
+        #openCartButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffeb3b;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
         }
+   
+   
 
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background: #1f1f1f;
-        }
 
-        footer p {
-            margin: 0;
-        }
 
-        /* Styles pour le mode clair */
-        body.light-mode {
-            background-color: #ffffff; /* Fond clair */
-            color: #000000; /* Texte noir */
-        }
 
-        body.light-mode header {
-            background: linear-gradient(to right, #007e33, #ffb300); /* Inverser les couleurs du dégradé */
-        }
 
-        body.light-mode .services-section, 
-        body.light-mode .appointment-section, 
-        body.light-mode .contact-section {
-            background: #f0f0f0; /* Fond clair pour les sections */
-            color: #000; /* Texte noir */
-        }
+        /* Style pour le modal du panier */
+#cartModal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white; /* Couleur de fond */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre */
+    z-index: 1000; /* Assurez-vous qu'il est au-dessus des autres éléments */
+    width: 80%; /* Largeur du modal */
+    max-width: 500px; /* Largeur maximale */
+    padding: 20px; /* Espacement interne */
+    overflow-y: auto; /* Ajout d'un défilement si le contenu déborde */
+}
 
-        body.light-mode .service-item {
-            background: #ffffff; /* Fond pour les services en mode clair */
-            border: 1px solid #ccc; /* Bordure pour services */
-        }
+/* Style pour les éléments du panier */
+.cart-item {
+    display: flex; /* Utilise flexbox pour aligner le contenu */
+    justify-content: space-between; /* Espace entre le nom et le bouton */
+    align-items: center; /* Centrer verticalement */
+    padding: 10px 0; /* Espacement vertical */
+    border-bottom: 1px solid #eee; /* Ligne de séparation */
+}
 
-        body.light-mode button {
-            background-color: #007e33; /* Couleur du bouton en mode clair */
-            color: white; /* Texte en blanc pour contraste */
-        }
+.cart-item button {
+    background-color: #ff4d4d; /* Couleur de fond rouge */
+    color: white; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px 10px; /* Espacement interne */
+    cursor: pointer; /* Curseur en main */
+}
 
-        body.light-mode button:hover {
-            background-color: #005a24; /* Couleur au survol en mode clair */
-        }
+.cart-item button:hover {
+    background-color: #ff1a1a; /* Couleur plus foncée au survol */
+}
+
+/* Style pour le formulaire de commande */
+#checkoutForm {
+    display: none; /* Masqué par défaut */
+    margin-top: 20px; /* Marge en haut */
+}
+
+/* Style pour les champs du formulaire */
+#checkoutForm input,
+#checkoutForm textarea,
+#checkoutForm select {
+    width: 100%; /* Largeur complète */
+    padding: 10px; /* Espacement interne */
+    margin: 10px 0; /* Marge en haut et en bas */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+/* Style pour le bouton de soumission */
+#checkoutForm button {
+    background-color: #4CAF50; /* Couleur de fond verte */
+    color: white; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px; /* Espacement interne */
+    cursor: pointer; /* Curseur en main */
+    font-size: 16px; /* Taille de la police */
+}
+
+#checkoutForm button:hover {
+    background-color: #45a049; /* Couleur plus foncée au survol */
+}
+
+/* Style pour le modal d'alerte */
+#alertModal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 20px; /* Position en haut */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red; /* Couleur de fond rouge */
+    color: white; /* Couleur du texte */
+    padding: 10px; /* Espacement interne */
+    border-radius: 5px; /* Coins arrondis */
+    z-index: 1001; /* Au-dessus du modal de panier */
+    width: auto; /* Largeur auto */
+    max-width: 300px; /* Largeur maximale */
+    text-align: center; /* Centre le texte */
+}
+  
+  
+  
+    .client-count {
+        background-color: #4CAF50; /* Couleur de fond verte */
+        color: white; /* Texte en blanc */
+        padding: 10px; /* Espacement interne */
+        border-radius: 8px; /* Coins arrondis */
+        margin: 10px 0; /* Espacement autour de l'encadré */
+        font-weight: bold; /* Texte en gras */
+        text-align: center; /* Centre le texte */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
+    }
+
+   .details {
+    font-size: 18px; /* Taille de la police pour les détails */
+    margin: 5px 0; /* Espacement autour des lignes de détails */
+    text-align: center; /* Centre le texte horizontalement */
+}
+
+    
+    
+    
+    
     </style>
 </head>
 <body>
-    <!-- Structure HTML (inchangée sauf ajouts ARIA pour accessibilité) -->
-    <header role="banner">
-        <div class="container">
-            <h1>HOLDEST Locks Boutique</h1>
-            <nav role="navigation">
-                <ul>
-                    <li><a href="#services" aria-label="Accéder à nos services">Services</a></li>
-                    <li><a href="#appointment" aria-label="Prendre rendez-vous">Prendre Rendez-vous</a></li>
-                    <li><a href="#contact" aria-label="Nous contacter">Contact</a></li>
-                </ul>
-            </nav>
-            <button id="themeToggle" aria-label="Changer le mode d'affichage">Mode Clair</button>
+    
+<div class="profile-container">
+    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/622d24ec-3000-5fce-a5d8-a8bf2ac5b757.jpg" alt="Photo de Profil" class="profile-image" id="profileImage">
+    <div class="star"></div>
+    <div class="username">Nasdas Chienneté 🦅</div>
+    <div class="status" id="statusText">Snapchateur depuis 2022</div>
+
+    <!-- Toggle Button pour Détails du Profil -->
+    <div class="toggle-button" id="toggleDetails">
+        <span>Détails du Profil</span>
+        <span class="material-symbols-outlined">expand_more</span>
+    </div>
+  
+    <div class="content-section" id="profileDetails">
+        <div class="content-title">Détails de la Boutique</div>         
+        <div class="details">Nom de la boutique : Holdest Boutique</div>
+        <div class="details">Produits : 50 articles en stock</div>
+        <div class="details">Évaluations : ★★★★★ (4.8)</div> 
+         <div class="details client-count" id="clientCount">Clients : 1 200+ satisfaits</div>
+            
         </div>
-    </header>
 
-    <!-- Sections (inchangées avec des alt améliorés pour images) -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2>Nos Services</h2>
-            <div class="service-item">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/4d7739b7-f681-fcb2-5c87-918dcb0855e1.jpeg" alt="Exemple de locks rénovées">
-                <h3>Rénovation de Locks</h3>
-                <p>Nous offrons des services de qualité pour remettre vos locks à neuf.</p>
-            </div>
-            <div class="service-item">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/a3b7dd9e-987c-fade-9516-5dc6905b6201.jpeg" alt="Différents styles de locks modernes">
-                <h3>Styles Variés</h3>
-                <p>Choisissez parmi une variété de styles qui vous correspondent.</p>
-            </div>
+    <div class="content-section">
+        <div class="content-title">Dernière mise à jour</div>
+        <div class="last-updated">1er octobre 2024</div>
+    </div>
+
+    <div class="toggle-button" id="showShopButton">
+        <span class="material-symbols-outlined" id="storeIcon">storefront</span>
+    </div>
+
+    <!-- Section boutique -->
+    <div class="shop-section" id="shopSection">
+        <h3>Produits</h3>
+        
+        <!-- Produit exemple -->
+        <div class="product">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/9d63212b-7a0e-8f59-1a5f-e8aaab939c96.jpg" alt="OCB Slim Noir">
+            <div class="product-name">OCB Slim Noir - 20€</div>
+            <button onclick="addToCart('OCB Slim Noir', 20)">Acheter</button>
         </div>
-    </section>
 
-    <!-- Autres sections inchangées -->
-    <section id="appointment" class="appointment-section">
-        <div class="container">
-            <h2>Prendre Rendez-vous</h2>
-            <button id="openModalButton">Réserver Maintenant</button>
+        <!-- Nouveau produit: Bonbonne Crème Deluxe -->
+        <div class="product">
+             <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/9d63212b-7a0e-8f59-1a5f-e8aaab939c96.jpg" alt="OCB Slim Noir">
+           
+            
+            <div class="product-name">Bonbonne Crème Deluxe - 30€</div>
+            <button onclick="addToCart('Bonbonne Crème Deluxe', 30)">Acheter</button>
         </div>
-    </section>
 
-    <div id="appointmentModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Formulaire de Rendez-vous</h2>
-            <form id="appointmentForm">
-                <label for="name">Nom:</label>
-                <input type="text" id="name" required>
+        <!-- Nouveau produit: Fast Gaz -->
+        <div class="product">
+            <div class="product-name">Fast Gaz - 25€</div>
+            <button onclick="addToCart('Fast Gaz', 25)">Acheter</button>
+        </div>
 
-                <label for="date">Date:</label>
-                <input type="date" id="date" required>
+        <!-- Nouveau produit: Tank -->
+        <div class="product">
+            <div class="product-name">Tank - 45€</div>
+            <button onclick="addToCart('Tank', 45)">Acheter</button>
+        </div>
 
-                <label for="time">Heure:</label>
-                <input type="time" id="time" required>
+        <!-- Section Puff -->
+        <h3>Puffs</h3>
 
-                <button type="submit">Soumettre</button>
-            </form>
+        <!-- Nouveau produit: Puff goût fraise -->
+        <div class="product">
+            <div class="product-name">Puff goût fraise 🍓 9000 - 15€</div>
+            <button onclick="addToCart('Puff goût fraise 9000', 15)">Acheter</button>
+        </div>
+
+        <!-- Nouveau produit: Puff goût myrtille -->
+        <div class="product">
+            <div class="product-name">Puff goût myrtille 15000 - 18€</div>
+            <button onclick="addToCart('Puff goût myrtille 15000', 18)">Acheter</button>
+        </div>
+
+        <!-- Nouveau produit: Snouss Pablo Escobar -->
+        <div class="product">
+            <div class="product-name">Snouss Pablo Escobar - 10€</div>
+            <button onclick="addToCart('Snouss Pablo Escobar', 10)">Acheter</button>
+        </div>
+
+        <!-- Section Boissons -->
+        <h3>Boissons</h3>
+
+        <!-- Nouveau produit: Coco -->
+        <div class="product">
+   <div class="product-name">Coco - 2€</div>
+            <button onclick="addToCart('Coco', 2)">Acheter</button>
+        </div>
+
+        <!-- Nouveau produit: Fanta -->
+        <div class="product">
+            <div class="product-name">Fanta - 2€</div>
+            <button onclick="addToCart('Fanta', 2)">Acheter</button>
         </div>
     </div>
 
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2>Contactez-Nous</h2>
-            <p>Pour toute question, contactez-nous au 0123-456-789.</p>
-        </div>
-    </section>
+<!-- Modal du Panier et Formulaire -->
+<div id='cartModal'>
+    <h3>Mon Panier</h3>
+    <div id='cartItems'></div>
+    <button class='checkout-button' onclick='checkout()'>Passer à la caisse</button>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 HOLDEST Locks Boutique. Tous droits réservés.</p>
-        </div>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const openModalButton = document.getElementById('openModalButton');
-            const modal = document.getElementById('appointmentModal');
-            const closeButton = document.querySelector('.close-button');
-            const appointmentForm = document.getElementById('appointmentForm');
-            const themeToggle = document.getElementById('themeToggle');
-            const body = document.body;
+    <!-- Formulaire de commande -->
+    <div id="checkoutForm">
+        <h3>Finaliser votre commande</h3>
+        <form action='https://formspree.io/f/votre_id_formspree' method='POST'>
+            <!-- Champs du formulaire -->
+            <input type='text' name='name' placeholder='Nom complet' required />
+            <input type='email' name='email' placeholder='Email' required />
+            <input type='tel' name='phone' placeholder='Téléphone' required />
+            <textarea name='address' placeholder='Adresse de livraison' required></textarea>
+            <select name='deliveryTime' required>
+                <option value=''>Choisir une heure de livraison</option>
+                <option value='9:00-10:00'>9:00-10:00</option>
+                <option value='10:00-11:00'>10:00-11:00</option>
+                <option value='11:00-12:00'>11:00-12:00</option>
+            </select>
+            <input type='hidden' name='orderDetails' id='orderDetails'>
+            <button type='submit'>Confirmer la commande</button>
+        </form>
+    </div>
+</div>
+    <!-- Bouton flottant pour ouvrir le panier -->
+    <button id='openCartButton'>🛒<span id="cartCount">0</span></button>
+   
+    <!-- Modal d'alerte -->
+    <div id="alertModal" class="modal">
+        <span id="alertMessage"></span>
+    </div>
 
-            // Ouvrir la fenêtre modale
-            openModalButton.addEventListener('click', () => {
-                modal.style.display = 'block';
-            });
+    <script src="script.js"></script>
 
-            // Fermer la fenêtre modale
-            closeButton.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
+    <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+        <a class="a2a_button_snapchat" href="https://oldestlucious.github.io/holdest_shop/"></a>
+        <a class="a2a_button_facebook"></a>
+        <a class="a2a_button_twitter"></a>
+        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+    </div>
+</div>
+<div class="container"></div>
+    
+    
+   <iframe width="420" height="215" src="https://www.youtube.com/embed/M_5o6mTNpgo?si=RhMDb7P0gaM3BoGK" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+</iframe>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
 
-            // Fermer la modale si l'utilisateur clique à l'extérieur de celle-ci
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
+<script>
+    var socialSharing = document.getElementById('social-sharing');
+    var lastScrollTop = 0;
 
-            // Soumettre le formulaire
-            appointmentForm.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const name = document.getElementById('name').value;
-                const date = document.getElementById('date').value;
-                const time = document.getElementById('time').value;
-                
-                alert(`Rendez-vous réservé pour ${name} le ${date} à ${time}.`);
-                modal.style.display = 'none';
-                appointmentForm.reset();
-            });
+    window.addEventListener('scroll', function() {
+        var st = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Changer le mode (clair/sombre)
-            themeToggle.addEventListener('click', () => {
-                body.classList.toggle('light-mode');
-                themeToggle.textContent = body.classList.contains('light-mode') ? 'Mode Sombre' : 'Mode Clair';
-            });
+        if (st > lastScrollTop) {
+            socialSharing.style.display = 'none'; // Masquer le code en descendant
+        } else {
+            socialSharing.style.display = 'block'; // Afficher le code en montant
+        }
+
+        lastScrollTop = st;
+    });
+
+    // Initialisation du panier
+    let cart = [];
+
+    // Ajouter un produit au panier
+    function addToCart(productName, price) {
+        cart.push({name: productName, price});
+        updateCart();
+        showAlert(`${productName} a été ajouté au panier`);
+    }
+
+    // Fonction pour afficher l'alerte dans un modal
+    function showAlert(message) {
+        const alertModal = document.getElementById('alertModal');
+        const alertMessage = document.getElementById('alertMessage');
+        alertMessage.innerText = message;
+        alertModal.style.display = 'block';
+        
+        setTimeout(() => {
+            alertModal.style.display = 'none';
+        }, 3000); // L'alerte disparaît après 3 secondes
+    }
+
+    // Mettre à jour l'affichage du panier
+    function updateCart() {
+        const cartItems = document.getElementById('cartItems');
+        cartItems.innerHTML = '';
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
+            itemElement.innerHTML = `${item.name} - ${item.price}€<button onclick='removeFromCart(${index})'>Supprimer</button>`;
+            cartItems.appendChild(itemElement);
+            total += parseFloat(item.price);
         });
-    </script>
+
+        const totalElement = document.createElement('div');
+        totalElement.innerHTML = `<strong>Total : ${total}€</strong>`;
+        cartItems.appendChild(totalElement);
+
+        // Mettre à jour le nombre d'articles dans le panier
+        document.getElementById('cartCount').innerText = cart.length;
+
+        document.getElementById('cartModal').style.display = 'block';
+    }
+
+    // Supprimer un produit du panier
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+
+    // Passer à la caisse
+    function checkout() {
+        document.getElementById('orderDetails').value = JSON.stringify(cart);
+        document.getElementById('checkoutForm').style.display = 'block'; // Affiche le formulaire
+    }
+
+    // Ouvrir et fermer le modal
+    document.getElementById('openCartButton').onclick = function() {
+        document.getElementById('cartModal').style.display = 'block';
+    };
+
+    // Fermer le modal en cliquant en dehors
+    window.onclick = function(event) {
+        if (event.target !== document.getElementById('cartModal') && event.target !== document.getElementById('openCartButton')) {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+    };
+
+    // Afficher/masquer les détails du profil
+    document.getElementById('toggleDetails').onclick = function() {
+        const profileDetails = document.getElementById('profileDetails');
+        profileDetails.classList.toggle('visible');
+    };
+
+    // Afficher/masquer la boutique
+    document.getElementById('showShopButton').onclick = function(event) {
+        event.preventDefault();
+        const shopSection = document.getElementById('shopSection');
+        shopSection.style.display = shopSection.style.display === 'block' ? 'none' : 'block';
+    };
+
+    // Initialisation du compteur de clients
+    let currentCount = 1200; // Valeur initiale
+    const incrementValue = Math.floor(Math.random() * 10) + 1; // Valeur d'incrément aléatoire
+    const clientCountElement = document.getElementById('clientCount');
+
+    // Fonction pour mettre à jour le compteur
+    function updateClientCount() {
+        currentCount += incrementValue; // Incrémenter le compteur
+        clientCountElement.innerText = `Clients : ${currentCount.toLocaleString()} satisfaits`; // Mettre à jour le texte
+    }
+
+    // Mettre à jour le compteur toutes les 5 secondes
+    setInterval(updateClientCount, 5000);
+    
+    
+// Passer à la caisse
+function checkout() {
+    if (cart.length === 0) {
+        showAlert("Votre panier est vide !"); // Alerte si le panier est vide
+        return;
+    }
+    document.getElementById('orderDetails').value = JSON.stringify(cart);
+    document.getElementById('checkoutForm').style.display = 'block'; // Affiche le formulaire
+}
+
+// Ouvrir et fermer le modal
+document.getElementById('openCartButton').onclick = function() {
+    document.getElementById('cartModal').style.display = 'block'; // Ouvre le modal
+    updateCart(); // Met à jour le panier à l'ouverture
+};
+
+// Fermer le modal en cliquant en dehors
+window.onclick = function(event) {
+    const modal = document.getElementById('cartModal');
+    if (event.target === modal) {
+        modal.style.display = 'none'; // Ferme le modal
+        document.getElementById('checkoutForm').style.display = 'none'; // Cache le formulaire
+    }
+};
+</script>
+
 </body>
 </html>
+
