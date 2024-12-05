@@ -747,6 +747,49 @@ window.onclick = function(event) {
     document.getElementById('closeShop').onclick = function () {
             shopSection.style.display = 'none';
         };
+
+
+
+    // Fonction pour afficher l'image en mode zoom
+function zoomImage(imageElement) {
+    // Créer une div pour le zoom
+    const zoomDiv = document.createElement('div');
+    zoomDiv.style.position = 'fixed';
+    zoomDiv.style.top = 0;
+    zoomDiv.style.left = 0;
+    zoomDiv.style.width = '100%';
+    zoomDiv.style.height = '100%';
+    zoomDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    zoomDiv.style.display = 'flex';
+    zoomDiv.style.justifyContent = 'center';
+    zoomDiv.style.alignItems = 'center';
+    zoomDiv.style.zIndex = '1000';
+
+    // Ajouter l'image agrandie
+    const zoomImage = document.createElement('img');
+    zoomImage.src = imageElement.src;
+    zoomImage.style.maxWidth = '90%';
+    zoomImage.style.maxHeight = '90%';
+    zoomImage.style.border = '2px solid white';
+    zoomImage.style.borderRadius = '10px';
+
+    // Ajouter l'image et un clic pour fermer
+    zoomDiv.appendChild(zoomImage);
+    zoomDiv.onclick = function () {
+        document.body.removeChild(zoomDiv); // Supprimer le zoom
+    };
+
+    // Ajouter la div au corps de la page
+    document.body.appendChild(zoomDiv);
+}
+
+// Ajouter l'événement de zoom à chaque image produit
+document.querySelectorAll('.product img').forEach(image => {
+    image.style.cursor = 'pointer'; // Change le curseur sur l'image
+    image.onclick = function () {
+        zoomImage(this); // Appelle le zoom au clic
+    };
+});
 </script>
 
 </body>
