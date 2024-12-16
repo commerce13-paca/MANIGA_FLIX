@@ -1,25 +1,37 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Aide pour Mayotte - Soutien aux Victimes</title>
+
     <!-- URL canonique -->
     <link rel="canonical" href="https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/">
 
-    <!-- Charset et autres informations -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Description et Mots-clés -->
+    <meta name="description" content="Unissons nos forces pour soutenir les victimes du cyclone à Mayotte. Contribuez à la reconstruction et à l'aide humanitaire essentielle.">
+    <meta name="keywords" content="aide humanitaire, cyclone, Mayotte, solidarité, reconstruction, dons">
 
-    <!-- Twitter Card (pour un affichage optimisé sur Twitter) -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Aide pour Mayotte - Soutien aux Victimes">
     <meta name="twitter:description" content="Unissons nos forces pour soutenir les victimes du cyclone à Mayotte. Contribuez à la reconstruction et à l'aide humanitaire essentielle.">
     <meta name="twitter:image" content="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg">
 
-    <!-- Social Media: Open Graph pour Facebook, Snapchat, etc. -->
+    <!-- Open Graph pour Facebook, Snapchat, etc. -->
     <meta property="og:title" content="Aide pour Mayotte - Soutien aux Victimes">
     <meta property="og:description" content="Unissons nos forces pour soutenir les victimes du cyclone à Mayotte. Contribuez à la reconstruction et à l'aide humanitaire essentielle.">
     <meta property="og:image" content="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aide pour Mayotte">
+
+    <!-- Snapchat Meta Tags -->
+    <meta property="snapchat:sticker" content="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg">
+    <meta property="snapchat:app_id" content="votre_snapchat_app_id">
 
     <!-- Favicon -->
     <link rel="icon" href="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg" type="image/png">
@@ -31,29 +43,16 @@
     <!-- Lien pour importer la police Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-    <!-- Charset et Viewport -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Description et Mots-clés -->
-    <meta name="description" content="Unissons nos forces pour soutenir les victimes du cyclone à Mayotte. Contribuez à la reconstruction et à l'aide humanitaire essentielle.">
-    <meta name="keywords" content="aide humanitaire, cyclone, Mayotte, solidarité, reconstruction, dons">
-
-    <!-- Titre -->
-    
-    
-
-    <title>Aide pour Mayotte - Soutien aux Victimes</title>
-
-
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
         :root {
-            --primary-color: #0056b3; /* Bleu professionnel */
-            --secondary-color: #f7f7f7; /* Gris très clair */
-            --accent-color: #d9534f; /* Rouge doux */
-            --text-color: #333; /* Texte principal */
-            --card-bg-color: #ffffff; /* Fond des sections */
+            --primary-color: #0056b3;
+            --secondary-color: #f7f7f7;
+            --accent-color: #d9534f;
+            --text-color: #333;
+            --card-bg-color: #ffffff;
         }
 
         body {
@@ -175,50 +174,70 @@
             font-size: 0.9rem;
         }
 
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        .partner-logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-icons i {
+            font-size: 50px;
+        }
+
+        /* Cookie banner */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        #cookie-banner button {
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .description-list {
                 flex-direction: column;
             }
         }
-    
-    
-      .partner-logos {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 20px;
-        flex-wrap: wrap; /* Pour que les logos et icônes s'adaptent sur différentes tailles d'écran */
-    }
-
-    .partner-logo-circle {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 3px solid #ddd; /* Encadrement des cercles */
-        margin-bottom: 10px; /* Espacement sous l'image */
-    }
-
-    .partner-logo-circle img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .social-icons {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-        margin-top: 10px; /* Espacement entre les logos et les icônes */
-    }
-
-    .social-icons i {
-        font-size: 50px; /* Taille des icônes */
-    }
     </style>
 </head>
 <body>
@@ -229,7 +248,6 @@
     </header>
 
     <main class="container">
-        <!-- Section d'information -->
         <section class="section">
             <h2>Situation Actuelle</h2>
             <div class="highlight">
@@ -239,7 +257,6 @@
             <p>Votre soutien est essentiel pour fournir des secours immédiats et reconstruire Mayotte.</p>
         </section>
 
-        <!-- Section collecte de fonds -->
         <section class="section">
             <h2>Faites un Don</h2>
             <p>Vos dons serviront à :</p>
@@ -257,7 +274,6 @@
             <a href="https://www.paypal.com/donate?hosted_button_id=VOTRE_BOUTON_PAYPAL" class="btn-donate">Faire un Don</a>
         </section>
 
-        <!-- Section fonctionnement -->
         <section class="section">
             <h2>Comment vos Dons sont Utilisés</h2>
             <p>Nous garantissons une transparence totale dans l'utilisation des fonds :</p>
@@ -272,7 +288,6 @@
             </video>
         </section>
 
-        <!-- Section Témoignages -->
         <section class="section">
             <h2>Témoignages de Victimes</h2>
             <div class="highlight">
@@ -281,7 +296,6 @@
             <img src="https://via.placeholder.com/800x400" alt="Témoignage d'une victime">
         </section>
 
-        <!-- Section Suivi de l'Impact -->
         <section class="section">
             <h2>Suivi de l'Impact</h2>
             <div class="highlight">
@@ -293,79 +307,73 @@
             </div>
         </section>
 
-   <section class="section">
-    <h2>Nos Partenaires Solidaires</h2>
-    <div class="partner-logos">
-        <!-- Partenaire 1 -->
-        <div>
-            <div class="partner-logo-circle">
-                <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/9bd8a6c7-db94-ea8f-5550-01d9d16088cc.jpg" alt="Partenaire 1">
+        <section class="section">
+            <h2>Nos Partenaires Solidaires</h2>
+            <div class="partner-logos">
+                <div>
+                    <div class="partner-logo-circle">
+                        <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/9bd8a6c7-db94-ea8f-5550-01d9d16088cc.jpg" alt="Partenaire 1">
+                    </div>
+                    <div class="social-icons">
+                        <i class="fab fa-tiktok" style="color: #5e1616;"></i>
+                        <i class="fab fa-snapchat" style="color: #FFD43B;"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="partner-logo-circle">
+                        <img src="logo-partenaire2.png" alt="Partenaire 2">
+                    </div>
+                    <div class="social-icons">
+                        <i class="fab fa-tiktok" style="color: #5e1616;"></i>
+                        <i class="fab fa-snapchat" style="color: #FFD43B;"></i>
+                    </div>
+                </div>
             </div>
-            <div class="social-icons">
-                <i class="fa-brands fa-tiktok" style="color: #5e1616;"></i>
-                <i class="fa-brands fa-snapchat" style="color: #FFD43B;"></i>
-            </div>
-        </div>
-
-        <!-- Partenaire 2 -->
-        <div>
-            <div class="partner-logo-circle">
-                <img src="logo-partenaire2.png" alt="Partenaire 2">
-            </div>
-            <div class="social-icons">
-                <i class="fa-brands fa-tiktok" style="color: #5e1616;"></i>
-                <i class="fa-brands fa-snapchat" style="color: #FFD43B;"></i>
-            </div>
-        </div>
-    </div>
-</section>
-
-
+        </section>
     </main>
 
     <footer>
         <p>© 2024 Aide pour Mayotte. Tous droits réservés.</p>
     </footer>
-   <script>
-    // Vérifie si le cookie "cookies-accepted" existe
-    function getCookie(name) {
-        let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-        return match ? match[2] : null;
-    }
 
-    // Définit un cookie avec une durée en jours
-    function setCookie(name, value, days) {
-        let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
-    }
+    <div id="cookie-banner">
+        <p>Ce site utilise des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre utilisation des cookies.</p>
+        <button id="accept-cookies">Accepter</button>
+        <button id="decline-cookies">Refuser</button>
+    </div>
 
-    // Affiche la bannière si le consentement n'est pas encore donné
-    document.addEventListener('DOMContentLoaded', () => {
-        if (!getCookie('cookies-accepted')) {
-            document.getElementById('cookie-banner').style.display = 'flex';
+    <script>
+        // Vérifie si le cookie "cookies-accepted" existe
+        function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
         }
 
-        // Accepter les cookies
-        document.getElementById('accept-cookies').addEventListener('click', () => {
-            setCookie('cookies-accepted', 'true', 365);
-            document.getElementById('cookie-banner').style.display = 'none';
-        });
+        // Définit un cookie avec une durée en jours
+        function setCookie(name, value, days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+        }
 
-        // Refuser les cookies
-        document.getElementById('decline-cookies').addEventListener('click', () => {
-            setCookie('cookies-accepted', 'false', 365);
-            document.getElementById('cookie-banner').style.display = 'none';
+        // Affiche la bannière si le consentement n'est pas encore donné
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('cookies-accepted')) {
+                document.getElementById('cookie-banner').style.display = 'flex';
+            }
+
+            // Accepter les cookies
+            document.getElementById('accept-cookies').addEventListener('click', () => {
+                setCookie('cookies-accepted', 'true', 365);
+                document.getElementById('cookie-banner').style.display = 'none';
+            });
+
+            // Refuser les cookies
+            document.getElementById('decline-cookies').addEventListener('click', () => {
+                setCookie('cookies-accepted', 'false', 365);
+                document.getElementById('cookie-banner').style.display = 'none';
+            });
         });
-    });
-</script>
-     <script>
-    if (getCookie('cookies-accepted') === 'true') {
-        const recaptchaScript = document.createElement('script');
-        recaptchaScript.src = "https://www.google.com/recaptcha/enterprise.js?render=6Lfx0ZgqAAAAACuBGXsYgBHKE36ltUCI4wPOclPw";
-        document.head.appendChild(recaptchaScript);
-    }
-</script>
-    
+    </script>
 </body>
-                                         </html>
+</html>
