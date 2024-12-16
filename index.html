@@ -1,797 +1,304 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Favicon -->
-    <link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2e00b24b-8592-f8d7-84c4-407046ec00bf.jpg" type="image/png">
-
-    <!-- Encodage et viewport -->
+    <script src="https://kit.fontawesome.com/90a4d1138d.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Titre de la page -->
-    <title>Nasdas Profil Public Boutique</title>
-
-    <!-- Description de la page (important pour le SEO) -->
-    <meta name="description" content="Découvrez le profil public de Nasdas et explorez sa boutique en ligne proposant des produits uniques et de qualité.">
-
-    <!-- Mots-clés pour améliorer le référencement -->
-    <meta name="keywords" content="Nasdas, boutique en ligne, produits, profil public, achats en ligne, e-commerce, qualité, produits uniques">
-
-    <!-- Auteur de la page -->
-    <meta name="author" content="Nasdas">
-
-    <!-- URL canonique (pratique pour éviter le contenu dupliqué) -->
-    <link rel="canonical" href="https://web-site13015.github.io/nasdas_profil_boutique/">
-
-    <!-- Social Media: Open Graph pour partager sur Facebook, Twitter, etc. -->
-    <meta property="og:title" content="Nasdas Profil Public Boutique">
-    <meta property="og:description" content="Découvrez le profil public de Nasdas et explorez sa boutique en ligne proposant des produits uniques et de qualité.">
-    <meta property="og:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6b6bf57f-1b05-3fb7-d8ff-81d8f58f66d7.jpg">
-    <meta property="og:url" content="https://web-site13015.github.io/nasdas_profil_boutique/">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card (si vous souhaitez un rendu optimisé sur Twitter) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Nasdas Profil Public Boutique">
-    <meta name="twitter:description" content="Découvrez le profil public de Nasdas et explorez sa boutique en ligne proposant des produits uniques et de qualité.">
-    <meta name="twitter:image" content="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6b6bf57f-1b05-3fb7-d8ff-81d8f58f66d7.jpg">
-
-    <!-- Charset et autres informations -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- Police de caractères -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-    <!-- CSS externe -->
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Plateforme d'aide pour les victimes du cyclone à Mayotte, avec des informations claires, des images percutantes et une collecte de fonds transparente.">
+    <title>Aide pour Mayotte - Soutien aux Victimes</title>
     <style>
-    #background-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;  /* L'image ou la vidéo va couvrir toute la zone */
-    z-index: -1;        /* S'assurer que la vidéo est derrière le contenu */
-}
+        :root {
+            --primary-color: #0056b3; /* Bleu professionnel */
+            --secondary-color: #f7f7f7; /* Gris très clair */
+            --accent-color: #d9534f; /* Rouge doux */
+            --text-color: #333; /* Texte principal */
+            --card-bg-color: #ffffff; /* Fond des sections */
+        }
+
         body {
-    display: flex;
-    flex-direction: column; /* Positionne les éléments en colonne */
-    justify-content: flex-start; /* Aligne les éléments depuis le haut */
-    align-items: center; /* Centre les éléments horizontalement */
-    background-color: #333;
-            
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    height: 100vh; /* S'assure que le body occupe toute la hauteur de l'écran */
-}
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-.container {
-    background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6b6bf57f-1b05-3fb7-d8ff-81d8f58f66d7.jpg');
-    background-size: contain; /* Assure que l'image est entièrement visible */
-    background-repeat: no-repeat; /* Pas de répétition */
-    background-position: center; /* Centre l'image */
-    width: 300px; /* Largeur fixe ou ajustable */
-    height: 300px; /* Hauteur fixe ou ajustable */
-    margin-bottom: 20px; /* Ajoute un espace sous l'image */
-}
-
-.text {
-    color: white;
-    text-align: center;
-    margin-top: 20px; /* Ajoute un espace au-dessus du texte */
-}
-
-
-        
- .profile-container {
-            background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            width: 350px;
-            padding: 20px;
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 15px;
             text-align: center;
-            position: relative;
         }
 
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #ffeb3b;
-            margin: 10px auto;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        .star {
-            width: 25px;
-            height: 25px;
-            position: absolute;
-            top: 101px;
-            left: 60%;
-            transform: translate(-50%, 0);
-            background-color: #ffeb3b;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .star::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #000;
-            clip-path: polygon(
-                50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
-                50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
-            );
-        }
-
-        .username {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin: 10px 0;
-        }
-
-        .status {
-            font-size: 16px;
-            color: #777;
-            margin-bottom: 15px;
-            cursor: pointer;
-        }
-        
-        .toggle-button {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffeb3b;
-            padding: 10px;
-            border-radius: 10px;
+        header img {
+            max-width: 100px;
             margin-bottom: 10px;
-            transition: background-color 0.3s;
         }
 
-        .toggle-button:hover {
-            background-color: #ffdb00;
-        }
-
-        .toggle-button span {
-            margin-left: 8px;
-        }
-
-        .content-section {
-            display: none;
-            border-top: 1px solid #ddd;
-            margin-top: 15px;
-            padding-top: 10px;
-            text-align: left;
-        }
-
-       .content-title {
-    font-weight: bold;
-    color: #6200ea;
-    margin-bottom: 5px;
-    text-align: center; /* Ajout pour centrer le titre */
-}
-
-#storeIcon {
-    font-size: 48px; /* Augmente la taille de l'icône */
-    background: linear-gradient(to bottom, #FF6347 50%, #1E90FF 50%); /* Rouge en haut, bleu en bas */
-    -webkit-background-clip: text; /* Utilise le dégradé pour la couleur de l'icône */
-    color: transparent; /* Rend le texte transparent pour afficher le dégradé */
-    cursor: pointer;
-    transition: transform 0.3s, filter 0.3s;
-}
-
-#storeIcon:hover {
-    transform: scale(1.2); /* Agrandit légèrement l'icône au survol */
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3)); /* Ajoute une ombre au survol */
-}
-
-
-        .follow-button {
-            display: inline-block;
-            background-color: #ffeb3b;
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 20px;
-            text-decoration: none;
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
             font-weight: bold;
+        }
+
+        header p {
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: var(--card-bg-color);
+            margin-bottom: 30px;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .highlight {
+            background: var(--accent-color);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .description-list {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .description-box {
+            flex: 1;
+            background: var(--secondary-color);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .description-box p {
+            font-weight: bold;
+            margin: 10px 0 0;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
             margin-top: 15px;
-            cursor: pointer;
+        }
+
+        .btn-donate {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-color);
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px auto 0;
+            display: block;
+            max-width: 200px;
             transition: background-color 0.3s;
         }
 
-        .follow-button:hover {
-            background-color: #ffe600;
+        .btn-donate:hover {
+            background-color: #004494;
         }
 
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
 
-      .shop-section {
-    display: none;
-    
-    top: 0; /* S'assure que le modal commence en haut de la page */
-    left: 0; /* S'assure que le modal commence à gauche de la page */
-    width: 90%; /* Remplit toute la largeur de l'écran */
-    height: auto; /* Remplit toute la hauteur de l'écran */
-    background-color: #fff; /* Couleur de fond blanche */
-    border-radius: 0; /* Pas de coins arrondis pour remplir la page */
-    box-shadow: none; /* Pas d'ombre pour un effet de plein écran */
-   /* Toujours au-dessus du contenu */
-    padding: 20px; /* Un peu d'espace autour du contenu */
-    overflow: hidden; /* Pas de défilement */
-    text-align: center; /* Centre le contenu */
-}
-
-.product {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden; /* Évite le dépassement de contenu */
-}
-
-.product img {
-    width: 100%;
-    border-radius: 5px;
-    height: auto; /* Permet à l'image de garder son rapport d'aspect */
-    max-height: 250px; /* Limite la hauteur de l'image pour éviter les débordements */
-    object-fit: cover; /* Ajuste l'image sans déformation */
-}
-
-.product-name {
-    font-weight: bold;
-    margin: 5px 0;
-    white-space: nowrap; /* Empêche le retour à la ligne */
-    overflow: hidden; /* Cache le texte qui déborde */
-    text-overflow: ellipsis; /* Affiche "..." si le texte déborde */
-}
-
-.product-price {
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-.buy-button {
-    background-color: #ffeb3b;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%; /* Prend toute la largeur disponible */
-}
-
-.buy-button:hover {
-    background-color: #ffe600;
-}
-        #about-content {
-            font-size: 14px;
-        }  
-        .a2a_button_snapchat {
-            background-color: yellow;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .description-list {
+                flex-direction: column;
+            }
         }
     
     
-
-        #cartModal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-
-        #openCartButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ffeb3b;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-   
-   .visible {
-            display: block; /* Affiche la section */
-        }
-
-
-
-
-
-        /* Style pour le modal du panier */
-#cartModal {
-    display: none; /* Masqué par défaut */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #3D3D3D; /* Couleur de fond */
-    border-radius: 10px; /* Coins arrondis */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre */
-    z-index: 1000; /* Assurez-vous qu'il est au-dessus des autres éléments */
-    width: 80%; /* Largeur du modal */
-    max-width: 500px; /* Largeur maximale */
-    padding: 20px; /* Espacement interne */
-    overflow-y: auto; /* Ajout d'un défilement si le contenu déborde */
-}
-
-/* Style pour les éléments du panier */
-.cart-item {
-    display: flex; /* Utilise flexbox pour aligner le contenu */
-    justify-content: space-between; /* Espace entre le nom et le bouton */
-    align-items: center; /* Centrer verticalement */
-    padding: 10px 0; /* Espacement vertical */
-    border-bottom: 1px solid #eee; /* Ligne de séparation */
-}
-
-.cart-item button {
-    background-color: #ff4d4d; /* Couleur de fond rouge */
-    color: white; /* Couleur du texte */
-    border: none; /* Pas de bordure */
-    border-radius: 5px; /* Coins arrondis */
-    padding: 5px 10px; /* Espacement interne */
-    cursor: pointer; /* Curseur en main */
-}
-
-.cart-item button:hover {
-    background-color: #ff1a1a; /* Couleur plus foncée au survol */
-}
-
-/* Style pour le formulaire de commande */
-#checkoutForm {
-    display: none; /* Masqué par défaut */
-    margin-top: 20px; /* Marge en haut */
-}
-
-/* Style pour les champs du formulaire */
-#checkoutForm input,
-#checkoutForm textarea,
-#checkoutForm select {
-    width: 90%; /* Largeur complète */
-    padding: 10px; /* Espacement interne */
-    margin: 10px 0; /* Marge en haut et en bas */
-    border: 1px solid #ccc; /* Bordure grise */
-    border-radius: 5px; /* Coins arrondis */
-}
-
-/* Style pour le bouton de soumission */
-#checkoutForm button {
-    background-color: #4CAF50; /* Couleur de fond verte */
-    color: white; /* Couleur du texte */
-    border: none; /* Pas de bordure */
-    border-radius: 5px; /* Coins arrondis */
-    padding: 10px; /* Espacement interne */
-    cursor: pointer; /* Curseur en main */
-    font-size: 16px; /* Taille de la police */
-}
-
-#checkoutForm button:hover {
-    background-color: #45a049; /* Couleur plus foncée au survol */
-}
-
-/* Style pour le modal d'alerte */
-#alertModal {
-    display: none; /* Masqué par défaut */
-    position: fixed;
-    top: 20px; /* Position en haut */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: red; /* Couleur de fond rouge */
-    color: white; /* Couleur du texte */
-    padding: 10px; /* Espacement interne */
-    border-radius: 5px; /* Coins arrondis */
-    z-index: 1001; /* Au-dessus du modal de panier */
-    width: auto; /* Largeur auto */
-    max-width: 300px; /* Largeur maximale */
-    text-align: center; /* Centre le texte */
-}
-  
-  
-  
-    .client-count {
-        background-color: #4CAF50; /* Couleur de fond verte */
-        color: white; /* Texte en blanc */
-        padding: 10px; /* Espacement interne */
-        border-radius: 8px; /* Coins arrondis */
-        margin: 10px 0; /* Espacement autour de l'encadré */
-        font-weight: bold; /* Texte en gras */
-        text-align: center; /* Centre le texte */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
+      .partner-logos {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+        flex-wrap: wrap; /* Pour que les logos et icônes s'adaptent sur différentes tailles d'écran */
     }
 
-   .details {
-       
-    font-size: 18px; /* Taille de la police pour les détails */
-    margin: 5px 0; /* Espacement autour des lignes de détails */
-    text-align: center; /* Centre le texte horizontalement */
-}
+    .partner-logo-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #ddd; /* Encadrement des cercles */
+        margin-bottom: 10px; /* Espacement sous l'image */
+    }
 
-    
-    
- 
-/* Style pour le titre h1 */
-h1 {
-           /* Très grande taille de texte pour un impact visuel */
-    font-weight: bold;         /* Gras pour une impression de force */
-    text-align: center;        /* Centrer le texte */
-    color: #f39c12;            /* Couleur or pour attirer l'attention */
-    text-transform: uppercase; /* Mettre le titre en majuscules */
-    letter-spacing: 5px;       /* Espacement entre les lettres */
-    margin-top: 100px;         /* Marge supérieure pour qu'il soit bien espacé du bord */
-    margin-bottom: 20px;       /* Marge inférieure */
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* Ombre portée pour ajouter de la profondeur */
-}
+    .partner-logo-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-/* Style pour le paragraphe p */
-p {
-    font-size: 1.5rem;         /* Taille plus grande pour le texte de paragraphe */
-    color: #ecf0f1;            /* Couleur très claire pour le texte, contraste avec fond sombre */
-    text-align: center;        /* Centrer le texte */
-    max-width: 800px;          /* Limiter la largeur pour améliorer la lisibilité */
-    margin: 0 auto;            /* Centrer horizontalement */
-    padding: 20px;             /* Ajouter un peu de padding pour l'espacement */
-    background-color: #34495e; /* Fond sombre pour le paragraphe */
-    border-radius: 10px;       /* Bords arrondis pour un effet plus doux */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Ombre douce autour du paragraphe */
-}
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 10px; /* Espacement entre les logos et les icônes */
+    }
 
-/* Effet de hover pour le titre */
-h1:hover {
-    color: #e74c3c;            /* Changer la couleur du titre au survol */
-    transform: scale(1.1);      /* Agrandir légèrement le titre lors du survol */
-    transition: all 0.3s ease; /* Effet de transition fluide */
-}
-
-/* Effet de hover pour le paragraphe */
-p:hover {
-    background-color: #1abc9c; /* Changer le fond au survol */
-    color: #fff;               /* Changer la couleur du texte */
-    transform: scale(1.05);     /* Agrandir légèrement le texte */
-    transition: all 0.3s ease; /* Effet de transition fluide */
-} 
-    
-    
-    
-    .container {
-    width: 27%;
-    
-    margin: 40px auto;
-    padding: 150px;
-    background-color: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-}
-
-.container img {
-    width: 80%; /* Ou toute autre valeur en fonction de la taille souhaitée */
-    max-width: 600px;
-    height: auto;
-    display: block;
-    margin: 0 auto; /* Cela centre l'image horizontalement */
-}
-
+    .social-icons i {
+        font-size: 50px; /* Taille des icônes */
+    }
     </style>
 </head>
 <body>
-    
-<div class="profile-container">
-    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c28525f1-2674-2858-508b-89bfc18b175b.jpg" alt="Photo de Profil" class="profile-image" id="profileImage">
-    <div class="star"></div>
-    <div class="username">Nasdas Chienneté 🦅</div>
-    <div class="status" id="statusText">Créateur Snapchateur • 8.55m followers • Scientifique • Dernière mise à jour 25/11/2024.</div>
+    <header>
+        <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg" alt="Logo Aide pour Mayotte">
+        <h1>Soutien aux Victimes du Cyclone à Mayotte</h1>
+        <p>Unissons nos forces pour reconstruire et aider les personnes touchées.</p>
+    </header>
 
-    <!-- Toggle Button pour Détails du Profil -->
-    <div class="toggle-button" id="toggleDetails">
-        <span>Détails du Profil</span>
-        <span class="material-symbols-outlined">expand_more</span>
-    </div>
-  
-    <div class="content-section" id="profileDetails">
-        <div class="content-title">Détails de la Boutique</div>         
-        <div class="details">NasMarket 🛍</div>
-        <div class="details">Produits : 0 articles en stock</div>
-        <div class="details">Évaluations : ★★★★★ (4.8)</div> 
-         <div class="details client-count" id="clientCount">Clients : 1 200+ satisfaits</div>
-            
+    <main class="container">
+        <!-- Section d'information -->
+        <section class="section">
+            <h2>Situation Actuelle</h2>
+            <div class="highlight">
+                <p>Le cyclone qui a frappé Mayotte ce samedi (le 14 décembre) a laissé des centaines de familles sans abri, sans nourriture et sans accès aux soins essentiels. Bien que des aides aient déjà été distribuées à certaines victimes, de nombreuses personnes attendent encore un soutien urgent. Les besoins restent vitaux et immédiats.</p>
+            </div>
+            <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/03efb961-4e2d-776a-4cd9-16266632b28b.jpg" alt="Dégâts du cyclone à Mayotte">
+            <p>Votre soutien est essentiel pour fournir des secours immédiats et reconstruire Mayotte.</p>
+        </section>
+
+        <!-- Section collecte de fonds -->
+        <section class="section">
+            <h2>Faites un Don</h2>
+            <p>Vos dons serviront à :</p>
+            <div class="description-list">
+                <div class="description-box" style="border-left: 5px solid orange;">
+                    <p>Fournir de la nourriture, de l'eau potable et des vêtements.</p>
+                </div>
+                <div class="description-box" style="border-left: 5px solid yellow;">
+                    <p>Construire des abris temporaires pour les familles déplacées.</p>
+                </div>
+                <div class="description-box" style="border-left: 5px solid green;">
+                    <p>Fournir des soins médicaux essentiels.</p>
+                </div>
+            </div>
+            <a href="https://www.paypal.com/donate?hosted_button_id=VOTRE_BOUTON_PAYPAL" class="btn-donate">Faire un Don</a>
+        </section>
+
+        <!-- Section fonctionnement -->
+        <section class="section">
+            <h2>Comment vos Dons sont Utilisés</h2>
+            <p>Nous garantissons une transparence totale dans l'utilisation des fonds :</p>
+            <ol>
+                <li><strong>80%</strong> : Fourniture de secours directs (nourriture, abris, soins).</li>
+                <li><strong>15%</strong> : Transport et logistique.</li>
+                <li><strong>5%</strong> : Gestion administrative.</li>
+            </ol>
+            <video controls>
+                <source src="cyclone-video-placeholder.mp4" type="video/mp4">
+                Votre navigateur ne prend pas en charge cette vidéo.
+            </video>
+        </section>
+
+        <!-- Section Témoignages -->
+        <section class="section">
+            <h2>Témoignages de Victimes</h2>
+            <div class="highlight">
+                <p>"Même si l'aide commence à arriver, nous avons encore besoin de votre soutien pour aider plus de familles." - Témoignage d'une victime</p>
+            </div>
+            <img src="https://via.placeholder.com/800x400" alt="Témoignage d'une victime">
+        </section>
+
+        <!-- Section Suivi de l'Impact -->
+        <section class="section">
+            <h2>Suivi de l'Impact</h2>
+            <div class="highlight">
+                <p>Bien que vos dons aient déjà permis d'aider certaines victimes, de nombreuses personnes attendent encore des secours. Nous avons commencé à distribuer des kits de secours, mais l'effort est loin d'être terminé. Nous comptons sur vous !</p>
+                <div style="height: 20px; width: 100%; background: #e0e0e0; border-radius: 10px;">
+                    <div style="height: 100%; width: 30%; background: #4CAF50; border-radius: 10px;"></div>
+                </div>
+                <p>30% des kits de secours distribués jusqu'à présent !</p>
+            </div>
+        </section>
+
+   <section class="section">
+    <h2>Nos Partenaires Solidaires</h2>
+    <div class="partner-logos">
+        <!-- Partenaire 1 -->
+        <div>
+            <div class="partner-logo-circle">
+                <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/9bd8a6c7-db94-ea8f-5550-01d9d16088cc.jpg" alt="Partenaire 1">
+            </div>
+            <div class="social-icons">
+                <i class="fa-brands fa-tiktok" style="color: #5e1616;"></i>
+                <i class="fa-brands fa-snapchat" style="color: #FFD43B;"></i>
+            </div>
         </div>
 
-
-    <div class="content-section">
-        <div class="content-title">Dernière mise à jour</div>
-        <div class="last-updated">1er octobre 2024</div>
-    </div>
-      
-    <div class="toggle-button" id="showShopButton">
-        <span class="material-symbols-outlined" id="storeIcon">storefront</span>
-    </div>
-
-  
-<!-- Section de la boutique -->
-    <div class="shop-section" id="shopSection">
-         <button class="close-cart" id="closeShop">X</button>
-        
-        <h2>Ma Boutique</h2>
-       
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/3c225e76-b88a-7df5-b825-93ed27abc38d.jpg" alt="Produit 1">
-            <div class="product-name">Pull noir pour homme.</div>
-            <div class="product-price">€35.00</div>
-            <button class="buy-button" onclick="addToCart('Pull noir pour homme', 35)">Ajouter au Panier</button>
+        <!-- Partenaire 2 -->
+        <div>
+            <div class="partner-logo-circle">
+                <img src="logo-partenaire2.png" alt="Partenaire 2">
+            </div>
+            <div class="social-icons">
+                <i class="fa-brands fa-tiktok" style="color: #5e1616;"></i>
+                <i class="fa-brands fa-snapchat" style="color: #FFD43B;"></i>
+            </div>
         </div>
-        <div class="product">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/cbe00ce1-5194-ded7-2f47-cdd43e816c68.jpg" alt="Produit 2">
-            <div class="product-name">Bob noir.</div>
-            <div class="product-price">€25.00</div>
-            <button class="buy-button" onclick="addToCart('bob noir ', 25)">Ajouter au Panier</button>
-        </div>
-       
-        
     </div>
+</section>
 
-<div id='cartModal'>
-     <img src='https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c28525f1-2674-2858-508b-89bfc18b175b.jpg' alt='Miniature du produit' style='width: 90px; height: 90px; margin-bottom: -0px;'>
- 
-    <h3>Mon Panier</h3>
-    <div id='cartItems'></div>
-    <button class='checkout-button' onclick='checkout()'>Passer à la caisse</button>
 
-<!-- Modal du Panier et Formulaire -->
-<!-- Modal du Panier et Formulaire -->
+    </main>
 
-    <!-- Formulaire de commande -->
-    <div id="checkoutForm">
-        <h3>Finaliser votre commande</h3>
-        <form action='https://formspree.io/f/votre_id_formspree' method='POST'>
-            <!-- Champs du formulaire -->
-            <input type='text' name='name' placeholder='Nom complet' required />
-            <input type='email' name='email' placeholder='Email' required />
-            <input type='tel' name='phone' placeholder='Téléphone' required />
-            <textarea name='address' placeholder='Adresse de livraison' required></textarea>
-            <select name='deliveryTime' required>
-                <option value=''>Choisir une heure de livraison</option>
-                <option value='9:00-10:00'>9:00-10:00</option>
-                <option value='10:00-11:00'>10:00-11:00</option>
-                <option value='11:00-12:00'>11:00-12:00</option>
-            </select>
-            <input type='hidden' name='orderDetails' id='orderDetails'>
-            <button type='submit'>Confirmer la commande</button>
-        </form>
-    </div>
-</div>
-    <!-- Bouton flottant pour ouvrir le panier -->
-    <button id='openCartButton'>🛒<span id="cartCount">0</span></button>
-   
-    <!-- Modal d'alerte -->
-    <div id="alertModal" class="modal">
-        <span id="alertMessage"></span>
-    </div>
-
-    <script src="script.js"></script>
-
-    <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
-        <a class="a2a_button_snapchat" href="https://web-site13015.github.io/nasdas_profil_boutique/"></a>
-        <a class="a2a_button_facebook"></a>
-        <a class="a2a_button_twitter"></a>
-        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-    </div>
-    
-</div>
-   
-    <div class="container"></div>
-    <blockquote class="snapchat-embed" data-snapchat-embed-width="416" data-snapchat-embed-height="692" data-snapchat-embed-url="https://www.snapchat.com/add/naslachiente/highlight/36303fde-10d0-4e7c-9d61-c42d7ef8f403/embed" data-snapchat-embed-style="border-radius: 40px;" data-snapchat-embed-title="" style="background:#C4C4C4; border:0; border-radius:40px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:416px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px); display: flex; flex-direction: column; position: relative; height:650px;"> <div style="display: flex; flex-direction: row; align-items: center;">  <a title="" href="https://www.snapchat.com/add/naslachiente/highlight/36303fde-10d0-4e7c-9d61-c42d7ef8f403" style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; width: 40px; margin:16px; cursor: pointer"></a>  <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"></div> </div> <div style="flex: 1;"></div> <div style="display: flex; flex-direction: row; align-items: center; border-end-end-radius: 40px; border-end-start-radius: 40px;">  <a title="" href="https://www.snapchat.com/add/naslachiente/highlight/36303fde-10d0-4e7c-9d61-c42d7ef8f403" style="background-color: yellow; width:100%; padding: 10px 20px; border: none; border-radius: inherit; cursor: pointer; text-align: center; display: flex;flex-direction: row;justify-content: center; text-decoration: none; color: black;">  View more on Snapchat  </a> </div></blockquote><script async src="https://www.snapchat.com/embed.js"></script>
-</br>
-  
-<script async src="https://static.addtoany.com/menu/page.js"></script>
-
-<script>
-    var socialSharing = document.getElementById('social-sharing');
-    var lastScrollTop = 0;
-
-    window.addEventListener('scroll', function() {
-        var st = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (st > lastScrollTop) {
-            socialSharing.style.display = 'none'; // Masquer le code en descendant
-        } else {
-            socialSharing.style.display = 'block'; // Afficher le code en montant
-        }
-
-        lastScrollTop = st;
-    });
-
-    // Initialisation du panier
-    let cart = [];
-
-    // Ajouter un produit au panier
-    function addToCart(productName, price) {
-        cart.push({name: productName, price});
-        updateCart();
-        showAlert(`${productName} a été ajouté au panier`);
+    <footer>
+        <p>© 2024 Aide pour Mayotte. Tous droits réservés.</p>
+    </footer>
+    <script>
+    // Fonction pour créer un cookie
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Conversion des jours en millisecondes
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/"; // Création du cookie
     }
 
-    // Fonction pour afficher l'alerte dans un modal
-    function showAlert(message) {
-        const alertModal = document.getElementById('alertModal');
-        const alertMessage = document.getElementById('alertMessage');
-        alertMessage.innerText = message;
-        alertModal.style.display = 'block';
-        
-        setTimeout(() => {
-            alertModal.style.display = 'none';
-        }, 3000); // L'alerte disparaît après 3 secondes
-    }
+    // Exemple : Créer un cookie appelé "user" valable 7 jours
+    setCookie("user", "nom_utilisateur", 7);
 
-    // Mettre à jour l'affichage du panier
-    function updateCart() {
-        const cartItems = document.getElementById('cartItems');
-        cartItems.innerHTML = '';
-        let total = 0;
-
-        cart.forEach((item, index) => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'cart-item';
-            itemElement.innerHTML = `${item.name} - ${item.price}€<button onclick='removeFromCart(${index})'>Supprimer</button>`;
-            cartItems.appendChild(itemElement);
-            total += parseFloat(item.price);
-        });
-
-        const totalElement = document.createElement('div');
-        totalElement.innerHTML = `<strong>Total : ${total}€</strong>`;
-        cartItems.appendChild(totalElement);
-
-        // Mettre à jour le nombre d'articles dans le panier
-        document.getElementById('cartCount').innerText = cart.length;
-
-        document.getElementById('cartModal').style.display = 'block';
-    }
-
-    // Supprimer un produit du panier
-    function removeFromCart(index) {
-        cart.splice(index, 1);
-        updateCart();
-    }
-
-    // Passer à la caisse
-    function checkout() {
-        document.getElementById('orderDetails').value = JSON.stringify(cart);
-        document.getElementById('checkoutForm').style.display = 'block'; // Affiche le formulaire
-    }
-
-    // Ouvrir et fermer le modal
-    document.getElementById('openCartButton').onclick = function() {
-        document.getElementById('cartModal').style.display = 'block';
-    };
-
-    // Fermer le modal en cliquant en dehors
-    window.onclick = function(event) {
-        if (event.target !== document.getElementById('cartModal') && event.target !== document.getElementById('openCartButton')) {
-            document.getElementById('cartModal').style.display = 'none';
-        }
-    };
-
-    // Afficher/masquer les détails du profil
-    document.getElementById('toggleDetails').onclick = function() {
-        const profileDetails = document.getElementById('profileDetails');
-        profileDetails.classList.toggle('visible');
-    };
-
-    // Afficher/masquer la boutique
-    document.getElementById('showShopButton').onclick = function(event) {
-        event.preventDefault();
-        const shopSection = document.getElementById('shopSection');
-        shopSection.style.display = shopSection.style.display === 'block' ? 'none' : 'block';
-    };
-
-    // Initialisation du compteur de clients
-    let currentCount = 1200; // Valeur initiale
-    const incrementValue = Math.floor(Math.random() * 10) + 1; // Valeur d'incrément aléatoire
-    const clientCountElement = document.getElementById('clientCount');
-
-    // Fonction pour mettre à jour le compteur
-    function updateClientCount() {
-        currentCount += incrementValue; // Incrémenter le compteur
-        clientCountElement.innerText = `Clients : ${currentCount.toLocaleString()} satisfaits`; // Mettre à jour le texte
-    }
-
-    // Mettre à jour le compteur toutes les 5 secondes
-    setInterval(updateClientCount, 5000);
-    
-    
-// Passer à la caisse
-function checkout() {
-    if (cart.length === 0) {
-        showAlert("Votre panier est vide !"); // Alerte si le panier est vide
-        return;
-    }
-    document.getElementById('orderDetails').value = JSON.stringify(cart);
-    document.getElementById('checkoutForm').style.display = 'block'; // Affiche le formulaire
-}
-
-// Ouvrir et fermer le modal
-document.getElementById('openCartButton').onclick = function() {
-    document.getElementById('cartModal').style.display = 'block'; // Ouvre le modal
-    updateCart(); // Met à jour le panier à l'ouverture
-};
-
-// Fermer le modal en cliquant en dehors
-window.onclick = function(event) {
-    const modal = document.getElementById('cartModal');
-    if (event.target === modal) {
-        modal.style.display = 'none'; // Ferme le modal
-        document.getElementById('checkoutForm').style.display = 'none'; // Cache le formulaire
-    }
-};
-    document.getElementById('closeShop').onclick = function () {
-            shopSection.style.display = 'none';
-        };
-
-
-
-    // Fonction pour afficher l'image en mode zoom
-function zoomImage(imageElement) {
-    // Créer une div pour le zoom
-    const zoomDiv = document.createElement('div');
-    zoomDiv.style.position = 'fixed';
-    zoomDiv.style.top = 0;
-    zoomDiv.style.left = 0;
-    zoomDiv.style.width = '100%';
-    zoomDiv.style.height = '100%';
-    zoomDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-    zoomDiv.style.display = 'flex';
-    zoomDiv.style.justifyContent = 'center';
-    zoomDiv.style.alignItems = 'center';
-    zoomDiv.style.zIndex = '1000';
-
-    // Ajouter l'image agrandie
-    const zoomImage = document.createElement('img');
-    zoomImage.src = imageElement.src;
-    zoomImage.style.maxWidth = '90%';
-    zoomImage.style.maxHeight = '90%';
-    zoomImage.style.border = '2px solid white';
-    zoomImage.style.borderRadius = '10px';
-
-    // Ajouter l'image et un clic pour fermer
-    zoomDiv.appendChild(zoomImage);
-    zoomDiv.onclick = function () {
-        document.body.removeChild(zoomDiv); // Supprimer le zoom
-    };
-
-    // Ajouter la div au corps de la page
-    document.body.appendChild(zoomDiv);
-}
-
-// Ajouter l'événement de zoom à chaque image produit
-document.querySelectorAll('.product img').forEach(image => {
-    image.style.cursor = 'pointer'; // Change le curseur sur l'image
-    image.onclick = function () {
-        zoomImage(this); // Appelle le zoom au clic
-    };
-});
+    // Vérifier si le cookie a été créé
+    console.log(document.cookie);
 </script>
-
 </body>
 </html>
-
