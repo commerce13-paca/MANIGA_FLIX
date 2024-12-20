@@ -205,10 +205,10 @@
         </section>
           <!-- Champs du formulaire -->
         
-        <section id="donateur-form">
+        <section id="donateur-form">       
             <h2>Inscription des Donateurs</h2>
-            <p>Veuillez remplir ce formulaire pour organiser la collecte de vos dons.</p>                                 
-            <form action="https://formspree.io/f/xxxxxxx" method="POST">
+            <p>Veuillez remplir ce formulaire pour organiser la collecte de vos dons.</p>
+            <form action="https://formspree.io/f/mqkvoygz" method="POST">
                 <label for="name">Nom complet :</label>
                 <input type="text" id="name" name="name" placeholder="Exemple : Jean Dupont" required>
 
@@ -249,9 +249,7 @@
 
                 <button type="submit">Envoyer</button>
             </form>
-        </section>
-        
-        
+        </section>       
         <section id="status">
             <h2>État actuel de la collecte</h2>
             <p id="status-message">Nous avons organisé 0 ramassages jusqu'à présent.</p>
@@ -267,7 +265,7 @@
         <section id="volunteer-section">
     <h2>Vous souhaitez aider ?</h2>
     <p>Si vous avez un véhicule et souhaitez participer à la collecte, inscrivez-vous ici :</p>
-    <form action="https://formspree.io/f/xxxxxxx" method="POST">
+    <form action="https://formspree.io/f/mqkvoygz" method="POST">
         <label for="volunteer-name">Nom complet :</label>
         <input type="text" id="volunteer-name" name="volunteer-name" placeholder="Exemple : Marie Durand" required>
 
@@ -291,31 +289,32 @@
         <button id="accept-cookies">Accepter</button>
         <button id="decline-cookies">Refuser</button>
     </div>
-    <script>
+   <script>
+        // Gestion du formulaire et de l'état
         document.getElementById("registerForm").addEventListener("submit", function (e) {
             e.preventDefault();
-            const donor = {
-                name: document.getElementById("name").value,
-                address: document.getElementById("address").value,
-                articles: Array.from(document.getElementById("articles").selectedOptions).map(opt => opt.text).join(", "),
-                quantity: document.getElementById("quantity").value,
-                availability: document.getElementById("availability").value,
-            };
-            localStorage.setItem("lastDonor", JSON.stringify(donor));
-            document.getElementById("status-message").textContent = "Dernier don enregistré. Merci pour votre soutien !";
-        });
 
-        document.getElementById("view-donor").addEventListener("click", function (e) {
-            e.preventDefault();
-            const donor = JSON.parse(localStorage.getItem("lastDonor"));
-            if (donor) {
-                document.getElementById("donor-name").textContent = donor.name;
-                document.getElementById("donor-address").textContent = donor.address;
-                document.getElementById("donor-articles").textContent = donor.articles;
-                document.getElementById("donor-quantity").textContent = donor.quantity;
-                document.getElementById("donor-availability").textContent = donor.availability;
-                document.getElementById("donor-details").style.display = "block";
-            }
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const address = document.getElementById("address").value;
+            const articles = Array.from(document.getElementById("articles").selectedOptions).map(opt => opt.text);
+            const quantity = document.getElementById("quantity").value;
+            const availability = document.getElementById("availability").value;
+            const remarks = document.getElementById("remarks").value;
+
+            const pickups = JSON.parse(localStorage.getItem("pickups")) || [];
+            pickups.push({ name, phone, address, articles, quantity, availability, remarks });
+            localStorage.setItem("pickups", JSON.stringify(pickups));
+
+            const statusMessage = document.getElementById("status-message");
+            statusMessage.textContent = `Nous avons organisé ${pickups.length} ramassages jusqu'à présent. Merci pour votre aide !`;
+
+            const collectionDetails = document.getElementById("collection-details");
+            collectionDetails.innerHTML = pickups.map(pickup =>
+                `<li>${pickup.name} - ${pickup.quantity} (${pickup.articles.join(", ")})</li>`
+            ).join("");
+
+            document.getElementById("registerForm").reset();
         });
     </script>
     <script>
