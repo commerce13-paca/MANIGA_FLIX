@@ -276,6 +276,7 @@
 }
 
 /* Style des boutons de partage */
+/* Style des boutons de partage */
 .share-button {
     background-color: #ff4d4d; /* Rouge urgent */
     color: white;
@@ -446,27 +447,40 @@
     
     <!-- Boutons de partage cachés -->
     <div class="share-buttons" id="share-buttons">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button facebook">Facebook</a>
-        <a href="https://twitter.com/intent/tweet?url=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button twitter">Twitter</a>
-        <a href="https://wa.me/?text=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button whatsapp">WhatsApp</a>
-        <a href="https://www.snapchat.com/scan?attachmentUrl=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button snapchat">Snapchat</a>
+        <!-- Facebook (ouvre l'app Facebook directement) -->
+        <a href="fb://feed?link=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button facebook">Facebook</a>
+        
+        <!-- Twitter (ouvre l'app Twitter directement) -->
+        <a href="twitter://post?message=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button twitter">Twitter</a>
+        
+        <!-- WhatsApp (ouvre l'app WhatsApp directement) -->
+        <a href="whatsapp://send?text=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button whatsapp">WhatsApp</a>
+        
+        <!-- Snapchat (ouvre l'app Snapchat directement) -->
+        <a href="snapchat://send?attachmentUrl=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button snapchat">Snapchat</a>
+
+        <!-- TikTok (ouvre l'app TikTok directement) -->
+        <a href="tiktok://share?url=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button tiktok">TikTok</a>
+
+        <!-- Instagram (ouvre l'app Instagram directement) -->
+        <a href="instagram://share?url=https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/" target="_blank" class="share-button instagram">Instagram</a>
     </div>
 </div>
 
-    <script>
-    // Récupérer les éléments du DOM
-const shareIcon = document.getElementById('share-icon');
-const shareButtons = document.getElementById('share-buttons');
+<!-- JavaScript pour afficher/masquer les boutons de partage -->
+<script>
+    // Ajouter un événement pour afficher/masquer les boutons de partage
+    const shareIcon = document.getElementById('share-icon');
+    const shareButtons = document.getElementById('share-buttons');
 
-// Ajouter un événement de clic sur l'icône de partage
-shareIcon.addEventListener('click', function() {
-    // Alterner la visibilité des boutons de partage
-    if (shareButtons.style.display === 'none' || shareButtons.style.display === '') {
-        shareButtons.style.display = 'flex'; // Afficher les boutons
-    } else {
-        shareButtons.style.display = 'none'; // Cacher les boutons
-    }
-});
+    shareIcon.addEventListener('click', function() {
+        if (shareButtons.style.display === 'none' || shareButtons.style.display === '') {
+            shareButtons.style.display = 'flex';
+        } else {
+            shareButtons.style.display = 'none';
+        }
+    });
+
     
     
         // Gestion du formulaire
