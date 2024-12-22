@@ -276,7 +276,6 @@
 }
 
 /* Style des boutons de partage */
-/* Style des boutons de partage */
 .share-button {
     background-color: #ff4d4d; /* Rouge urgent */
     color: white;
@@ -348,7 +347,7 @@
         <section>
             <h2>Formulaire de Donateurs</h2>
             <form action="https://formspree.io/f/xnnqeejj" method="POST" id="donation-form">
-                <label for="name">Nom complet :</label>
+                <label for="name">Nom ou prénom :</label>
                 <input type="text" id="name" name="name" placeholder="Exemple : Jean Dupont" required>
 
                 <label for="phone">Téléphone :</label>
@@ -366,9 +365,14 @@
                     <option value="jouets">Jouets</option>
                     <option value="autres">Autres</option>
                 </select>
-
-                <label for="quantity">Quantité estimée :</label>
-                <input type="number" id="quantity" name="quantity" placeholder="Exemple : 5" required>
+                  <label for="donor-quantity">Quantité totale estimée :</label>
+        <select id="donor-quantity" name="Quantité" required>
+            <option value="1 sac">1 sac</option>
+            <option value="2-3 sacs">2-3 sacs</option>
+            <option value="4-5 sacs">4-5 sacs</option>
+            <option value="6+ sacs">6 sacs ou plus</option>
+        </select>
+                
                  <label for="donor-remarks">Remarques supplémentaires :</label>
         <textarea id="donor-remarks" name="Remarques" rows="3" placeholder="Précisez un créneau spécifique ou détail supplémentaire."></textarea>
 
@@ -439,7 +443,8 @@
         <button id="accept-cookies">Accepter</button>
         <button id="decline-cookies">Refuser</button>
     </div>
-       
+    
+
 <!-- Conteneur des boutons de partage avec un symbole de partage -->
 <div class="share-container">
     <!-- Symbole de partage -->
@@ -480,9 +485,9 @@
             shareButtons.style.display = 'none';
         }
     });
-
+</script>
     
-    
+    <script>   
         // Gestion du formulaire
         const form = document.getElementById('donation-form');
         const popup = document.getElementById('popup');
@@ -593,4 +598,4 @@ closePopupBenevole.addEventListener('click', () => {
       
     </script>
 </body>
-    </html>
+            </html>
