@@ -1,48 +1,82 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aide Humanitaire pour Mayotte - Collecte de dons pour les habitants en détresse. Organisez la collecte directement chez vous.">
-    <meta name="keywords" content="aide humanitaire, Mayotte, collecte de dons, vêtements, couvertures, urgence">
-    <meta name="author" content="Aide Humanitaire pour Mayotte">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Aide Humanitaire pour Mayotte</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Aide pour Mayotte - Soutien aux Victimes</title>
+
+    <!-- URL canonique -->
+    <link rel="canonical" href="https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/">
+
+    <!-- Description et Mots-clés -->
+    <meta name="description" content="Unissons nos forces pour soutenir les victimes du cyclone à Mayotte. Contribuez à la reconstruction et à l'aide humanitaire essentielle.">
+    <meta name="keywords" content="aide humanitaire, cyclone, Mayotte, solidarité, reconstruction, dons">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aide pour Mayotte - Soutien aux Victimes">
+    <meta name="twitter:description" content="Unissons nos forces pour soutenir les victimes du cyclone à Mayotte. Contribuez à la reconstruction et à l'aide humanitaire essentielle.">
+    <meta name="twitter:image" content="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg">
+
+    <!-- Open Graph pour Facebook, Snapchat, etc. -->
+    <meta property="og:title" content="Aide pour Mayotte - Soutien aux Victimes">
+    <meta property="og:description" content="Unissons nos forces pour soutenir les victimes du cyclone à Mayotte. Contribuez à la reconstruction et à l'aide humanitaire essentielle.">
+    <meta property="og:image" content="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://web-site13015.github.io/Aide_pour_Mayotte_Soutien_aux_Victimes/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aide pour Mayotte">
+
+    <!-- Snapchat Meta Tags -->
+    <meta property="snapchat:sticker" content="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg">
+    <meta property="snapchat:app_id" content="votre_snapchat_app_id">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg" type="image/png">
+
+    <!-- Préconnecter les serveurs Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Lien pour importer la police Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         body {
-    font-family: 'Playfair Display', serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
+            font-family: 'Playfair Display', serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-h1, h2 {
-    color: #2a4d75;
-    text-align: center;
-}
+        header {
+            background-color: #2a4d75;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-header {
-    background-color: #2a4d75;
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+        header img {
+            width: 150px;
+            height: auto;
+        }
 
-header img {
-    width: 150px;
-    height: auto;
-    margin-bottom: 10px;
-}
+        .urgent {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
 
-.urgent {
-    background-color: #ff8c00;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
         main {
             padding: 20px;
         }
@@ -50,14 +84,14 @@ header img {
         section {
             margin-bottom: 20px;
             padding: 15px;
-            background: #fff;
-            border-radius: 5px;
+            background: white;
+            border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         h1, h2 {
-            margin-top: 0;
-            color: #222;
+            color: #2a4d75;
+            text-align: center;
         }
 
         form {
@@ -77,279 +111,472 @@ header img {
         }
 
         button {
-            background: #ff4d4d;
-            color: #fff;
+            background-color: #ff4d4d;
+            color: white;
             border: none;
             cursor: pointer;
         }
 
         button:hover {
-            background: #e60000;
+            background-color: #e60000;
+        }
+
+        .highlight {
+            background: #ff8c00;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        #progress-container {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        #progress-bar {
+            width: 0;
+            height: 100%;
+            background: #4CAF50;
+            border-radius: 10px;
+            transition: width 1s ease;
         }
 
         footer {
             text-align: center;
-            padding: 10px 0;
+            padding: 10px;
             background: #222;
-            color: #fff;
+            color: white;
         }
 
-        .image-gallery {
-            display: flex; 
-            overflow-x:auto; 
-           scroll-snap-type:x mandatory; 
-           gap :10 px ; 
-           padding-bottom :10 px ;
-           background-color:#f9f9f9 ;
-         }
-        
-         .image-gallery img { 
-             width :300 px ; /* Largeur fixe */
-             height :200 px ; /* Hauteur fixe */
-             object-fit :cover ; 
-             scroll-snap-align:center ; 
-             border-radius :10 px ; 
-             transition :transform .3 s ease ;
-         }
-        
-         .image-gallery img:hover { 
-             transform :scale(1.05);
-         }
-    
-    
-    
-    :root {
-              --accent-color: #d9534f; /* Rouge doux pour attirer l'attention */
-              }
-    .highlight {
-            background: var(--accent-color);
-            color: #333;
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            margin-bottom: 20px;
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            padding: 20px;
             text-align: center;
+            z-index: 1000;
         }
 
-        .description-list {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-top: 20px;
+        #popup button {
+            margin-top: 10px;
         }
 
-        .description-box {
-            flex: 1;
-            background: var(--secondary-color);
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    body {
+    font-family: 'Playfair Display', serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    padding-bottom: 40px; /* Ajoutez de l'espace en bas pour que le contenu ne soit pas masqué */
+}
+
+#cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    display: none;
+    z-index: 9999; /* Assurez-vous que la bannière soit toujours au-dessus des autres éléments */
+}
+
+#cookie-banner button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+     /* Cookie banner */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #333;
+            color: white;
+            padding: 10px;
             text-align: center;
+            display: none;
         }
 
-        .description-box p {
-            font-weight: bold;
-            margin: 10px 0 0;
+        #cookie-banner button {
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .description-list {
+                flex-direction: column;
+            }
+        }
+    
+  /* Conteneur principal pour la flèche et les boutons */
+.share-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* Style pour le symbole de partage (🔗) */
+.share-icon {
+    background-color: #4CAF50; /* Vert urgent */
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+/* Lorsque l'utilisateur survole l'icône */
+.share-icon:hover {
+    background-color: #45a049; /* Un vert plus foncé */
+}
+
+/* Style des boutons de partage */
+.share-buttons {
+    display: none; /* Caché par défaut */
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+/* Style des boutons de partage */
+.share-button {
+    background-color: #ff4d4d; /* Rouge urgent */
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+/* Effet au survol des boutons */
+.share-button:hover {
+    background-color: #e60000;
+}
+
+/* Style spécifique pour chaque plateforme */
+.facebook {
+    background-color: #3b5998;
+}
+
+.facebook:hover {
+    background-color: #2d4373;
+}
+
+.twitter {
+    background-color: #1da1f2;
+}
+
+.twitter:hover {
+    background-color: #0c85d0;
+}
+
+.whatsapp {
+    background-color: #25d366;
+}
+
+.whatsapp:hover {
+    background-color: #128c7e;
+}
+
+.snapchat {
+    background-color: #fffc00;
+}
+
+.snapchat:hover {
+    background-color: #ffec00;
+}
     </style>
 </head>
 <body>
     <header>
-         <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg" alt="Logo de l'entreprise">
+        <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/a70585c8-f955-b45a-104e-07b46cfef670.jpg" alt="Logo de l'entreprise">
         <h1>Aide Humanitaire Urgente pour Mayotte</h1>
         <p class="urgent">⚠️ URGENT : L'aéroport est hors service. Transport uniquement par bateau. Les dons seront envoyés dès que possible. ⚠️</p>
- 
-         </header>
+    </header>
+
     <main>
-        <!-- Section Description -->
-        <section id="description">
+        <!-- Description -->
+        <section>
             <h2>À propos de notre initiative</h2>
             <p>
-                En raison de la situation critique à Mayotte après le cyclone, nous collectons des vêtements, chaussures, couvertures et autres articles essentiels pour les habitants.
-                Si vous avez un véhicule ou un espace de stockage disponible pour aider à la collecte et au stockage des dons, veuillez nous contacter.
-                Merci de votre soutien !
+                Suite à la situation critique à Mayotte après le cyclone, nous collectons des vêtements, chaussures, couvertures et autres articles essentiels pour les habitants. Votre contribution est précieuse.
             </p>
         </section>
-   <!-- Section Formulaire Donateurs -->
-        <section id="donateur-form">
-            <h2>Inscription des Donateurs</h2>
-            <p>Veuillez remplir ce formulaire pour organiser la collecte de vos dons.</p>
-            <form action="https://formspree.io/f/xnnqeejj" method="POST">
-                <label for="name">Prénom :</label>
+
+        <!-- Formulaire Donateurs -->
+        <section>
+            <h2>Formulaire de Donateurs</h2>
+            <form action="https://formspree.io/f/xnnqeejj" method="POST" id="donation-form">
+                <label for="name">Nom complet :</label>
                 <input type="text" id="name" name="name" placeholder="Exemple : Jean Dupont" required>
 
                 <label for="phone">Téléphone :</label>
-                <input type="tel" id="phone" name="phone" placeholder="Exemple : 06 12 34 56 78" required>               
+                <input type="tel" id="phone" name="phone" placeholder="Exemple : 06 12 34 56 78" required>
 
-                <label for="articles">Détail des articles :</label>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" placeholder="Exemple : jean.dupont@mail.com" required>
+
+                <label for="articles">Articles à donner :</label>
                 <select id="articles" name="articles[]" multiple required>
                     <option value="vêtements">Vêtements</option>
                     <option value="chaussures">Chaussures</option>
                     <option value="couvertures">Couvertures</option>
-                    <option value="jouets">Jouets</option>
                     <option value="produits-hygiène">Produits d'hygiène</option>
+                    <option value="jouets">Jouets</option>
                     <option value="autres">Autres</option>
                 </select>
 
-                <label for="quantity">Quantité totale estimée :</label>
-                <select id="quantity" name="quantity" required>
-                    <option value="<1 sac"><1 sac</option>
-                    <option value="<5 sacs"><5 sacs</option>  
-                    
+                <label for="quantity">Quantité estimée :</label>
+                <input type="number" id="quantity" name="quantity" placeholder="Exemple : 5" required>
+                 <label for="donor-remarks">Remarques supplémentaires :</label>
+        <textarea id="donor-remarks" name="Remarques" rows="3" placeholder="Précisez un créneau spécifique ou détail supplémentaire."></textarea>
 
-                    <option value="5-10 sacs">5-10 sacs</option>
-                    <option value="10+ sacs">10 sacs ou plus</option>
-                </select>
-
-                <label for="availability">Disponibilité pour le ramassage :</label>
-                <select id="availability" name="availability" required>
-                    <option value="matin">Matin (9h-12h)</option>
-                    <option value="après-midi">Après-midi (12h-18h)</option>
-                    <option value="soir">Soir (18h-21h)</option>
-                    <option value="autre">Autre (préciser dans les remarques)</option>
-                </select>
-
-                <label for="remarks">Remarques supplémentaires :</label>
-                <textarea id="remarks" name="remarks" rows="3" placeholder="Exemple : Préciser un créneau spécifique ou ajouter un détail."></textarea>
-
-                <button type="submit">Envoyer</button>
+                <button type="submit">Soumettre</button>
             </form>
         </section>
-                 <section id="donor-list">
-             <p><a href="#" id="view-donors">Voir tous les donateurs</a></p>
-     
-            <h2>Liste des Dons</h2>
-            <ul id="donor-details">
-                <!-- Les dons des autres utilisateurs seront affichés ici -->
-            </ul>
-              </section>
-                 <section class="section">
+
+        <!-- Suivi de l'Impact -->
+        <section>
             <h2>Suivi de l'Impact</h2>
             <div class="highlight">
-                <p>Bien que vos dons aient déjà permis d'aider certaines victimes, de nombreuses personnes attendent encore des secours. Nous avons commencé à distribuer des kits de secours, mais l'effort est loin d'être terminé. Nous comptons sur vous !</p>
-                <div style="height: 20px; width: 100%; background: #e0e0e0; border-radius: 10px;">
-                    <div style="height: 100%; width: 30%; background: #4CAF50; border-radius: 10px;"></div>
+                <p>Avancement des kits distribués :</p>
+                <div id="progress-container">
+                    <div id="progress-bar"></div>
                 </div>
-                <p>30% des kits de secours distribués jusqu'à présent !</p>
+                <p id="progress-text">0% des kits distribués</p>
             </div>
         </section>
-                
-                
-            
-                
-        <!-- Section Véhicules et Dépôts -->
-        <section id="vehicules-depot">
-            <h2>🚚 Vous avez un véhicule ou un grand espace de stockage ?</h2>
+        <!-- Formulaire pour Bénévoles -->
+<section id="benevole-form">
+     <h2>Vous souhaitez aider ?</h2>
+    <h2>🚚 Vous avez un véhicule ou un grand espace de stockage ?</h2>
             <p>Nous recherchons activement des bénévoles disposant :</p>
             <ul>
                 <li>De véhicules pour transporter des dons</li>
                 <li>D'entrepôts ou locaux pour stocker temporairement les articles</li>
                 <li>D'espaces sécurisés pour organiser la collecte</li>
             </ul>
-            <form action="https://formspree.io/f/xnnqeejj" method="POST">
-                <label for="volunteer-name">Nom complet :</label>
-                <input type="text" id="volunteer-name" name="volunteer-name" placeholder="Exemple : Jean Dupont" required>
+      <form action="https://formspree.io/f/xnnqeejj" method="POST">
+        <label for="volunteer-name">Nom complet :</label>
+        <input type="text" id="volunteer-name" name="Nom" placeholder="Exemple : Marie Dubois" required>
 
-                <label for="volunteer-contact">Téléphone :</label>
-                <input type="tel" id="volunteer-contact" name="volunteer-contact" placeholder="Exemple : 06 12 34 56 78" required>
+        <label for="volunteer-phone">Téléphone :</label>
+        <input type="tel" id="volunteer-phone" name="Téléphone" placeholder="Exemple : 06 23 45 67 89" required>
 
-                <label for="volunteer-details">Détails (véhicule ou espace) :</label>
-                <textarea id="volunteer-details" name="volunteer-details" rows="3" placeholder="Décrivez votre aide disponible..." required></textarea>
+        <label for="volunteer-zone">Zone d'intervention souhaitée :</label>
+        <input type="text" id="volunteer-zone" name="Zone" placeholder="Exemple : Marseille, Nice, Toulon" required>
 
-                <button type="submit">Proposer mon aide</button>
-            </form>
-        </section>     
-       
+        <label for="volunteer-availability">Disponibilité :</label>
+        <select id="volunteer-availability" name="Disponibilité" required>
+            <option value="matin">Matin</option>
+            <option value="après-midi">Après-midi</option>
+            <option value="soirée">Soirée</option>
+            <option value="journée complète">Journée complète</option>
+        </select>
+
+        <label for="volunteer-remarks">Compétences ou remarques :</label>
+        <textarea id="volunteer-remarks" name="Remarques" rows="3" placeholder="Indiquez vos compétences ou autres remarques."></textarea>
+
+        <button type="submit">S'inscrire</button>
+    </form>
+</section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Aide Humanitaire pour Mayotte. Tous droits réservés.</p>
+        <p>&copy; 2024 Aide Humanitaire pour Mayotte</p>
     </footer>
-       
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Handle form submission for both forms
-        const forms = document.querySelectorAll('form');
-        forms.forEach(form => {
-            form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent the default form submission
 
-                const formData = new FormData(this); // Create a FormData object from the form
+    <!-- Popup -->
+    <div id="overlay"></div>
+    <div id="popup">
+        <h3>Merci pour votre don !</h3>
+        <p>Votre contribution est précieuse pour aider les habitants de Mayotte.</p>
+        <button id="close-popup">OK</button>
+    </div>
+   <div id="cookie-banner">
+        <p>Ce site utilise des cookies pour améliorer votre expérience. En continuant à naviguer, vous acceptez notre utilisation des cookies.</p>
+        <button id="accept-cookies">Accepter</button>
+        <button id="decline-cookies">Refuser</button>
+    </div>
+    
+ <!-- Conteneur des boutons de partage avec un symbole de partage -->
+<div class="share-container">
+    <!-- Symbole de partage -->
+    <div class="share-icon" id="share-icon">🔗</div>
+    
+    <!-- Boutons de partage cachés -->
+    <div class="share-buttons" id="share-buttons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://tonsite.com" target="_blank" class="share-button facebook">Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=https://tonsite.com" target="_blank" class="share-button twitter">Twitter</a>
+        <a href="https://wa.me/?text=https://tonsite.com" target="_blank" class="share-button whatsapp">WhatsApp</a>
+        <a href="https://www.snapchat.com/scan?attachmentUrl=https://tonsite.com" target="_blank" class="share-button snapchat">Snapchat</a>
+    </div>
+</div>
+    
+    <script>
+    // Récupérer les éléments du DOM
+const shareIcon = document.getElementById('share-icon');
+const shareButtons = document.getElementById('share-buttons');
 
-                fetch(this.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }).then(response => {
-                    if (response.ok) {
-                        alert('Form submitted successfully!');
-                        this.reset(); // Reset the form fields
-                    } else {
-                        response.json().then(data => {
-                            if (data.errors) {
-                                alert('Validation failed: ' + data.errors.map(error => error.message).join(', '));
-                            } else {
-                                alert('Oops! Something went wrong.');
-                            }
-                        });
-                    }
-                }).catch(error => {
-                    alert('There was a problem submitting your form.');
-                });
-            });
-        });
-    });
-</script>
-            <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const progressElement = document.querySelector('.highlight div div');
-        const percentageText = document.querySelector('.highlight p:last-of-type');
-
-        // Exemple : mettre à jour le pourcentage à 50%
-        const percentage = 50;
-        progressElement.style.width = percentage + '%';
-        percentageText.textContent = `${percentage}% des kits de secours distribués jusqu'à présent !`;
-    });
-</script>
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const formData = new FormData(this);
-
-            fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    alert('Merci pour votre don ! Vous serez redirigé vers la page d\'accueil.'); // Message de remerciement
-                    this.reset(); // Reset the form
-                    window.location.href = '/'; // Redirection vers la page d'accueil
-                } else {
-                    response.json().then(data => {
-                        if (data.errors) {
-                            alert('Erreur : ' + data.errors.map(error => error.message).join(', '));
-                        } else {
-                            alert('Une erreur est survenue. Veuillez réessayer.');
-                        }
-                    });
-                }
-            }).catch(error => {
-                alert('Problème de soumission. Veuillez vérifier votre connexion.');
-            });
-        });
-    });
+// Ajouter un événement de clic sur l'icône de partage
+shareIcon.addEventListener('click', function() {
+    // Alterner la visibilité des boutons de partage
+    if (shareButtons.style.display === 'none' || shareButtons.style.display === '') {
+        shareButtons.style.display = 'flex'; // Afficher les boutons
+    } else {
+        shareButtons.style.display = 'none'; // Cacher les boutons
+    }
 });
-            </script>
+    
+    
+        // Gestion du formulaire
+        const form = document.getElementById('donation-form');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const closePopup = document.getElementById('close-popup');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        let progress = 0;
 
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Afficher le popup de remerciement
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+
+            // Simuler une augmentation du pourcentage
+            progress += Math.floor(Math.random() * 10) + 5; // Ajoute entre 5% et 15%
+            if (progress > 100) progress = 100;
+
+            // Mettre à jour la barre et le texte
+            progressBar.style.width = progress + '%';
+            progressText.textContent = progress + '% des kits distribués';
+
+            // Aucune redirection nécessaire : Formspree s'occupe de l'envoi du formulaire
+            form.submit(); // Soumet le formulaire normalement
+        });
+
+        closePopup.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+            form.reset();
+        });
+    </script>
+    <script>
+    // Gestion du formulaire de bénévoles
+const formBenevole = document.querySelector('#benevole-form form');
+const popupBenevole = document.createElement('div');
+popupBenevole.innerHTML = `
+    <div id="popup-benevole" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border: 1px solid #ccc; padding: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); text-align: center; border-radius: 10px;">
+        <h3>Merci pour votre inscription !</h3>
+        <p>Votre aide est précieuse. Nous vous contacterons bientôt pour plus de détails.</p>
+        <p>En attendant, vous pouvez nous contacter par email à <strong>contact@aidehumanitaire.com</strong> si vous avez des questions.</p>
+        <button id="close-popup-benevole" style="background-color: #ff4d4d; color: white; padding: 10px; border: none; cursor: pointer;">Fermer</button>
+    </div>
+    <div id="overlay-benevole" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5);"></div>
+`;
+
+// Ajout du popup au corps de la page
+document.body.appendChild(popupBenevole);
+
+const closePopupBenevole = document.getElementById('close-popup-benevole');
+const overlayBenevole = document.getElementById('overlay-benevole');
+
+// Écouteur d'événement pour soumettre le formulaire
+formBenevole.addEventListener('submit', function (e) {
+    e.preventDefault();  // Empêche la soumission réelle du formulaire pour afficher le popup
+
+    // Affichage du popup de remerciement
+    document.getElementById('popup-benevole').style.display = 'block';
+    overlayBenevole.style.display = 'block';
+
+    // Soumission du formulaire après 3 secondes pour afficher le popup
+    setTimeout(() => {
+        formBenevole.submit();  // Soumettre le formulaire après le délai
+    }, 3000);  // 3 secondes d'attente avant de soumettre
+});
+
+// Fermeture du popup quand l'utilisateur clique sur "Fermer"
+closePopupBenevole.addEventListener('click', () => {
+    document.getElementById('popup-benevole').style.display = 'none';
+    overlayBenevole.style.display = 'none';
+});
+    </script>
+     <script>
+        // Vérifie si le cookie "cookies-accepted" existe
+        function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+        }
+
+        // Définit un cookie avec une durée en jours
+        function setCookie(name, value, days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+        }
+
+        // Affiche la bannière si le consentement n'est pas encore donné
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('cookies-accepted')) {
+                document.getElementById('cookie-banner').style.display = 'flex';
+            }
+
+            // Accepter les cookies
+            document.getElementById('accept-cookies').addEventListener('click', () => {
+                setCookie('cookies-accepted', 'true', 365);
+                document.getElementById('cookie-banner').style.display = 'none';
+            });
+
+            // Refuser les cookies
+            document.getElementById('decline-cookies').addEventListener('click', () => {
+                setCookie('cookies-accepted', 'false', 365);
+                document.getElementById('cookie-banner').style.display = 'none';
+            });
+        });
+    
+      
+    </script>
 </body>
-</html>
+    </html>
