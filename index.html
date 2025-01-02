@@ -244,6 +244,104 @@
 #store-details:active {
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
 }
+
+    /* Style général pour la modale */
+.modal-content {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000; /* Fond sombre */
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  padding: 25px;
+  width: 360px;
+  max-width: 100%;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+/* Conteneur de formulaire avec bordure */
+.form-container {
+  background-color: #333; /* Fond gris foncé pour le formulaire */
+  padding: 20px;
+  border: 2px solid #ffcc00; /* Bordure jaune autour du formulaire */
+  border-radius: 10px;
+}
+
+/* Espacement et formatage des champs de formulaire */
+.form-container input[type="email"],
+.form-container input[type="password"] {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  background-color: #444; /* Fond plus clair pour les champs */
+  color: #fff;
+  border: 1px solid #ccc;
+}
+
+/* Bouton de soumission */
+.form-container button {
+  background-color: #ffcc00;
+  color: #000;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* Bouton pour fermer */
+button#close-login, button#close-signup {
+  background-color: #e0e0e0;
+  color: #333;
+  margin-top: 10px;
+}
+
+button#close-login:hover, button#close-signup:hover {
+  background-color: #bdbdbd;
+}
+
+/* Effet d'ouverture de la modale */
+#login-modal.show, #signup-modal.show {
+  display: block;
+}
+
+#login-modal.show .modal-content, #signup-modal.show .modal-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Style de l'arrière-plan sombre */
+#login-modal, #signup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+/* Responsivité */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 90%;
+  }
+
+  .form-container input,
+  .form-container button {
+    font-size: 0.9em;
+  }
+    }
 </style>
 </head>
 <body>
