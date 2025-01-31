@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanaland 3D VR - V7</title>
+    <title>Tanaland 3D VR - V8</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/super-hands@3.0.1/dist/super-hands.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-leap-hands@0.9.0/dist/aframe-leap-hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.0.0/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script> <!-- Ajout du système physique -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.0/dist/aframe-physics-system.min.js"></script>
     <style>
         body { margin: 0; overflow: hidden; }
         a-scene { width: 100%; height: 100vh; }
@@ -28,8 +28,24 @@
         <a-box position="-10 2.5 0" width="0.1" height="5" depth="20" color="#99ccff" static-body></a-box>
         <a-box position="10 2.5 0" width="0.1" height="5" depth="20" color="#ffcc99" static-body></a-box>
 
-        <!-- Plafond blanc -->
-        <a-box position="0 5 0" width="20" height="0.1" depth="20" color="#ffffff" static-body></a-box>
+        <!-- Plafond avec GIF animé -->
+        <a-assets>
+            <img id="gif-plafond" src="https://i.gifer.com/635A.gif" crossorigin="anonymous">
+        </a-assets>
+        <a-plane position="0 5 0" rotation="90 0 0" width="20" height="20" material="src: #gif-plafond; transparent: true;"></a-plane>
+
+        <!-- Télévision avec GIF animé -->
+        <a-assets>
+            <img id="gif-tv" src="https://i.gifer.com/75Mr.gif" crossorigin="anonymous">
+        </a-assets>
+        <!-- Ajout d'un écart à gauche et à droite de la télé -->
+        <a-box position="0 2.75 -9.9" width="6.5" height="3.5" depth="0.2" color="black" material="roughness: 0.2; metalness: 0.8;"></a-box>
+        <a-plane position="0 2.75 -9.84" width="5.9" height="3" material="src: #gif-tv; transparent: true;"></a-plane>
+        <a-plane position="0 2.75 -9.83" width="5.9" height="3" color="white" opacity="0.1"></a-plane> <!-- Effet de verre -->
+
+        <!-- Lien du GIF -->
+        <a-text value="Voir le GIF original" position="0 1 -9.8" color="blue" scale="1.5 1.5 1"
+                link="href: https://gifer.com/embed/75Mr"></a-text>
 
         <!-- Lit avec couverture bien collée -->
         <a-box position="-5 0.5 -3" width="3" height="0.5" depth="6" color="#ff99cc" id="lit" dynamic-body="mass: 5"></a-box>
@@ -73,11 +89,12 @@
         <!-- Objet interactif (boîte que l'on peut attraper) -->
         <a-box id="movable-object" position="0 1 0" width="1" height="1" depth="1" color="#4caf50" 
                grabbable="true" dynamic-body="mass: 1"></a-box> <!-- Objet à déplacer -->
-    </a-scene>
 
-    <script>
-        // Le mouvement de la caméra est contrôlé par les contrôleurs VR
-        // La configuration "speed" permet d'ajuster la vitesse du mouvement pour la stabilité
-    </script>
+        <!-- Porte longue, verticale, lisse avec poignée ronde ajustée -->
+        <a-box position="0 2.25 -9.9" width="1" height="4" depth="0.1" color="#964B00" static-body></a-box> <!-- Porte longue et lisse -->
+
+        <!-- Poignée ronde réaliste de la porte (à 1.5m du sol et légèrement décalée vers la droite) -->
+        <a-sphere position="0.8 2.35 -9.9" radius="0.1" color="#333333" static-body></a-sphere> <!-- Poignée décalée -->
+    </a-scene>
 </body>
-            </html>
+    </html>
