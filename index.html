@@ -47,9 +47,6 @@
             100% { box-shadow: 0 0 0 0 rgba(5, 217, 230, 0); }
         }
         
-        /* Autres styles conservés et améliorés */
-        /* ... [Tous les styles précédents conservés] ... */
-        
         .hologram {
             background: rgba(37, 34, 64, 0.7);
             backdrop-filter: blur(10px);
@@ -74,8 +71,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation et Header conservés -->
-    <!-- ... [Code précédent] ... -->
 
     <div class="section" id="jeux">
         <h2 style="color: var(--neon);">ARENA MULTIJOUEUR</h2>
@@ -129,7 +124,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="hologram neon-border" style="padding: 20px; margin-top: 30px;">
             <h3>🔗 CONNEXION SALLE DE JEU</h3>
             <div style="display: flex; gap: 10px; margin-top: 15px;">
@@ -137,12 +132,10 @@
                 <button id="rejoindre-salle" class="jeu-bouton">REJOINDRE</button>
                 <button id="creer-salle" class="jeu-bouton">CRÉER SALLE</button>
             </div>
+            <button id="copier-code" class="jeu-bouton" style="margin-top: 10px;">COPIER CODE</button>
             <div id="salle-info" style="margin-top: 15px;"></div>
         </div>
     </div>
-
-    <!-- Autres sections conservées -->
-    <!-- ... [Code précédent] ... -->
 
     <script>
         // Configuration Firebase (à remplacer par vos clés)
@@ -168,36 +161,36 @@
         
         // Référence à la salle de jeu
         let roomRef = null;
-        
+
         // Gestion des salles
         document.getElementById('creer-salle').addEventListener('click', () => {
             const roomCode = `HLDST-${Math.floor(1000 + Math.random() * 9000)}`;
             gameState.currentRoom = roomCode;
             roomRef = db.collection('rooms').doc(roomCode);
-            
+        
             roomRef.set({
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 players: [gameState.playerId],
                 gameState: {}
             });
-            
+        
             document.getElementById('salle-info').innerHTML = `
                 <div style="color: var(--neon); margin-top: 10px;">
                     SALLE CRÉÉE: ${roomCode}<br>
                     Partagez ce code avec vos amis!
                 </div>
             `;
-            
+        
             setupRoomListeners();
         });
-        
+
         document.getElementById('rejoindre-salle').addEventListener('click', () => {
             const roomCode = document.getElementById('salle-code').value;
             if (!roomCode) return;
-            
+
             gameState.currentRoom = roomCode;
             roomRef = db.collection('rooms').doc(roomCode);
-            
+
             roomRef.get().then(doc => {
                 if (doc.exists) {
                     const players = doc.data().players || [];
@@ -205,14 +198,14 @@
                         players.push(gameState.playerId);
                         roomRef.update({ players });
                     }
-                    
+
                     document.getElementById('salle-info').innerHTML = `
                         <div style="color: var(--success); margin-top: 10px;">
                             CONNECTÉ À: ${roomCode}<br>
                             Joueurs: ${players.length}
                         </div>
                     `;
-                    
+
                     setupRoomListeners();
                 } else {
                     document.getElementById('salle-info').innerHTML = `
@@ -223,22 +216,34 @@
                 }
             });
         });
-        
+
+        // Fonction pour copier le code de la salle
+        document.getElementById('copier-code').addEventListener('click', () => {
+            const roomCode = gameState.currentRoom;
+            if (roomCode) {
+                navigator.clipboard.writeText(roomCode).then(() => {
+                    alert('Code de salle copié: ' + roomCode);
+                });
+            } else {
+                alert("Aucune salle créée !");
+            }
+        });
+
         function setupRoomListeners() {
             // Écoute des changements dans la salle
             roomRef.onSnapshot(doc => {
                 const data = doc.data();
                 gameState.players = data.players || [];
-                
+
                 // Mise à jour de l'interface des joueurs
                 updatePlayersDisplay();
-                
+
                 // Mise à jour des jeux
                 if (data.diceResult) updateDiceResult(data.diceResult);
                 if (data.racePositions) updateRace(data.racePositions);
             });
         }
-        
+
         function updatePlayersDisplay() {
             const playersContainer = document.getElementById('joueurs-connectes');
             playersContainer.innerHTML = `<strong>JOUEURS CONNECTÉS (${gameState.players.length}):</strong><br>`;
@@ -246,18 +251,18 @@
                 playersContainer.innerHTML += `👤 ${player.substring(7)}<br>`;
             });
         }
-        
+
         // Jeu des dés connectés
         document.getElementById('lancer-des').addEventListener('click', () => {
             if (!roomRef) return;
-            
+
             const dice1 = Math.floor(Math.random() * 6) + 1;
             const dice2 = Math.floor(Math.random() * 6) + 1;
             const diceResult = { dice1, dice2, player: gameState.playerId };
-            
+
             roomRef.update({ diceResult });
         });
-        
+
         function updateDiceResult(result) {
             const diceIcons = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
             document.getElementById('des-container').innerHTML = 
@@ -266,29 +271,29 @@
             document.getElementById('resultat-des').innerHTML = 
                 `Joueur ${result.player.substring(7)}: ${result.dice1 + result.dice2}`;
         }
-        
+
         // Jeu de course
         document.getElementById('accelerer').addEventListener('click', () => {
             if (!roomRef) return;
-            
+
             roomRef.get().then(doc => {
                 const data = doc.data();
                 const positions = data.racePositions || {};
-                
+
                 if (!positions[gameState.playerId]) {
                     positions[gameState.playerId] = 5;
                 } else {
                     positions[gameState.playerId] += Math.random() * 20;
                 }
-                
+
                 roomRef.update({ racePositions: positions });
             });
         });
-        
+
         function updateRace(positions) {
             const carContainer = document.getElementById('piste-course');
             carContainer.innerHTML = '';
-            
+
             Object.keys(positions).forEach(playerId => {
                 const position = positions[playerId] % 90;
                 const carElement = document.createElement('div');
@@ -297,11 +302,11 @@
                 carElement.style.position = 'absolute';
                 carElement.style.bottom = `${10 + (Object.keys(positions).indexOf(playerId) * 40)}px`;
                 carElement.style.left = `${position}%`;
-                
+
                 carContainer.appendChild(carElement);
             });
         }
-        
+
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             // Effets holographiques
@@ -311,7 +316,7 @@
                     const rect = el.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
-                    
+
                     el.style.setProperty('--x', `${x}px`);
                     el.style.setProperty('--y', `${y}px`);
                 });
