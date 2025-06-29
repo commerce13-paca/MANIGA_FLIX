@@ -1,327 +1,175 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>HOLDEST 🗿 - Expérience Gaming Futuriste</title>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-    <style>
-        :root {
-            --bg: #0f0c1d;
-            --bg-light: #1a1730;
-            --bg-card: #252240;
-            --txt: #e0e0ff;
-            --accent: #ff2a6d;
-            --neon: #05d9e6;
-            --success: #0f0;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background: var(--bg);
-            color: var(--txt);
-            font-family: 'Orbitron', sans-serif;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255,42,109,0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(5,217,230,0.1) 0%, transparent 20%);
-        }
-        
-        .neon-border {
-            border: 1px solid var(--neon);
-            box-shadow: 0 0 10px var(--neon), inset 0 0 5px var(--neon);
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(5, 217, 230, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(5, 217, 230, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(5, 217, 230, 0); }
-        }
-        
-        .hologram {
-            background: rgba(37, 34, 64, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-        
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .game-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .game-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOLDEST – Développeur Web & Entrepreneur Digital</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 0 35px rgba(0,0,0,0.05);
+    }
+    .header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      gap: 10px;
+    }
+    .presse-logo {
+      height: 50px;
+      vertical-align: middle;
+    }
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    p {
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .highlight {
+      color: #e62e00;
+      font-weight: bold;
+    }
+    .quote {
+      font-style: italic;
+      border-left: 4px solid #e62e00;
+      padding-left: 15px;
+      color: #555;
+      margin: 20px 0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 40px;
+    }
+    .press-footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 1rem;
+      color: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .press-footer img {
+      height: 40px;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
-
-    <div class="section" id="jeux">
-        <h2 style="color: var(--neon);">ARENA MULTIJOUEUR</h2>
-        
-        <div class="game-grid">
-            <!-- Jeu 1: Dés Connectés -->
-            <div class="game-card neon-border hologram">
-                <h3>🎲 DÉS STELLAIRES</h3>
-                <p>Lancez des dés virtuels synchronisés avec tous les joueurs</p>
-                <div id="des-connectes">
-                    <div id="des-container" style="font-size: 50px; margin: 20px 0;">⚁ ⚂</div>
-                    <button id="lancer-des" class="jeu-bouton pulse">LANCER LES DÉS</button>
-                    <div id="resultat-des" class="resultat-jeu"></div>
-                    <div id="joueurs-connectes" style="margin-top: 15px;"></div>
-                </div>
-            </div>
-            
-            <!-- Jeu 2: Combat Spatial -->
-            <div class="game-card neon-border hologram">
-                <h3>🚀 COMBAT SPATIAL</h3>
-                <p>Affrontez d'autres joueurs en temps réel</p>
-                <div id="combat-spatial">
-                    <div id="vaisseau-container">
-                        <pre id="vaisseau" style="font-size: 30px; text-align: center;">
-  /-\
- | O |
-  \-/
-  / \
-                        </pre>
-                    </div>
-                    <div id="actions-combat">
-                        <button class="jeu-bouton" data-attack="laser">LASER ⚡</button>
-                        <button class="jeu-bouton" data-attack="missile">MISSILE 💣</button>
-                        <button class="jeu-bouton" data-attack="bouclier">BOUCLIER 🛡️</button>
-                    </div>
-                    <div id="log-combat" style="height: 100px; overflow-y: scroll; margin-top: 15px;"></div>
-                </div>
-            </div>
-            
-            <!-- Jeu 3: Course Holographique -->
-            <div class="game-card neon-border hologram">
-                <h3>🏎️ COURSE HOLO</h3>
-                <p>Course en temps réel avec les autres joueurs</p>
-                <div id="course-container">
-                    <div id="piste-course" style="position: relative; height: 150px; background: #111; border-radius: 5px; overflow: hidden;">
-                        <div class="voiture" style="position: absolute; bottom: 10px; left: 10px;">🚗</div>
-                        <div class="voiture" style="position: absolute; bottom: 50px; left: 10px;">🚙</div>
-                    </div>
-                    <button id="accelerer" class="jeu-bouton" style="margin-top: 15px;">ACCÉLÉRER 🚀</button>
-                    <div id="positions-course" style="margin-top: 10px;"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hologram neon-border" style="padding: 20px; margin-top: 30px;">
-            <h3>🔗 CONNEXION SALLE DE JEU</h3>
-            <div style="display: flex; gap: 10px; margin-top: 15px;">
-                <input type="text" id="salle-code" placeholder="Code salle (ex: HLDST-42)" style="flex: 1; padding: 10px; background: rgba(0,0,0,0.3); color: var(--txt); border: 1px solid var(--neon); border-radius: 5px;">
-                <button id="rejoindre-salle" class="jeu-bouton">REJOINDRE</button>
-                <button id="creer-salle" class="jeu-bouton">CRÉER SALLE</button>
-            </div>
-            <button id="copier-code" class="jeu-bouton" style="margin-top: 10px;">COPIER CODE</button>
-            <div id="salle-info" style="margin-top: 15px;"></div>
-        </div>
+  <div class="container">
+    <!-- En-tête avec logo presse personnalisé -->
+    <div class="header">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmZGI0YiIvPjxwYXRoIGQ9Ik0xMCAyMCBMOTAgMjAgTDkwIDgwIEwxMCA4MCBaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0xNSAzMCBMODUgMzAgTDg1IDcwIEwxNSA3MCBaIiBmaWxsPSIjZTZlNmU2Ii8+PHBhdGggZD0iTTIwIDQwIEw4MCA0MCBMODAgNjAgTDIwIDYwIFoiIGZpbGw9IiNmZmZmZmYiLz48dGV4dCB4PSI1MCIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiMxYTFhMWEiPlBSRVNTRTwvdGV4dD48L3N2Zz4=" alt="Logo Presse" class="presse-logo" />
+      <span style="font-weight: bold; font-size: 1.2rem;">Le Journal Digital</span>
     </div>
 
-    <script>
-        // Configuration Firebase (à remplacer par vos clés)
-        const firebaseConfig = {
-            apiKey: "AIzaSy...",
-            authDomain: "...",
-            projectId: "...",
-            storageBucket: "...",
-            messagingSenderId: "...",
-            appId: "..."
-        };
-        
-        // Initialisation Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        
-        // État du jeu
-        const gameState = {
-            currentRoom: null,
-            players: [],
-            playerId: `player_${Date.now()}`
-        };
-        
-        // Référence à la salle de jeu
-        let roomRef = null;
+    <h1>HOLDEST – Développeur Web & Entrepreneur basé à Marseille</h1>
+    <p>
+      HOLDEST est un <span class="highlight">développeur autodidacte</span> et entrepreneur reconnu, installé à <strong>Marseille</strong>, en France.
+      Il conçoit des sites internet pour les <strong>commerces locaux</strong> et possède sa propre <strong>boutique en ligne</strong>, livrant dans toute la France,
+      en Europe, en Inde et vers <span class="highlight">Mayotte, La Réunion, Madagascar, Maurice, Seychelles</span>.
+    </p>
 
-        // Gestion des salles
-        document.getElementById('creer-salle').addEventListener('click', () => {
-            const roomCode = `HLDST-${Math.floor(1000 + Math.random() * 9000)}`;
-            gameState.currentRoom = roomCode;
-            roomRef = db.collection('rooms').doc(roomCode);
-        
-            roomRef.set({
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                players: [gameState.playerId],
-                gameState: {}
-            });
-        
-            document.getElementById('salle-info').innerHTML = `
-                <div style="color: var(--neon); margin-top: 10px;">
-                    SALLE CRÉÉE: ${roomCode}<br>
-                    Partagez ce code avec vos amis!
-                </div>
-            `;
-        
-            setupRoomListeners();
-        });
+    <h2>🌍 Une boutique e-commerce internationale</h2>
+    <p>
+      HOLDEST gère lui-même sa plateforme de vente en ligne. Chaque commande est traitée avec sérieux, les clients reçoivent leurs produits
+      dans des délais maîtrisés. Il a su construire un système fiable, avec paiement sécurisé, suivi des colis et support client direct.
+    </p>
+    <p>
+      <strong>Zones de livraison et présence internationale :</strong>
+    </p>
+    <ul>
+      <li>France</li>
+      <li>Europe</li>
+      <li>Inde</li>
+      <li>Océan Indien (Mayotte, La Réunion, Madagascar, Maurice, Seychelles)</li>
+    </ul>
 
-        document.getElementById('rejoindre-salle').addEventListener('click', () => {
-            const roomCode = document.getElementById('salle-code').value;
-            if (!roomCode) return;
+    <h2>🛠️ Développeur web pour les commerces de Marseille</h2>
+    <p>
+      HOLDEST crée des sites web pour les petits commerces de Marseille. Boulangeries, salons de coiffure, marques de vêtements, auto-écoles :
+      il les aide à exister en ligne grâce à des sites professionnels et adaptés à leur besoin.
+      Plus de <span class="highlight">40 clients</span> lui ont déjà fait confiance.
+    </p>
 
-            gameState.currentRoom = roomCode;
-            roomRef = db.collection('rooms').doc(roomCode);
+    <h2>🚀 Un simulateur immersif unique créé à la main</h2>
+    <p>
+      HOLDEST travaille actuellement sur un projet technique inédit : un simulateur de conduite <strong>physique</strong> et <strong>sensoriel</strong>, créé à partir de
+      pièces réelles de véhicules (moto ou voiture) combinées avec une manette PlayStation modifiée.
+    </p>
+    <p>
+      Il récupère une partie de la structure d’une moto (guidon, réservoir, échappement, etc.) et la monte sur un châssis métallique allégé,
+      avec un système de <strong>vibration personnalisé</strong>. Lorsque le joueur interagit dans le jeu, les signaux sont transmis dans les composants
+      physiques, et le joueur ressent les vibrations dans ses mains et sous son siège, comme dans une vraie conduite.
+    </p>
+    <p>
+      Cette fusion entre le <strong>gaming</strong>, la <strong>bricolage high-tech</strong>, et les <strong>sensations réelles</strong>, pourrait ouvrir la voie à de nouvelles
+      expériences de jeu à domicile. Ce projet est 100% fait maison, de la soudure au câblage, en passant par les tests techniques.
+    </p>
+    <div class="quote">
+      “Je voulais que les gens ressentent le jeu comme s’ils y étaient pour de vrai, pas juste avec les yeux, mais avec le corps.”
+    </div>
 
-            roomRef.get().then(doc => {
-                if (doc.exists) {
-                    const players = doc.data().players || [];
-                    if (!players.includes(gameState.playerId)) {
-                        players.push(gameState.playerId);
-                        roomRef.update({ players });
-                    }
+    <h2>📩 Témoignages clients (messages reçus)</h2>
+    <div class="quote">“Merci pour le site, il est magnifique et super rapide ! J’ai reçu mes premières commandes cette semaine !” — Client à La Réunion</div>
+    <div class="quote">“Il m’a fait un site vitrine en 48h, super propre et sécurisé. Je recommande à tous les commerçants à Marseille.” — Client B2B local</div>
+    <div class="quote">“J’ai commandé depuis Mayotte, j’ai bien reçu mon colis et je vais recommander !” — Cliente e-commerce</div>
 
-                    document.getElementById('salle-info').innerHTML = `
-                        <div style="color: var(--success); margin-top: 10px;">
-                            CONNECTÉ À: ${roomCode}<br>
-                            Joueurs: ${players.length}
-                        </div>
-                    `;
+    <h2>📱 Présence digitale et activité réelle</h2>
+    <p>
+      Même sans presse traditionnelle, HOLDEST est actif sur les réseaux et reçoit quotidiennement des messages de clients ou abonnés qui apprécient
+      son sérieux, son innovation et son accessibilité. Son objectif : <strong>connecter technologie et proximité humaine</strong>.
+    </p>
 
-                    setupRoomListeners();
-                } else {
-                    document.getElementById('salle-info').innerHTML = `
-                        <div style="color: var(--accent); margin-top: 10px;">
-                            SALLE INTROUVABLE!
-                        </div>
-                    `;
-                }
-            });
-        });
+    <h2>🔗 Liens utiles</h2>
+    <ul>
+      <li><strong>Snapchat :</strong> <a href="https://www.snapchat.com/add/lucious-lion04?share_id=CLHHnXUdC0s&locale=fr-FR" target="_blank">snapchat.com/add/holdust</a></li>
+      <li><strong>Boutique :</strong> <a href="https://web-site13015.github.io/Market_collection/" target="_blank">HDST-boutique.com</a></li>
+      <li><strong>Email :</strong> Oldestlucious@gmail.com </li>
+    </ul>
 
-        // Fonction pour copier le code de la salle
-        document.getElementById('copier-code').addEventListener('click', () => {
-            const roomCode = gameState.currentRoom;
-            if (roomCode) {
-                navigator.clipboard.writeText(roomCode).then(() => {
-                    alert('Code de salle copié: ' + roomCode);
-                });
-            } else {
-                alert("Aucune salle créée !");
-            }
-        });
+    <!-- Footer presse avec logo presse personnalisé -->
+    <div class="press-footer">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2ZmZGI0YiIvPjxwYXRoIGQ9Ik0xMCAyMCBMOTAgMjAgTDkwIDgwIEwxMCA4MCBaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0xNSAzMCBMODUgMzAgTDg1IDcwIEwxNSA3MCBaIiBmaWxsPSIjZTZlNmU2Ii8+PHBhdGggZD0iTTIwIDQwIEw4MCA0MCBMODAgNjAgTDIwIDYwIFoiIGZpbGw9IiNmZmZmZmYiLz48dGV4dCB4PSI1MCIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiMxYTFhMWEiPlBSRVNTRTwvdGV4dD48L3N2Zz4=" alt="Logo Presse" class="presse-logo" />
+      <span>Article rédigé par la rédaction – Source indépendante</span>
+    </div>
 
-        function setupRoomListeners() {
-            // Écoute des changements dans la salle
-            roomRef.onSnapshot(doc => {
-                const data = doc.data();
-                gameState.players = data.players || [];
-
-                // Mise à jour de l'interface des joueurs
-                updatePlayersDisplay();
-
-                // Mise à jour des jeux
-                if (data.diceResult) updateDiceResult(data.diceResult);
-                if (data.racePositions) updateRace(data.racePositions);
-            });
-        }
-
-        function updatePlayersDisplay() {
-            const playersContainer = document.getElementById('joueurs-connectes');
-            playersContainer.innerHTML = `<strong>JOUEURS CONNECTÉS (${gameState.players.length}):</strong><br>`;
-            gameState.players.forEach(player => {
-                playersContainer.innerHTML += `👤 ${player.substring(7)}<br>`;
-            });
-        }
-
-        // Jeu des dés connectés
-        document.getElementById('lancer-des').addEventListener('click', () => {
-            if (!roomRef) return;
-
-            const dice1 = Math.floor(Math.random() * 6) + 1;
-            const dice2 = Math.floor(Math.random() * 6) + 1;
-            const diceResult = { dice1, dice2, player: gameState.playerId };
-
-            roomRef.update({ diceResult });
-        });
-
-        function updateDiceResult(result) {
-            const diceIcons = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
-            document.getElementById('des-container').innerHTML = 
-                `${diceIcons[result.dice1 - 1]} ${diceIcons[result.dice2 - 1]}`;
-            
-            document.getElementById('resultat-des').innerHTML = 
-                `Joueur ${result.player.substring(7)}: ${result.dice1 + result.dice2}`;
-        }
-
-        // Jeu de course
-        document.getElementById('accelerer').addEventListener('click', () => {
-            if (!roomRef) return;
-
-            roomRef.get().then(doc => {
-                const data = doc.data();
-                const positions = data.racePositions || {};
-
-                if (!positions[gameState.playerId]) {
-                    positions[gameState.playerId] = 5;
-                } else {
-                    positions[gameState.playerId] += Math.random() * 20;
-                }
-
-                roomRef.update({ racePositions: positions });
-            });
-        });
-
-        function updateRace(positions) {
-            const carContainer = document.getElementById('piste-course');
-            carContainer.innerHTML = '';
-
-            Object.keys(positions).forEach(playerId => {
-                const position = positions[playerId] % 90;
-                const carElement = document.createElement('div');
-                carElement.className = 'voiture';
-                carElement.textContent = playerId === gameState.playerId ? '🚗' : '🚙';
-                carElement.style.position = 'absolute';
-                carElement.style.bottom = `${10 + (Object.keys(positions).indexOf(playerId) * 40)}px`;
-                carElement.style.left = `${position}%`;
-
-                carContainer.appendChild(carElement);
-            });
-        }
-
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', () => {
-            // Effets holographiques
-            const elements = document.querySelectorAll('.hologram');
-            elements.forEach(el => {
-                el.addEventListener('mousemove', (e) => {
-                    const rect = el.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    el.style.setProperty('--x', `${x}px`);
-                    el.style.setProperty('--y', `${y}px`);
-                });
-            });
-        });
-    </script>
+    <footer>
+      &copy; 2025 HOLDEST — Développeur Web & Créateur d’expériences immersives.<br />
+      Basé à Marseille, actif en France, en Europe, en Inde et dans l’océan Indien.
+    </footer>
+  </div>
 </body>
 </html>
