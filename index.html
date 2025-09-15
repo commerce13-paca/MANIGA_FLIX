@@ -1,213 +1,185 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HOLDEST – Développeur Web & Entrepreneur Digital</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f5f5f5;
-      color: #222;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 14px;
-      box-shadow: 0 0 35px rgba(0,0,0,0.05);
-    }
-    .header {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #ddd;
-      gap: 10px;
-    }
-    .presse-logo {
-      height: 50px;
-      vertical-align: middle;
-    }
-    h1, h2 {
-      color: #1a1a1a;
-    }
-    p {
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .highlight {
-      color: #e62e00;
-      font-weight: bold;
-    }
-    .quote {
-      font-style: italic;
-      border-left: 4px solid #e62e00;
-      padding-left: 15px;
-      color: #555;
-      margin: 20px 0;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      margin-bottom: 10px;
-    }
-    a {
-      color: #0073e6;
-      text-decoration: none;
-    }
-  
-  .testimonials {
-  background: #f9f9f9;
-  border-left: 3px solid #e62e00;
-  padding: 20px 25px;
-  border-radius: 10px;
-  margin-top: 30px;
-}
-
-.testimonial {
-  margin-bottom: 18px;
-}
-
-.author {
-  font-weight: bold;
-  color: #444;
-}
-
-.quote {
-  font-style: italic;
-  color: #555;
-  border-left: 4px solid #e62e00;
-  padding-left: 15px;
-  margin: 30px 0;
-}
-
-.highlight {
-  font-weight: bold;
-  color: #e62e00;
-}
-  
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #888;
-      margin-top: 40px;
-    }
-    .press-footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 1rem;
-      color: #444;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      background: #f9f9f9;
-      padding: 15px;
-      border-radius: 10px;
-    }
-    .press-footer img {
-      height: 40px;
-      vertical-align: middle;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇯🇲HOL.DEST 🗿 FLOX - Films Gratuits</title>
+<style>
+body { font-family: Arial,sans-serif; background:#111; color:#fff; margin:0; padding:0; }
+header { background:#222; padding:20px; text-align:center; }
+header h1 { margin:0; }
+nav { display:flex; justify-content:center; background:#333; padding:10px; }
+nav a { color:#fff; text-decoration:none; padding:10px 15px; margin:0 10px; }
+nav a:hover { background:#444; }
+.container { max-width:1000px; margin:20px auto; padding:0 15px; }
+.video-card { background:#222; margin-bottom:20px; padding:15px; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.5); }
+.video-card h2 { margin-top:0; }
+video, iframe { width:100%; border-radius:8px; margin-top:10px; }
+.ad-banner { margin:15px 0; background:#333; padding:10px; text-align:center; border-radius:8px; }
+.likes { margin-top:5px; font-size:0.9em; color:#ccc; }
+.recommendations { background:#222; padding:10px; border-radius:8px; margin-top:15px; }
+.recommendations h3 { margin-top:0; }
+footer { background:#222; color:#aaa; text-align:center; padding:15px; margin-top:30px; }
+button { padding:5px 10px; margin-left:10px; cursor:pointer; }
+.consent-message { background:#444; color:#fff; padding:10px; margin:10px 0; border-radius:8px; text-align:center; }
+.search-bar { margin: 20px 0; text-align:center; }
+.search-bar input { padding:10px; width:80%; max-width:400px; border-radius:5px; border:none; }
+.category { margin:10px 0; text-align:center; }
+.category button { padding:5px 10px; margin:5px; cursor:pointer; background:#444; color:#fff; border:none; border-radius:5px; }
+.category button:hover { background:#555; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <!-- En-tête avec logo presse personnalisé -->
-    <div class="header">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmZGI0YiIvPjxwYXRoIGQ9Ik0xMCAyMCBMOTAgMjAgTDkwIDgwIEwxMCA4MCBaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0xNSAzMCBMODUgMzAgTDg1IDcwIEwxNSA3MCBaIiBmaWxsPSIjZTZlNmU2Ii8+PHBhdGggZD0iTTIwIDQwIEw4MCA0MCBMODAgNjAgTDIwIDYwIFoiIGZpbGw9IiNmZmZmZmYiLz48dGV4dCB4PSI1MCIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiMxYTFhMWEiPlBSRVNTRTwvdGV4dD48L3N2Zz4=" alt="Logo Presse" class="presse-logo" />
-      <span style="font-weight: bold; font-size: 1.2rem;">Le Journal Digital</span>
+
+<header>
+  <h1>🇯🇲HOL.DEST 🗿 FLOX</h1>
+</header>
+
+<nav>
+  <a href="#videos">Vidéos</a>
+  <a href="#premium">Premium</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="container" id="videos">
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Rechercher des films..." onkeyup="filterVideos()">
+  </div>
+
+  <div class="category">
+    <button onclick="filterCategory('Tous')">Tous</button>
+    <button onclick="filterCategory('Action')">Action</button>
+    <button onclick="filterCategory('Comédie')">Comédie</button>
+    <button onclick="filterCategory('Drame')">Drame</button>
+  </div>
+
+  <!-- Exemple Vidéo 1 -->
+  <div class="video-card" data-title="Film Exemple 1" data-category="Action" data-video-id="6hROuWHaNJo">
+    <h2>🎬 Film Exemple 1</h2>
+
+    <div class="consent-message">
+      Pour soutenir 🇯🇲HOL.DEST 🗿 FLOX et accéder au film, merci d’accepter les publicités.
     </div>
 
-    <h1>HOLDEST – Développeur Web & Entrepreneur basé à Marseille</h1>
-    <p>
-      HOLDEST est un <span class="highlight">développeur autodidacte</span> et entrepreneur reconnu, installé à <strong>Marseille</strong>, en France.
-      Il conçoit des sites internet pour les <strong>commerces locaux</strong> et possède sa propre <strong>boutique en ligne</strong>, livrant dans toute la France,
-      en Europe, en Inde et vers <span class="highlight">Mayotte, La Réunion, Madagascar, Maurice, Seychelles</span>.
-    </p>
+    <!-- Pré-roll publicité -->
+    <video id="ad1" controls>
+      <source src="publicites/pub1.mp4" type="video/mp4">
+    </video>
 
-    <h2>🌍 Une boutique e-commerce internationale</h2>
-    <p>
-      HOLDEST gère lui-même sa plateforme de vente en ligne. Chaque commande est traitée avec sérieux, les clients reçoivent leurs produits
-      dans des délais maîtrisés. Il a su construire un système fiable : paiement sécurisé, suivi des colis et support client direct.
-    </p>
-    <p><strong>Zones de livraison et présence internationale :</strong></p>
-    <ul>
-      <li>France</li>
-      <li>Europe</li>
-      <li>Inde</li>
-      <li>Océan Indien (Mayotte, La Réunion, Madagascar, Maurice, Seychelles)</li>
-    </ul>
+    <!-- Iframe YouTube intégrée -->
+    <iframe id="film1" src="https://www.youtube.com/embed/6hROuWHaNJo?rel=0&modestbranding=1" frameborder="0" allowfullscreen style="display:none;"></iframe>
 
-    <h2>🛠️ Développeur web pour les commerces de Marseille</h2>
-    <p>
-      HOLDEST crée des sites web pour les petits commerces de Marseille : boulangeries, salons de coiffure, marques de vêtements, auto-écoles…
-      Plus de <span class="highlight">40 clients</span> lui ont déjà fait confiance.
-    </p>
+    <div class="ad-banner"><p>Publicité obligatoire ici</p></div>
+    <div class="likes">
+      👍 <span id="like1">0</span> Likes | 👁️ <span id="views1">0</span> vues
+      <button onclick="likeVideo('like1')">Like</button>
+    </div>
+    <div>
+      <p>Vues réelles: <span id="viewCount1">0</span></p>
+      <p>Likes réels: <span id="likeCount1">0</span></p>
+      <p>Commentaires: <span id="commentCount1">0</span></p>
+    </div>
+  </div>
 
-    <h2>🚀 Un simulateur immersif unique créé à la main</h2>
-    <p>
-      HOLDEST travaille actuellement sur un projet technique inédit : un simulateur de conduite <strong>physique</strong> et <strong>sensoriel</strong>,
-      construit à partir de pièces réelles (guidon, réservoir…) et connecté à une manette PlayStation modifiée pour restituer des vibrations personnalisées.
-    </p>
-    <div class="quote">
-      “Je voulais que les gens ressentent le jeu comme s’ils y étaient pour de vrai, pas juste avec les yeux, mais avec le corps.”
+  <!-- Exemple Vidéo 2 -->
+  <div class="video-card" data-title="Film Exemple 2" data-category="Comédie" data-video-id="dQw4w9WgXcQ">
+    <h2>🎬 Film Exemple 2</h2>
+
+    <div class="consent-message">
+      Pour soutenir 🇯🇲HOL.DEST 🗿 FLOX et accéder au film, merci d’accepter les publicités.
     </div>
 
-    <!-- NOUVELLE SECTION SNAPCHAT ---------------------------------------------------->
-    <h2>📣 Ce que disent les utilisateurs</h2>
-<div class="testimonials">
-  <div class="testimonial">
-    <p>“Son site est rapide, simple, puissant. Grâce à lui, j’ai pu lancer mon business sans me soucier de la technique.”</p>
-    <div class="author">— Nadia, entrepreneure à Mayotte</div>
+    <video id="ad2" controls>
+      <source src="publicites/pub2.mp4" type="video/mp4">
+    </video>
+
+    <iframe id="film2" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1" frameborder="0" allowfullscreen style="display:none;"></iframe>
+
+    <div class="ad-banner"><p>Publicité obligatoire ici</p></div>
+    <div class="likes">
+      👍 <span id="like2">0</span> Likes | 👁️ <span id="views2">0</span> vues
+      <button onclick="likeVideo('like2')">Like</button>
+    </div>
+    <div>
+      <p>Vues réelles: <span id="viewCount2">0</span></p>
+      <p>Likes réels: <span id="likeCount2">0</span></p>
+      <p>Commentaires: <span id="commentCount2">0</span></p>
+    </div>
   </div>
-  <div class="testimonial">
-    <p>“C’est le seul développeur que je connais qui code, vend, crée des outils physiques et gère ses livraisons.”</p>
-    <div class="author">— Lucas, client Réunion</div>
-  </div>
-  <div class="testimonial">
-  <p>“J’ai vu son projet de manette sur Snap. Unique. Respect.”</p>
-  <div class="author">— Follower Snapchat, passionné de gaming et technologie</div>
+
 </div>
-</div>
-    
-      <!-- ----------------------------------------------------------------------------- -->
 
-    <h2>📩 Témoignages clients (messages reçus)</h2>
-    <div class="quote">“Merci pour le site, il est magnifique et super rapide ! J’ai reçu mes premières commandes cette semaine !” — Client à La Réunion</div>
-    <div class="quote">“Il m’a fait un site vitrine en 48 h, super propre et sécurisé. Je recommande à tous les commerçants à Marseille.” — Client B2B local</div>
-    <div class="quote">“J’ai commandé depuis Mayotte, j’ai bien reçu mon colis et je vais recommander !” — Cliente e-commerce</div>
+<footer id="contact">
+  <p>© 2025 🇯🇲HOL.DEST 🗿 FLOX</p>
+</footer>
 
-    <h2>📱 Présence digitale et activité réelle</h2>
-    <p>
-      HOLDEST est très actif sur les réseaux (notamment Snapchat) et reçoit quotidiennement des messages valorisant son sérieux,
-      son innovation et son accessibilité. Son objectif : <strong>connecter technologie et proximité humaine</strong>.
-    </p>
+<script>
+// Pré-roll et affichage iframe après fin de pub
+function setupPreroll(adId, filmId, viewsId) {
+  const adVideo = document.getElementById(adId);
+  const filmIframe = document.getElementById(filmId);
+  const viewsCounter = document.getElementById(viewsId);
 
-    <h2>🔗 Liens utiles</h2>
-    <ul>
-      <li><strong>Snapchat :</strong> <a href="https://www.snapchat.com/add/lucious-lion04?share_id=CLHHnXUdC0s&locale=fr-FR" target="_blank">snapchat.com/add/holdest</a></li>
-      <li><strong>Boutique :</strong> <a href="https://web-site13015.github.io/Market_collection/" target="_blank">HDST-boutique.com</a></li>
-      <li><strong>Email :</strong> Oldestlucious@gmail.com</li>
-    </ul>
+  adVideo.onended = function() {
+    adVideo.style.display = 'none';
+    filmIframe.style.display = 'block';
+    viewsCounter.textContent = parseInt(viewsCounter.textContent) + 1;
+  };
 
-    <!-- Footer presse avec logo presse personnalisé -->
-    <div class="press-footer">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2ZmZGI0YiIvPjxwYXRoIGQ9Ik0xMCAyMCBMOTAgMjAgTDkwIDgwIEwxMCA4MCBaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0xNSAzMCBMODUgMzAgTDg1IDcwIEwxNSA3MCBaIiBmaWxsPSIjZTZlNmU2Ii8+PHBhdGggZD0iTTIwIDQwIEw4MCA0MCBMODAgNjAgTDIwIDYwIFoiIGZpbGw9IiNmZmZmZmYiLz48dGV4dCB4PSI1MCIgeT0iOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2lzeT0iMTYiIGZpbGw9IiMxYTFhMWEiPlBSRVNTRTwvdGV4dD48L3N2Zz4=" alt="Logo Presse" class="presse-logo" />
-      <span>Article rédigé par la rédaction – Source indépendante</span>
-    </div>
+  adVideo.play();
+}
 
-    <footer>
-      &copy; 2025 HOLDEST — Développeur Web & Créateur d’expériences immersives.<br />
-      Basé à Marseille, actif en France, en Europe, en Inde et dans l’océan Indien.
-    </footer>
-  </div>
+setupPreroll('ad1','film1','views1');
+setupPreroll('ad2','film2','views2');
+
+function likeVideo(id) {
+  const el = document.getElementById(id);
+  el.textContent = parseInt(el.textContent)+1;
+}
+
+function filterVideos() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.video-card').forEach(card=>{
+    card.style.display = card.dataset.title.toLowerCase().includes(search)?'block':'none';
+  });
+}
+
+function filterCategory(category) {
+  document.querySelectorAll('.video-card').forEach(card=>{
+    card.style.display = (category==='Tous'||card.dataset.category===category)?'block':'none';
+  });
+}
+
+// SupaData API pour stats réelles
+const apiKey = 'sd_40824eaea463917cb71223fdb69a7b16';
+document.querySelectorAll('.video-card').forEach((card, index)=>{
+  const videoId = card.dataset.videoId;
+  fetch(`https://api.supadata.ai/v1/youtube/video?videoId=${videoId}`,{
+    headers:{'x-api-key':apiKey}
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    card.querySelector(`#viewCount${index+1}`).textContent = data.viewCount;
+    card.querySelector(`#likeCount${index+1}`).textContent = data.likeCount;
+    card.querySelector(`#commentCount${index+1}`).textContent = data.commentCount;
+  })
+  .catch(err=>console.error('Erreur API SupaData:',err));
+});
+</script>
+
+<!-- Consent Manager RGPD/CCPA -->
+<script type="text/javascript" async>
+(function(){
+  var host="www.themoneytizer.com";
+  var element=document.createElement('script');
+  var firstScript=document.getElementsByTagName('script')[0];
+  var url='https://cmp.inmobi.com/choice/6Fv0cGNfc_bw8/'+host+'/choice.js?tag_version=V3';
+  element.async=true;
+  element.type='text/javascript';
+  element.src=url;
+  firstScript.parentNode.insertBefore(element,firstScript);
+})();
+</script>
+
 </body>
-  </html>
+</html>
