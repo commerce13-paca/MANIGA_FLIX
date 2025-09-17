@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HOL.DEST 🗿 FLOX - Films & Exclusivités</title>
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -27,98 +26,59 @@ body.light {
   --card:#fff;
 }
 header {
-  text-align:center;
+  display:flex; justify-content:space-between; align-items:center;
   padding:20px;
   background: linear-gradient(90deg,#006400,var(--primary),var(--secondary));
   font-size:1.8em;font-weight:bold;letter-spacing:2px;
-  color:#fff;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-family:'Montserrat',sans-serif;
+  font-family:'Montserrat',sans-serif;color:#fff;
 }
 header button {
-  padding:5px 10px;
-  font-weight:bold;
-  border:none;
-  border-radius:5px;
-  cursor:pointer;
-  background:var(--primary);
-  color:#000;
+  padding:5px 10px;border:none;border-radius:5px;
+  background:var(--primary); color:#000; cursor:pointer; font-weight:bold;
   transition:0.3s;
 }
 header button:hover { transform:scale(1.1); }
 
 nav {
-  display:flex;justify-content:center;gap:10px;background:#222;padding:10px;
+  display:flex; justify-content:center; gap:10px; background:#222; padding:10px;
 }
-nav a {
-  color:var(--text);text-decoration:none;padding:5px 15px;border-radius:5px;font-weight:bold;transition:0.3s;
-}
-nav a:hover { background:var(--primary);color:#000; }
+nav a { color:var(--text); text-decoration:none; padding:5px 15px; border-radius:5px; font-weight:bold; transition:0.3s; }
+nav a:hover { background:var(--primary); color:#000; }
 
-.container { max-width:1200px;margin:20px auto;padding:0 15px; }
-.search-bar { text-align:center;margin-bottom:20px; }
-.search-bar input { width:80%; max-width:400px;padding:10px;border-radius:20px;border:none;font-size:1em; transition:0.3s; }
+.container { max-width:1200px; margin:20px auto; padding:0 15px; }
+.search-bar { text-align:center; margin-bottom:20px; }
+.search-bar input {
+  width:80%; max-width:400px; padding:10px; border-radius:20px; border:none; font-size:1em;
+  transition:0.3s;
+}
 .search-bar input:focus { outline:none; box-shadow:0 0 10px var(--primary); }
 
-.categories { display:flex;justify-content:center;gap:10px;margin-bottom:20px; }
+.categories { display:flex; justify-content:center; gap:10px; margin-bottom:20px; }
 .categories button {
-  padding:8px 15px;border:none;border-radius:20px;background:var(--primary);color:#000;font-weight:bold;cursor:pointer;transition:0.3s;
+  padding:8px 15px; border:none; border-radius:20px; background:var(--primary); color:#000;
+  font-weight:bold; cursor:pointer; transition:0.3s;
 }
-.categories button:hover { background:var(--secondary);color:#fff; }
+.categories button:hover { background:var(--secondary); color:#fff; }
 
-.video-grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
-}
+.video-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
 .video-card {
-  background:var(--card);border-radius:10px;overflow:hidden;
-  box-shadow:0 5px 15px rgba(0,0,0,0.5);
-  transition:0.3s;
-  position:relative;
+  background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.5);
+  padding:10px; transition:0.3s; position:relative;
 }
 .video-card:hover { transform:translateY(-5px) scale(1.02); box-shadow:0 10px 25px rgba(0,0,0,0.7); }
 .video-card iframe { width:100%; height:200px; border-radius:8px; transition:0.3s; }
-.video-card h3 { margin:10px;color:var(--primary);font-size:1.2em; transition:0.3s; }
-.video-card .meta { display:flex;justify-content:space-between;margin:0 10px 10px;font-size:0.9em;color:var(--text); }
-.user-img { width:30px;height:30px;border-radius:50%;margin-right:5px; transition:0.3s; }
-.user-img:hover { transform:scale(1.2); }
+.video-card h3 { margin:10px; color:var(--primary); font-size:1.2em; transition:0.3s; }
+.video-card .meta { display:flex; justify-content:space-between; margin:0 10px 10px; font-size:0.9em; color:var(--text); }
 
-.footer {
-  text-align:center;padding:15px;margin-top:30px;background:#222;color:#aaa;font-size:0.9em;
-}
-
-.premium-btn {
-  padding:10px 20px;background:var(--primary);color:#000;border:none;border-radius:10px;font-weight:bold;
-  transition:0.3s;
-}
-.premium-btn:hover { background:var(--secondary); color:#fff; transform:scale(1.05); }
-
-.vip-carousel {
-  display:flex; overflow-x:auto; gap:10px; padding:10px 0;
-}
-.vip-carousel img {
-  width:50px; height:50px; border-radius:50%; transition:0.3s;
-}
-.vip-carousel img:hover { transform:scale(1.2); }
-
-/* Conteneur pub visuel */
 .ad-container {
-  margin:20px auto;
-  text-align:center;
-  width:100%;
-  max-width:728px;
-  height:90px;
-  background:#333;
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-weight:bold;
+  margin:10px 0; text-align:center; width:100%; max-width:728px; background:#333; border-radius:10px;
+  display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; height:90px; transition:0.3s;
 }
+.continuer-btn {
+  display:none; margin:10px auto; padding:10px 20px; border:none; border-radius:10px; font-weight:bold;
+  background:var(--primary); color:#000; cursor:pointer; transition:0.3s;
+}
+.continuer-btn:hover { background:var(--secondary); color:#fff; transform:scale(1.05); }
 
 @media(max-width:600px){
   iframe{ height:150px; }
@@ -130,7 +90,7 @@ nav a:hover { background:var(--primary);color:#000; }
 
 <header>
   HOL.DEST 🗿 FLOX 🇯🇲
-  <button onclick="toggleTheme()" title="Changer le thème">🌗</button>
+  <button onclick="toggleTheme()">🌗</button>
 </header>
 
 <nav>
@@ -150,36 +110,8 @@ nav a:hover { background:var(--primary);color:#000; }
     <button onclick="filterCategory('Tous')">Tous</button>
   </div>
 
-  <!-- Conteneur pub visuel -->
-  <div class="ad-container">
-    Publicité visuelle
-  </div>
-
   <div class="video-grid">
-    <div class="video-card" data-title="Film Mega 1" data-category="Action">
-      <iframe src="https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY" allowfullscreen></iframe>
-      <h3>🎬 Film Mega 1</h3>
-      <div class="meta">
-        <span id="views1">👁️ 0 vues</span>
-        <span id="like1">👍 0 likes</span>
-      </div>
-    </div>
-    <div class="video-card" data-title="Film Mega 2" data-category="Comédie">
-      <iframe src="https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY" allowfullscreen></iframe>
-      <h3>🎬 Film Mega 2</h3>
-      <div class="meta">
-        <span id="views2">👁️ 0 vues</span>
-        <span id="like2">👍 0 likes</span>
-      </div>
-    </div>
-    <div class="video-card" data-title="Film Mega 3" data-category="Drame">
-      <iframe src="https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY" allowfullscreen></iframe>
-      <h3>🎬 Film Mega 3</h3>
-      <div class="meta">
-        <span id="views3">👁️ 0 vues</span>
-        <span id="like3">👍 0 likes</span>
-      </div>
-    </div>
+    <!-- Vidéos dynamiques -->
   </div>
 </div>
 
@@ -187,14 +119,6 @@ nav a:hover { background:var(--primary);color:#000; }
   <h2>Contenu Premium</h2>
   <p>Abonne-toi pour débloquer les vidéos exclusives et les fonctionnalités VIP !</p>
   <button class="premium-btn">S’abonner</button>
-
-  <h3>VIP Users</h3>
-  <div class="vip-carousel">
-    <img src="https://i.pravatar.cc/50?img=7" alt="VIP1">
-    <img src="https://i.pravatar.cc/50?img=8" alt="VIP2">
-    <img src="https://i.pravatar.cc/50?img=9" alt="VIP3">
-    <img src="https://i.pravatar.cc/50?img=10" alt="VIP4">
-  </div>
 </div>
 
 <div class="container" id="contact">
@@ -202,56 +126,63 @@ nav a:hover { background:var(--primary);color:#000; }
   <p>Email : contact@holdestflox.com</p>
 </div>
 
-<!-- Conteneur pub visuel en footer si besoin -->
-<div class="ad-container">
-  Publicité visuelle
-</div>
-
 <footer class="footer">© 2025 HOL.DEST 🗿 FLOX</footer>
 
 <script>
-// Supadata API pour YouTube (à remplacer si Mega ou autre backend)
-const apiKey='sd_40824eaea463917cb71223fdb69a7b16';
-function updateVideoStats(videoNum,videoId){
-  fetch(`https://api.supadata.ai/v1/youtube/video?videoId=${videoId}`,{
-    headers:{'x-api-key':apiKey}
-  }).then(res=>res.json()).then(data=>{
-    document.getElementById('views'+videoNum).textContent=`👁️ ${data.viewCount||0} vues`;
-    document.getElementById('like'+videoNum).textContent=`👍 ${data.likeCount||0} likes`;
-  }).catch(err=>console.error(err));
-}
-// Exemple d'IDs (à remplacer ou connecter à ton backend)
-updateVideoStats(1,'6hROuWHaNJo');
-updateVideoStats(2,'6hROuWHaNJo');
-updateVideoStats(3,'6hROuWHaNJo');
-
-// Recherche et filtre catégories
-function filterVideos(){
-  const val=document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('.video-card').forEach(card=>{
-    card.style.display=card.getAttribute('data-title').toLowerCase().includes(val)?'':'none';
-  });
-}
-function filterCategory(cat){
-  document.querySelectorAll('.video-card').forEach(card=>{
-    card.style.display=(cat==='Tous'||card.getAttribute('data-category')===cat)?'':'none';
-  });
-}
-
 // Thème sombre / clair
 function toggleTheme(){ document.body.classList.toggle('light'); }
 
-// Option Base pour futur backend
-let videoData=[{id:1,views:0,likes:0},{id:2,views:0,likes:0},{id:3,views:0,likes:0}];
-// Ici tu peux connecter un vrai backend et mettre à jour videoData avec fetch/AJAX
-</script>
+// Recherche et catégorie
+function filterVideos(){
+  const val = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.style.display = card.getAttribute('data-title').toLowerCase().includes(val) ? '' : 'none';
+  });
+}
+function filterCategory(cat){
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.style.display = (cat==='Tous' || card.getAttribute('data-category')===cat) ? '' : 'none';
+  });
+}
 
-<!-- Script Infolinks pour pub visuelle -->
-<script type="text/javascript">
-var infolinks_pid = 3440141;
-var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+// Données vidéos
+const videos = [
+  {id:1,title:'Film Mega 1',category:'Action',src:'https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY'},
+  {id:2,title:'Film Mega 2',category:'Comédie',src:'https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY'},
+  {id:3,title:'Film Mega 3',category:'Drame',src:'https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY'}
+];
 
+// Génération dynamique du HTML vidéos
+const videoGrid = document.querySelector('.video-grid');
+videos.forEach(v=>{
+  const div = document.createElement('div');
+  div.className='video-card';
+  div.setAttribute('data-title',v.title);
+  div.setAttribute('data-category',v.category);
+  div.innerHTML=`
+    <div class="ad-container" id="ad${v.id}">Pub Amstera</div>
+    <iframe id="video${v.id}" src="${v.src}" allowfullscreen style="display:none;"></iframe>
+    <button class="continuer-btn" id="btn${v.id}">Continuer ➤</button>
+    <h3>🎬 ${v.title}</h3>
+    <div class="meta">
+      <span id="views${v.id}">👁️ 0 vues</span>
+      <span id="like${v.id}">👍 0 likes</span>
+    </div>
+  `;
+  videoGrid.appendChild(div);
+
+  // Affiche bouton continuer après 5s ou quand pub est prête
+  const btn = div.querySelector(`#btn${v.id}`);
+  btn.addEventListener('click',()=>playVideo(v.id));
+  setTimeout(()=>{ btn.style.display='block'; },5000);
+});
+
+// Fonction play vidéo
+function playVideo(id){
+  document.getElementById('ad'+id).style.display='none';
+  document.getElementById('btn'+id).style.display='none';
+  document.getElementById('video'+id).style.display='block';
+}
+</script>
 </body>
-  </html>
+</html>
