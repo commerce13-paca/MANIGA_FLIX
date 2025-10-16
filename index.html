@@ -1,188 +1,338 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HOL.DEST 🗿 FLOX - Films & Exclusivités</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --primary:#FFD700;
-  --secondary:#FF0000;
-  --bg:#111;
-  --text:#fff;
-  --card:#222;
-}
-body {
-  font-family:'Roboto',sans-serif;
-  margin:0;padding:0;
-  background:var(--bg);
-  color:var(--text);
-  transition: background 0.3s, color 0.3s;
-}
-body.light {
-  --bg:#f9f9f9;
-  --text:#111;
-  --card:#fff;
-}
-header {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:20px;
-  background: linear-gradient(90deg,#006400,var(--primary),var(--secondary));
-  font-size:1.8em;font-weight:bold;letter-spacing:2px;
-  font-family:'Montserrat',sans-serif;color:#fff;
-}
-header button {
-  padding:5px 10px;border:none;border-radius:5px;
-  background:var(--primary); color:#000; cursor:pointer; font-weight:bold;
-  transition:0.3s;
-}
-header button:hover { transform:scale(1.1); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - E-commerce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-nav {
-  display:flex; justify-content:center; gap:10px; background:#222; padding:10px;
-}
-nav a { color:var(--text); text-decoration:none; padding:5px 15px; border-radius:5px; font-weight:bold; transition:0.3s; }
-nav a:hover { background:var(--primary); color:#000; }
+        body {
+            background: #f5f5f5;
+        }
 
-.container { max-width:1200px; margin:20px auto; padding:0 15px; }
-.search-bar { text-align:center; margin-bottom:20px; }
-.search-bar input {
-  width:80%; max-width:400px; padding:10px; border-radius:20px; border:none; font-size:1em;
-  transition:0.3s;
-}
-.search-bar input:focus { outline:none; box-shadow:0 0 10px var(--primary); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.categories { display:flex; justify-content:center; gap:10px; margin-bottom:20px; }
-.categories button {
-  padding:8px 15px; border:none; border-radius:20px; background:var(--primary); color:#000;
-  font-weight:bold; cursor:pointer; transition:0.3s;
-}
-.categories button:hover { background:var(--secondary); color:#fff; }
+        header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.video-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
-.video-card {
-  background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.5);
-  padding:10px; transition:0.3s; position:relative;
-}
-.video-card:hover { transform:translateY(-5px) scale(1.02); box-shadow:0 10px 25px rgba(0,0,0,0.7); }
-.video-card iframe { width:100%; height:200px; border-radius:8px; transition:0.3s; }
-.video-card h3 { margin:10px; color:var(--primary); font-size:1.2em; transition:0.3s; }
-.video-card .meta { display:flex; justify-content:space-between; margin:0 10px 10px; font-size:0.9em; color:var(--text); }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.ad-container {
-  margin:10px 0; text-align:center; width:100%; max-width:728px; background:#333; border-radius:10px;
-  display:flex; align-items:center; justify-content:center; color:#fff; font-weight:bold; height:90px; transition:0.3s;
-}
-.continuer-btn {
-  display:none; margin:10px auto; padding:10px 20px; border:none; border-radius:10px; font-weight:bold;
-  background:var(--primary); color:#000; cursor:pointer; transition:0.3s;
-}
-.continuer-btn:hover { background:var(--secondary); color:#fff; transform:scale(1.05); }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a6de5;
+        }
 
-@media(max-width:600px){
-  iframe{ height:150px; }
-  .ad-container { height:60px; }
-}
-</style>
+        .auth-section {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #4a6de5;
+            color: white;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            background: #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-modal.active {
+            display: flex;
+        }
+
+        .auth-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .google-btn {
+            background: #db4437;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #4a6de5;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">ShopEase</div>
+                <div class="auth-section" id="authSection">
+                    <button class="btn btn-primary" onclick="openAuthModal()">Se connecter</button>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<header>
-  HOL.DEST 🗿 FLOX 🇯🇲
-  <button onclick="toggleTheme()">🌗</button>
-</header>
-
-<nav>
-  <a href="#videos">Vidéos</a>
-  <a href="#premium">Premium</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<div class="container" id="videos">
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Rechercher un film..." onkeyup="filterVideos()">
-  </div>
-  <div class="categories">
-    <button onclick="filterCategory('Action')">Action</button>
-    <button onclick="filterCategory('Comédie')">Comédie</button>
-    <button onclick="filterCategory('Drame')">Drame</button>
-    <button onclick="filterCategory('Tous')">Tous</button>
-  </div>
-
-  <div class="video-grid">
-    <!-- Vidéos dynamiques -->
-  </div>
-</div>
-
-<div class="container" id="premium">
-  <h2>Contenu Premium</h2>
-  <p>Abonne-toi pour débloquer les vidéos exclusives et les fonctionnalités VIP !</p>
-  <button class="premium-btn">S’abonner</button>
-</div>
-
-<div class="container" id="contact">
-  <h2>Contact</h2>
-  <p>Email : contact@holdestflox.com</p>
-</div>
-
-<footer class="footer">© 2025 HOL.DEST 🗿 FLOX</footer>
-
-<script>
-// Thème sombre / clair
-function toggleTheme(){ document.body.classList.toggle('light'); }
-
-// Recherche et catégorie
-function filterVideos(){
-  const val = document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('.video-card').forEach(card => {
-    card.style.display = card.getAttribute('data-title').toLowerCase().includes(val) ? '' : 'none';
-  });
-}
-function filterCategory(cat){
-  document.querySelectorAll('.video-card').forEach(card => {
-    card.style.display = (cat==='Tous' || card.getAttribute('data-category')===cat) ? '' : 'none';
-  });
-}
-
-// Données vidéos
-const videos = [
-  {id:1,title:'Film Mega 1',category:'Action',src:'https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY'},
-  {id:2,title:'Film Mega 2',category:'Comédie',src:'https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY'},
-  {id:3,title:'Film Mega 3',category:'Drame',src:'https://mega.nz/embed/NncAHSDT#4d6GNuwvcaM94Nm2BB1FitQg3S_zOkIHptIImptLXMY'}
-];
-
-// Génération dynamique du HTML vidéos
-const videoGrid = document.querySelector('.video-grid');
-videos.forEach(v=>{
-  const div = document.createElement('div');
-  div.className='video-card';
-  div.setAttribute('data-title',v.title);
-  div.setAttribute('data-category',v.category);
-  div.innerHTML=`
-    <div class="ad-container" id="ad${v.id}">Pub Amstera</div>
-    <iframe id="video${v.id}" src="${v.src}" allowfullscreen style="display:none;"></iframe>
-    <button class="continuer-btn" id="btn${v.id}">Continuer ➤</button>
-    <h3>🎬 ${v.title}</h3>
-    <div class="meta">
-      <span id="views${v.id}">👁️ 0 vues</span>
-      <span id="like${v.id}">👍 0 likes</span>
+    <div class="container">
+        <h1>Nos Produits</h1>
+        <div class="products" id="productsContainer">
+            <!-- Produits chargés dynamiquement -->
+        </div>
     </div>
-  `;
-  videoGrid.appendChild(div);
 
-  // Affiche bouton continuer après 5s ou quand pub est prête
-  const btn = div.querySelector(`#btn${v.id}`);
-  btn.addEventListener('click',()=>playVideo(v.id));
-  setTimeout(()=>{ btn.style.display='block'; },5000);
-});
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <h2>Connexion</h2>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Mot de passe">
+            </div>
+            <button class="btn btn-primary" onclick="loginWithEmail()">Se connecter</button>
+            <button class="google-btn" onclick="loginWithGoogle()">Connexion avec Google</button>
+            <p style="margin-top: 15px; text-align: center;">
+                Pas de compte? <a href="#" onclick="switchToRegister()">S'inscrire</a>
+            </p>
+        </div>
+    </div>
 
-// Fonction play vidéo
-function playVideo(id){
-  document.getElementById('ad'+id).style.display='none';
-  document.getElementById('btn'+id).style.display='none';
-  document.getElementById('video'+id).style.display='block';
-}
-</script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Configuration Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDq6lC8gQn7cYQ8YQ8YQ8YQ8YQ8YQ8YQ8YQ",
+            authDomain: "collabnetwork-28hdst.firebaseapp.com",
+            projectId: "collabnetwork-28hdst",
+            storageBucket: "collabnetwork-28hdst.firebasestorage.app",
+            messagingSenderId: "845662589845",
+            appId: "1:845662589845:web:f4fe2c46ceac5bef409c9c",
+            measurementId: "G-T8DS63CZYN"
+        };
+
+        // Initialiser Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Variables globales
+        let currentUser = null;
+
+        // Écouteur d'état d'authentification
+        auth.onAuthStateChanged((user) => {
+            currentUser = user;
+            updateAuthUI();
+            
+            if (user) {
+                console.log("Utilisateur connecté:", user.email);
+                closeAuthModal();
+            } else {
+                console.log("Utilisateur déconnecté");
+            }
+        });
+
+        // Fonctions d'authentification
+        function loginWithEmail() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Connexion réussie
+                    console.log("Connecté avec email");
+                })
+                .catch((error) => {
+                    alert("Erreur: " + error.message);
+                });
+        }
+
+        function loginWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    console.log("Connecté avec Google");
+                })
+                .catch((error) => {
+                    alert("Erreur Google: " + error.message);
+                });
+        }
+
+        function logout() {
+            auth.signOut()
+                .then(() => {
+                    console.log("Déconnexion réussie");
+                })
+                .catch((error) => {
+                    alert("Erreur déconnexion: " + error.message);
+                });
+        }
+
+        // Gestion de l'interface
+        function updateAuthUI() {
+            const authSection = document.getElementById('authSection');
+            
+            if (currentUser) {
+                const userInitial = currentUser.email ? currentUser.email.charAt(0).toUpperCase() : 'U';
+                authSection.innerHTML = `
+                    <div class="user-info">
+                        <div class="user-avatar">${userInitial}</div>
+                        <span>${currentUser.email}</span>
+                        <button class="btn" onclick="logout()">Déconnexion</button>
+                    </div>
+                `;
+            } else {
+                authSection.innerHTML = `
+                    <button class="btn btn-primary" onclick="openAuthModal()">Se connecter</button>
+                `;
+            }
+        }
+
+        function openAuthModal() {
+            document.getElementById('authModal').classList.add('active');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
+
+        function switchToRegister() {
+            // Ici tu peux ajouter la logique pour passer à l'inscription
+            alert("Fonction inscription à implémenter");
+        }
+
+        // Charger les produits (exemple)
+        function loadProducts() {
+            const products = [
+                { id: 1, name: "Produit 1", price: 29.99 },
+                { id: 2, name: "Produit 2", price: 39.99 },
+                { id: 3, name: "Produit 3", price: 19.99 }
+            ];
+
+            const container = document.getElementById('productsContainer');
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image"></div>
+                    <h3>${product.name}</h3>
+                    <p>${product.price} €</p>
+                    <button class="btn btn-primary" onclick="addToCart(${product.id})">Ajouter au panier</button>
+                `;
+                container.appendChild(productCard);
+            });
+        }
+
+        function addToCart(productId) {
+            if (!currentUser) {
+                alert("Veuillez vous connecter pour ajouter au panier");
+                openAuthModal();
+                return;
+            }
+            alert("Produit " + productId + " ajouté au panier");
+        }
+
+        // Initialiser l'application
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            updateAuthUI();
+        });
+
+        // Fermer la modal en cliquant à l'extérieur
+        document.getElementById('authModal').addEventListener('click', (e) => {
+            if (e.target.id === 'authModal') {
+                closeAuthModal();
+            }
+        });
+    </script>
 </body>
-</html>
+  </html>
