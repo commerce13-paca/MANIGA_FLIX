@@ -698,6 +698,7 @@
             }
         }
     </style>
+         
 </head>
 <body>
     <!-- Analytics Badge -->
@@ -723,68 +724,6 @@
         <div class="main-offer">
             <h2>💎 TESTE GRATUITEMENT MON SYSTÈME !</h2>
             <p>Essaie le code ci-dessous, et si ça te plaît, je te crée un site personnalisé</p>
-        </div>
-        
-         <!-- Services Snapchat en premier -->
-        <div class="service-card">
-            <div class="badge">POPULAIRE</div>
-            <h3><i class="fab fa-snapchat-ghost"></i> SERVICES SNAPCHAT</h3>
-            <p>Transforme ton Snapchat en machine à ventes</p>
-            
-            <div class="snap-services">
-                <div class="snap-service">
-                    <i class="fas fa-user-tie"></i>
-                    <h4>Compte Pro Snapchat</h4>
-                    <p>Création de compte professionnel avec profil public<br>
-                       <strong>Stories visibles pendant 1 SEMAINE</strong><br>
-                       <em>Différence avec Snapchat+ : Snapchat+ = abonnement mensuel, nous = paiement unique</em></p>
-                    <div class="price">70€</div>
-                    <button class="btn btn-snap open-order-modal" data-service="Compte Pro Snapchat">AJOUTER</button>
-                </div>
-                
-                <div class="snap-service">
-                    <i class="fas fa-filter"></i>
-                    <h4>Filtre Personnalisé</h4>
-                    <p>Filtre unique pour ton entreprise</p>
-                    <div class="price">15€</div>
-                    <button class="btn btn-snap open-order-modal" data-service="Filtre Personnalisé Snapchat">AJOUTER</button>
-                </div>
-                
-                <div class="snap-service">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h4>Géolocalisation</h4>
-                    <p>Ta boutique sur la carte Snapchat</p>
-                    <div class="price">30€</div>
-                    <button class="btn btn-snap open-order-modal" data-service="Géolocalisation Snapchat">AJOUTER</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="disruption-section">
-            <h3>💥 POURQUOI TU PERDS DES VENTES ?</h3>
-            <p>Les gens ne te prennent pas au sérieux quand tu n'as pas de site web. Ils pensent que c'est temporaire ou pas professionnel.</p>
-            <p>Avec un site HOLDEST, tu montres que ton business est sérieux et permanent.</p>
-        </div>
-        
-        <div class="urgency">
-            <h3>⚠️ OFFRE SPÉCIALE LIMITÉE</h3>
-            <p>Les 5 premiers à commander cette semaine reçoivent 20% de réduction !</p>
-            <p>Temps restant: <span id="countdown">30:00</span></p>
-        </div>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">24h</div>
-                <div>Délai de création</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">97%</div>
-                <div>Clients satisfaits</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div>Sites créés</div>
-            </div>
         </div>
         
         <!-- Services Sites Web -->
@@ -905,7 +844,6 @@
                 <p>Électronique</p>
             </div>
         </div>
-        
         <div class="testimonial">
             <p>"J'avais peur des arnaques mais Holdest m'a créé un site pro en 2 jours. Maintenant je vends 3x plus !"</p>
             <p><strong>- Kevin, vente de sneakers</strong></p>
@@ -927,24 +865,24 @@
             
             <div class="code-container">
                 <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;Mon Site Test&lt;/title&gt;
-  &lt;style&gt;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mon Site Test</title>
+  <style>
     body { font-family: Arial; text-align: center; padding: 50px; }
     h1 { color: #FFD700; }
     button { background: #000; color: white; padding: 10px; border: none; }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Mon Premier Site Web!&lt;/h1&gt;
-  &lt;p&gt;Félicitations, tu viens de créer ton premier site!&lt;/p&gt;
-  &lt;button onclick="alert('Ça fonctionne! Contacte-moi pour un site personnalisé.')"&gt;
+  </style>
+</head>
+<body>
+  <h1>Mon Premier Site Web!</h1>
+  <p>Félicitations, tu viens de créer ton premier site!</p>
+  <button onclick="alert('Ça fonctionne! Contacte-moi pour un site personnalisé.')">
     Clique ici pour tester
-  &lt;/button&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+  </button>
+</body>
+</html>
                 </pre>
             </div>
             
@@ -974,51 +912,47 @@
     <!-- Modal de commande -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal">×</span>
             <h2 style="color: var(--primary); margin-bottom: 15px;">Commander</h2>
             
-            <form id="orderForm">
+            <form id="orderForm" action="https://formspree.io/f/xjkazbql" method="POST">
+                <input type="hidden" name="_subject" value="Nouvelle commande - HOLDEST Services">
+                <input type="hidden" name="_cc" value="oldestlucious@gmail.com">
+                
                 <div class="form-group">
-                    <label for="service">Service</label>
-                    <input type="text" id="service" class="form-control" readonly>
+                    <label for="service">Service *</label>
+                    <input type="text" id="service" name="service" class="form-control" readonly required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="name">Nom *</label>
-                    <input type="text" id="name" class="form-control" required>
+                    <label for="name">Nom complet *</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Email *</label>
-                    <input type="email" id="email" class="form-control" required>
+                    <input type="email" id="email" name="email" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" class="form-control">
+                    <label for="phone">Téléphone *</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="details">Détails</label>
-                    <textarea id="details" class="form-control" rows="3" placeholder="Décris ce que tu veux..."></textarea>
+                    <label for="details">Détails du projet *</label>
+                    <textarea id="details" name="details" class="form-control" rows="4" placeholder="Décris ce que tu veux exactement..." required></textarea>
                 </div>
                 
-                <button type="submit" class="btn" style="width: 100%;">VALIDER</button>
+                <button type="submit" class="btn" style="width: 100%;">ENVOYER MA COMMANDE</button>
             </form>
-            
-            <div class="success-message" id="successMessage">
-                <i class="fas fa-check-circle"></i>
-                <h3>Commande envoyée !</h3>
-                <p>Je te contacte dans les 2 heures.</p>
-                <button class="btn btn-secondary" id="closeSuccess">Fermer</button>
-            </div>
         </div>
     </div>
     
     <!-- Modal webcam -->
     <div class="modal" id="webcamModal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal">×</span>
             <h2 style="color: #007bff; margin-bottom: 15px;">Consultation Webcam</h2>
             
             <div style="text-align: center; margin-bottom: 15px;">
@@ -1026,25 +960,33 @@
                 <p style="margin: 12px 0;">Discutons en vidéo pour ton projet</p>
             </div>
             
-            <form id="webcamForm">
+            <form id="webcamForm" action="https://formspree.io/f/xjkazbql" method="POST">
+                <input type="hidden" name="_subject" value="Consultation Webcam - HOLDEST Services">
+                <input type="hidden" name="_cc" value="oldestlucious@gmail.com">
+                
                 <div class="form-group">
-                    <label for="webcamName">Nom *</label>
-                    <input type="text" id="webcamName" class="form-control" required>
+                    <label for="webcamName">Nom complet *</label>
+                    <input type="text" id="webcamName" name="name" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="webcamEmail">Email *</label>
-                    <input type="email" id="webcamEmail" class="form-control" required>
+                    <input type="email" id="webcamEmail" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="webcamPhone">Téléphone *</label>
+                    <input type="tel" id="webcamPhone" name="phone" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="webcamDate">Date souhaitée *</label>
-                    <input type="date" id="webcamDate" class="form-control" required>
+                    <input type="date" id="webcamDate" name="date" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="webcamTime">Heure souhaitée *</label>
-                    <select id="webcamTime" class="form-control" required>
+                    <select id="webcamTime" name="time" class="form-control" required>
                         <option value="">Choisis une heure</option>
                         <option value="09:00">09:00</option>
                         <option value="10:00">10:00</option>
@@ -1052,30 +994,23 @@
                         <option value="14:00">14:00</option>
                         <option value="15:00">15:00</option>
                         <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="webcamProject">Ton projet</label>
-                    <textarea id="webcamProject" class="form-control" rows="3" placeholder="Décris ton projet..."></textarea>
+                    <label for="webcamProject">Description de ton projet *</label>
+                    <textarea id="webcamProject" name="project" class="form-control" rows="3" placeholder="Décris ton projet..." required></textarea>
                 </div>
                 
                 <button type="submit" class="btn" style="width: 100%; background: #007bff;">PRENDRE RENDEZ-VOUS</button>
             </form>
-            
-            <div class="success-message" id="webcamSuccess">
-                <i class="fas fa-check-circle"></i>
-                <h3>Rendez-vous confirmé !</h3>
-                <p>Je t'envoie le lien de vidéo par email.</p>
-                <button class="btn btn-secondary" id="closeWebcamSuccess">Fermer</button>
-            </div>
         </div>
     </div>
-    
     <!-- Modal contact -->
     <div class="modal" id="contactModal">
         <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal">×</span>
             <h2 style="color: var(--primary); margin-bottom: 15px;">Contact Snapchat</h2>
             
             <div style="text-align: center; margin-bottom: 15px;">
@@ -1115,10 +1050,6 @@
         const orderModal = document.getElementById('orderModal');
         const webcamModal = document.getElementById('webcamModal');
         const contactModal = document.getElementById('contactModal');
-        const orderForm = document.getElementById('orderForm');
-        const webcamForm = document.getElementById('webcamForm');
-        const successMessage = document.getElementById('successMessage');
-        const webcamSuccess = document.getElementById('webcamSuccess');
         
         // Ouvrir modale commande
         document.querySelectorAll('.open-order-modal').forEach(button => {
@@ -1129,7 +1060,6 @@
                 document.body.style.overflow = 'hidden';
             });
         });
-        
         // Ouvrir modale webcam
         function openWebcamModal() {
             webcamModal.style.display = 'flex';
@@ -1148,40 +1078,18 @@
                 orderModal.style.display = 'none';
                 webcamModal.style.display = 'none';
                 contactModal.style.display = 'none';
-                successMessage.style.display = 'none';
-                webcamSuccess.style.display = 'none';
-                orderForm.reset();
-                webcamForm.reset();
                 document.body.style.overflow = 'auto';
             });
         });
         
-        document.getElementById('closeSuccess').addEventListener('click', function() {
-            orderModal.style.display = 'none';
-            successMessage.style.display = 'none';
-            orderForm.reset();
-            document.body.style.overflow = 'auto';
-        });
-        
-        document.getElementById('closeWebcamSuccess').addEventListener('click', function() {
-            webcamModal.style.display = 'none';
-            webcamSuccess.style.display = 'none';
-            webcamForm.reset();
-            document.body.style.overflow = 'auto';
-        });
-        
-        // Fermer en cliquant dehors
+          // Fermer en cliquant dehors
         window.addEventListener('click', function(event) {
             if (event.target === orderModal) {
                 orderModal.style.display = 'none';
-                successMessage.style.display = 'none';
-                orderForm.reset();
                 document.body.style.overflow = 'auto';
             }
             if (event.target === webcamModal) {
                 webcamModal.style.display = 'none';
-                webcamSuccess.style.display = 'none';
-                webcamForm.reset();
                 document.body.style.overflow = 'auto';
             }
             if (event.target === contactModal) {
@@ -1189,55 +1097,6 @@
                 document.body.style.overflow = 'auto';
             }
         });
-        
-        // Gestion formulaire commande
-        orderForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            orderForm.style.display = 'none';
-            successMessage.style.display = 'block';
-            
-            // Ici, vous pouvez ajouter l'envoi des données à votre backend
-            // Exemple: envoyerDonneesFormulaire();
-        });
-        
-        // Gestion formulaire webcam
-        webcamForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            webcamForm.style.display = 'none';
-            webcamSuccess.style.display = 'block';
-            
-            // Ici, vous pouvez ajouter l'envoi des données à votre backend
-            // Exemple: envoyerDonneesWebcam();
-        });
-        
-        // Fonction pour envoyer les données du formulaire (exemple)
-        function envoyerDonneesFormulaire() {
-            const formData = {
-                service: document.getElementById('service').value,
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                details: document.getElementById('details').value
-            };
-            
-            // Exemple d'envoi avec fetch
-            /*
-            fetch('/api/commande', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Succès:', data);
-            })
-            .catch((error) => {
-                console.error('Erreur:', error);
-            });
-            */
-        }
         
         // Animation au défilement
         const observerOptions = {
@@ -1264,14 +1123,6 @@
         
         // Démarrer compte à rebours
         window.addEventListener('load', updateCountdown);
-        
-        // Google Analytics (exemple)
-        /*
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-        */
     </script>
 </body>
 </html>
