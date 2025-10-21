@@ -283,6 +283,19 @@
         .btn-snap:hover {
             background: var(--snap-yellow-dark);
         }
+
+        /* Nouveau style pour le bouton Voir Exemple */
+        .btn-example {
+            background: transparent;
+            color: var(--snap-yellow);
+            border: 2px solid var(--snap-yellow);
+            margin-top: 8px;
+        }
+        
+        .btn-example:hover {
+            background: var(--snap-yellow);
+            color: #000;
+        }
         
         /* Section Contact */
         .contact {
@@ -651,6 +664,36 @@
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
+
+        /* Style pour l'image d'exemple dans le modal */
+        .example-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            border: 3px solid var(--snap-yellow);
+            margin: 15px auto;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .image-caption {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* Animation douce pour le popup Snapchat */
+        @keyframes snapPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        #snapchatPopup .modal-content {
+            animation: snapPulse 2s infinite;
+        }
         
         /* Media Queries pour tablettes et desktop */
         @media (min-width: 768px) {
@@ -698,10 +741,9 @@
             }
         }
     </style>
-         
 </head>
 <body>
-    <!-- Analytics Badge -->
+            <!-- Analytics Badge -->
     <div class="analytics-badge">
         <i class="fas fa-chart-line"></i> TRACKING ACTIF
     </div>
@@ -726,48 +768,69 @@
             <p>Essaie le code ci-dessous, et si ça te plaît, je te crée un site personnalisé</p>
         </div>
         
-        <!-- Services Sites Web -->
-        <div class="services">
-            <div class="service-card">
-                <h3>🛒 SITE VENTE FLASH</h3>
-                <p>Parfait pour les dropshipping et ventes limitées</p>
-                <div class="features">
-                    <div class="feature-item">Page produit unique</div>
-                    <div class="feature-item">Compte à rebours</div>
-                    <div class="feature-item">Bouton commande WhatsApp</div>
-                    <div class="feature-item">Optimisé mobile</div>
-                </div>
-                <div class="price">70€</div>
-                <button class="btn open-order-modal" data-service="Site Vente Flash">COMMANDER</button>
-            </div>
+         <!-- Services Snapchat en premier -->
+        <div class="service-card">
+            <div class="badge">POPULAIRE</div>
+            <h3><i class="fab fa-snapchat-ghost"></i> SERVICES SNAPCHAT</h3>
+            <p>Transforme ton Snapchat en machine à ventes</p>
             
-            <div class="service-card">
-                <h3>📱 SITE BUSINESS PRO</h3>
-                <p>Pour établir ta marque durablement</p>
-                <div class="features">
-                    <div class="feature-item">Jusqu'à 5 pages</div>
-                    <div class="feature-item">Formulaire de contact</div>
-                    <div class="feature-item">Galerie produits</div>
-                    <div class="feature-item">Modifications 1 mois</div>
+            <div class="snap-services">
+                <div class="snap-service">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>Compte Pro Snapchat</h4>
+                    <p>Création de compte professionnel avec profil public<br>
+                       <strong>Stories visibles pendant 1 SEMAINE</strong><br>
+                       <em>Différence avec Snapchat+ : Snapchat+ = abonnement mensuel, nous = paiement unique</em></p>
+                    <div class="price">70€</div>
+                    <button class="btn btn-snap open-order-modal" data-service="Compte Pro Snapchat">AJOUTER</button>
+                    <!-- NOUVEAU BOUTON VOIR EXEMPLE -->
+                    <button class="btn btn-example open-example-modal" data-service="Compte Pro Snapchat">📱 VOIR EXEMPLE</button>
                 </div>
-                <div class="price">120€</div>
-                <button class="btn open-order-modal" data-service="Site Business Pro">COMMANDER</button>
-            </div>
-            
-            <div class="service-card">
-                <h3>⚡ SITE COMMANDE RAPIDE</h3>
-                <p>Pour restaurants, coiffeurs, services</p>
-                <div class="features">
-                    <div class="feature-item">Menu interactif</div>
-                    <div class="feature-item">Panier en temps réel</div>
-                    <div class="feature-item">Réservation en ligne</div>
-                    <div class="feature-item">Système de livraison</div>
+                
+                <div class="snap-service">
+                    <i class="fas fa-filter"></i>
+                    <h4>Filtre Personnalisé</h4>
+                    <p>Filtre unique pour ton entreprise</p>
+                    <div class="price">15€</div>
+                    <button class="btn btn-snap open-order-modal" data-service="Filtre Personnalisé Snapchat">AJOUTER</button>
                 </div>
-                <div class="price">150€</div>
-                <button class="btn open-order-modal" data-service="Site Commande Rapide">COMMANDER</button>
+                
+                <div class="snap-service">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Géolocalisation</h4>
+                    <p>Ta boutique sur la carte Snapchat</p>
+                    <div class="price">30€</div>
+                    <button class="btn btn-snap open-order-modal" data-service="Géolocalisation Snapchat">AJOUTER</button>
+                </div>
             </div>
         </div>
         
+        <div class="disruption-section">
+            <h3>💥 POURQUOI TU PERDS DES VENTES ?</h3>
+            <p>Les gens ne te prennent pas au sérieux quand tu n'as pas de site web. Ils pensent que c'est temporaire ou pas professionnel.</p>
+            <p>Avec un site HOLDEST, tu montres que ton business est sérieux et permanent.</p>
+        </div>
+        
+        <div class="urgency">
+            <h3>⚠️ OFFRE SPÉCIALE LIMITÉE</h3>
+            <p>Les 5 premiers à commander cette semaine reçoivent 20% de réduction !</p>
+            <p>Temps restant: <span id="countdown">30:00</span></p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">24h</div>
+                <div>Délai de création</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">97%</div>
+                <div>Clients satisfaits</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div>Sites créés</div>
+            </div>
+        </div>
         <!-- Section Webcam -->
         <div class="webcam-section">
             <h3><i class="fas fa-video"></i> CONSULTATION EN LIGNE</h3>
@@ -827,8 +890,7 @@
             <h3>🛡️ GARANTIE 7 JOURS</h3>
             <p>Si ça ne te plaît pas dans les 7 jours, remboursement complet.</p>
         </div>
-        
-        <div class="payment-options">
+<div class="payment-options">
             <div class="payment-option">
                 <h4>💳 Paiement Complet</h4>
                 <p>-10%</p>
@@ -844,6 +906,7 @@
                 <p>Électronique</p>
             </div>
         </div>
+        
         <div class="testimonial">
             <p>"J'avais peur des arnaques mais Holdest m'a créé un site pro en 2 jours. Maintenant je vends 3x plus !"</p>
             <p><strong>- Kevin, vente de sneakers</strong></p>
@@ -864,25 +927,24 @@
             </div>
             
             <div class="code-container">
-                <pre>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Mon Site Test</title>
-  <style>
+                <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Mon Site Test&lt;/title&gt;
+  &lt;style&gt;
     body { font-family: Arial; text-align: center; padding: 50px; }
     h1 { color: #FFD700; }
     button { background: #000; color: white; padding: 10px; border: none; }
-  </style>
-</head>
-<body>
-  <h1>Mon Premier Site Web!</h1>
-  <p>Félicitations, tu viens de créer ton premier site!</p>
-  <button onclick="alert('Ça fonctionne! Contacte-moi pour un site personnalisé.')">
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Mon Premier Site Web!&lt;/h1&gt;
+  &lt;p&gt;Félicitations, tu viens de créer ton premier site!&lt;/p&gt;
+  &lt;button onclick="alert('Ça fonctionne! Contacte-moi pour un site personnalisé.')"&gt;
     Clique ici pour tester
-  </button>
-</body>
-</html>
+  &lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
                 </pre>
             </div>
             
@@ -909,50 +971,51 @@
         </div>
     </div>
     
-    <!-- Modal de commande -->
+    <!-- Modal de commande FORMSPREE -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
-            <span class="close-modal">×</span>
+            <span class="close-modal">&times;</span>
             <h2 style="color: var(--primary); margin-bottom: 15px;">Commander</h2>
             
-            <form id="orderForm" action="https://formspree.io/f/xjkazbql" method="POST">
-                <input type="hidden" name="_subject" value="Nouvelle commande - HOLDEST Services">
-                <input type="hidden" name="_cc" value="oldestlucious@gmail.com">
+            <!-- FORMULAIRE FORMSPREE DIRECT -->
+            <form action="https://formspree.io/f/xjkazbql" method="POST">
+                <input type="hidden" id="serviceInput" name="service" value="">
                 
                 <div class="form-group">
-                    <label for="service">Service *</label>
-                    <input type="text" id="service" name="service" class="form-control" readonly required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="name">Nom complet *</label>
+                    <label for="name">Ton nom *</label>
                     <input type="text" id="name" name="name" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email *</label>
+                    <label for="email">Ton email *</label>
                     <input type="email" id="email" name="email" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Téléphone *</label>
-                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                    <label for="phone">Ton téléphone</label>
+                    <input type="tel" id="phone" name="phone" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="details">Détails du projet *</label>
-                    <textarea id="details" name="details" class="form-control" rows="4" placeholder="Décris ce que tu veux exactement..." required></textarea>
+                    <label for="details">Détails de ta commande</label>
+                    <textarea id="details" name="details" class="form-control" rows="3" placeholder="Décris ce que tu veux..."></textarea>
                 </div>
                 
-                <button type="submit" class="btn" style="width: 100%;">ENVOYER MA COMMANDE</button>
+                <button type="submit" class="btn" style="width: 100%;">
+                    🚀 ENVOYER MA COMMANDE
+                </button>
             </form>
+            
+            <div style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-secondary);">
+                <p>✅ Je te contacte dans les 2 heures</p>
+                <p>📱 Ou message direct sur Snapchat: @lucious-lion04</p>
+            </div>
         </div>
     </div>
-    
-    <!-- Modal webcam -->
+    <!-- Modal webcam FORMSPREE -->
     <div class="modal" id="webcamModal">
         <div class="modal-content">
-            <span class="close-modal">×</span>
+            <span class="close-modal">&times;</span>
             <h2 style="color: #007bff; margin-bottom: 15px;">Consultation Webcam</h2>
             
             <div style="text-align: center; margin-bottom: 15px;">
@@ -960,23 +1023,18 @@
                 <p style="margin: 12px 0;">Discutons en vidéo pour ton projet</p>
             </div>
             
-            <form id="webcamForm" action="https://formspree.io/f/xjkazbql" method="POST">
-                <input type="hidden" name="_subject" value="Consultation Webcam - HOLDEST Services">
-                <input type="hidden" name="_cc" value="oldestlucious@gmail.com">
+            <!-- FORMULAIRE FORMSPREE DIRECT -->
+            <form action="https://formspree.io/f/xjvnzzzz" method="POST">
+                <input type="hidden" name="service" value="Consultation Webcam">
                 
                 <div class="form-group">
-                    <label for="webcamName">Nom complet *</label>
+                    <label for="webcamName">Nom *</label>
                     <input type="text" id="webcamName" name="name" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="webcamEmail">Email *</label>
                     <input type="email" id="webcamEmail" name="email" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="webcamPhone">Téléphone *</label>
-                    <input type="tel" id="webcamPhone" name="phone" class="form-control" required>
                 </div>
                 
                 <div class="form-group">
@@ -994,23 +1052,23 @@
                         <option value="14:00">14:00</option>
                         <option value="15:00">15:00</option>
                         <option value="16:00">16:00</option>
-                        <option value="17:00">17:00</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="webcamProject">Description de ton projet *</label>
-                    <textarea id="webcamProject" name="project" class="form-control" rows="3" placeholder="Décris ton projet..." required></textarea>
+                    <label for="webcamProject">Ton projet</label>
+                    <textarea id="webcamProject" name="project" class="form-control" rows="3" placeholder="Décris ton projet..."></textarea>
                 </div>
                 
                 <button type="submit" class="btn" style="width: 100%; background: #007bff;">PRENDRE RENDEZ-VOUS</button>
             </form>
         </div>
     </div>
-    <!-- Modal contact -->
+
+    <!-- Modal contact Snapchat -->
     <div class="modal" id="contactModal">
         <div class="modal-content">
-            <span class="close-modal">×</span>
+            <span class="close-modal">&times;</span>
             <h2 style="color: var(--primary); margin-bottom: 15px;">Contact Snapchat</h2>
             
             <div style="text-align: center; margin-bottom: 15px;">
@@ -1024,14 +1082,78 @@
             </button>
         </div>
     </div>
+
+    <!-- NOUVEAU MODAL POUR L'EXEMPLE DE PROFIL SNAPCHAT -->
+    <div class="modal" id="exampleModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 style="color: var(--snap-yellow); margin-bottom: 15px; text-align: center;">📱 Exemple de Profil Snapchat Pro</h2>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <p>Voici à quoi ressemble un profil Snapchat professionnel que nous créons :</p>
+                
+                <!-- REMPLACEZ CETTE URL PAR VOTRE PROPRE IMAGE -->
+                <img src="https://mcusercontent.com/6ce25ea8296b12e3b67c52a85/images/ec034d08-7498-55c1-236c-3fe09605d752.jpg" alt="Exemple de profil Snapchat Pro" class="example-image">
+                
+                <p class="image-caption">Profil public professionnel avec stories visibles 7 jours</p>
+            </div>
+            
+            <div style="background: rgba(255, 252, 0, 0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <h4 style="color: var(--snap-yellow); margin-bottom: 10px;">🎯 Ce que tu obtiens :</h4>
+                <div class="feature-item">✓ Profil public professionnel</div>
+                <div class="feature-item">✓ Stories visibles pendant 7 JOURS</div>
+                <div class="feature-item">✓ Design optimisé pour ton business</div>
+                <div class="feature-item">✓ Paiement unique (pas d'abonnement)</div>
+            </div>
+            
+            <button class="btn btn-snap open-order-modal" data-service="Compte Pro Snapchat" style="width: 100%; margin-bottom: 10px;">
+                🚀 COMMANDER MAINTENANT - 70€
+            </button>
+            
+            <button class="btn btn-secondary" onclick="closeExampleModal()" style="width: 100%;">
+                📞 Poser une question d'abord
+            </button>
+        </div>
+    </div>
+
+    <!-- Popup Snapchat Promotion -->
+    <div class="modal" id="snapchatPopup">
+        <div class="modal-content" style="max-width: 400px;">
+            <span class="close-modal">&times;</span>
+            <div style="text-align: center; padding: 15px;">
+                <i class="fab fa-snapchat-ghost" style="font-size: 3rem; color: var(--snap-yellow); margin-bottom: 15px;"></i>
+                <h3 style="color: var(--snap-yellow); margin-bottom: 10px;">🚀 Boost ton Snapchat !</h3>
+                <p style="margin-bottom: 15px; font-size: 0.95rem;">
+                    Tu veux transformer ton Snapchat en <strong>machine à ventes</strong> ? 
+                    Profite de nos services Snapchat Pro !
+                </p>
+                
+                <div style="background: rgba(255, 252, 0, 0.1); padding: 12px; border-radius: 8px; margin: 15px 0;">
+                    <p style="margin: 5px 0; font-size: 0.9rem;">✓ <strong>Stories visibles 7 jours</strong></p>
+                    <p style="margin: 5px 0; font-size: 0.9rem;">✓ <strong>Compte professionnel</strong></p>
+                    <p style="margin: 5px 0; font-size: 0.9rem;">✓ <strong>Paiement unique</strong></p>
+                </div>
+                
+                <button class="btn btn-snap" onclick="openSnapchatServices()" style="width: 100%; margin-bottom: 10px;">
+                    Voir les services Snapchat
+                </button>
+                
+                <button class="btn btn-secondary" onclick="closeSnapchatPopup()" style="width: 100%;">
+                    Plus tard
+                </button>
+            </div>
+        </div>
+    </div>
     
     <footer>
         <div class="container">
             <p>HOLDEST SERVICES - Marketing digital professionnel</p>
             <p>Email: oldestlucious@gmail.com | Snap: @lucious-lion04</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; color: var(--primary);">
+                
+                  </p>
         </div>
     </footer>
-
     <script>
         // Compteur de temps
         let countdown = 30 * 60;
@@ -1046,20 +1168,31 @@
             }
         }
         
-        // Gestion des modales
+        // Gestion des modales SIMPLIFIÉE
         const orderModal = document.getElementById('orderModal');
         const webcamModal = document.getElementById('webcamModal');
         const contactModal = document.getElementById('contactModal');
+        const exampleModal = document.getElementById('exampleModal');
+        const snapchatPopup = document.getElementById('snapchatPopup');
         
         // Ouvrir modale commande
         document.querySelectorAll('.open-order-modal').forEach(button => {
             button.addEventListener('click', function() {
                 const service = this.getAttribute('data-service');
-                document.getElementById('service').value = service;
+                document.getElementById('serviceInput').value = service;
                 orderModal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             });
         });
+
+        // Ouvrir modale exemple
+        document.querySelectorAll('.open-example-modal').forEach(button => {
+            button.addEventListener('click', function() {
+                exampleModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
         // Ouvrir modale webcam
         function openWebcamModal() {
             webcamModal.style.display = 'flex';
@@ -1071,6 +1204,13 @@
             contactModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
+
+        // Fermer modale exemple
+        function closeExampleModal() {
+            exampleModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            openContactModal();
+        }
         
         // Fermer modales
         document.querySelectorAll('.close-modal').forEach(closeBtn => {
@@ -1078,11 +1218,13 @@
                 orderModal.style.display = 'none';
                 webcamModal.style.display = 'none';
                 contactModal.style.display = 'none';
+                exampleModal.style.display = 'none';
+                snapchatPopup.style.display = 'none';
                 document.body.style.overflow = 'auto';
             });
         });
         
-          // Fermer en cliquant dehors
+        // Fermer en cliquant dehors
         window.addEventListener('click', function(event) {
             if (event.target === orderModal) {
                 orderModal.style.display = 'none';
@@ -1094,6 +1236,14 @@
             }
             if (event.target === contactModal) {
                 contactModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (event.target === exampleModal) {
+                exampleModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (event.target === snapchatPopup) {
+                snapchatPopup.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
         });
@@ -1120,9 +1270,51 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // Popup Snapchat - Affichage intelligent
+        let snapchatPopupShown = false;
+
+        function showSnapchatPopup() {
+            // Vérifier si le popup a déjà été montré
+            if (snapchatPopupShown) return;
+            
+            // Afficher après un délai (5 secondes)
+            setTimeout(() => {
+                const popup = document.getElementById('snapchatPopup');
+                if (popup) {
+                    popup.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    snapchatPopupShown = true;
+                }
+            }, 5000);
+        }
+
+        function closeSnapchatPopup() {
+            const popup = document.getElementById('snapchatPopup');
+            if (popup) {
+                popup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function openSnapchatServices() {
+            closeSnapchatPopup();
+            // Faire défiler jusqu'à la section Snapchat
+            const snapSection = document.querySelector('.service-card:first-child');
+            if (snapSection) {
+                snapSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
         
         // Démarrer compte à rebours
-        window.addEventListener('load', updateCountdown);
+        window.addEventListener('load', function() {
+            updateCountdown();
+            showSnapchatPopup();
+        });
+        
+        // REMPLACER LES FORMSPREE ID
+        // Remplacer "your-form-id" dans les formulaires par ton vrai ID Formspree
+        // Exemple: action="https://formspree.io/f/xjvnzzzz"
     </script>
 </body>
-</html>
+</html
