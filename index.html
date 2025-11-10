@@ -75,14 +75,38 @@
             font-size: 18px;
         }
         
+        .driver-badge {
+            background: var(--accent);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            margin-left: 5px;
+            display: none;
+        }
+        
         .header-actions {
             display: flex;
             gap: 15px;
+            align-items: center;
         }
         
         .header-icon {
             font-size: 20px;
             cursor: pointer;
+        }
+        
+        .driver-access-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            gap: 5px;
         }
         
         /* Navigation */
@@ -321,7 +345,7 @@
             margin-top: 5px;
         }
         
-        /* Map Container - NOUVEAU STYLE AMÉLIORÉ */
+        /* Map Container */
         .map-container {
             height: 300px;
             background: #e2e8f0;
@@ -577,7 +601,6 @@
             border-bottom: none;
         }
 
-        /* Reste du CSS existant... */
         .close-btn {
             position: absolute;
             top: 15px;
@@ -1480,9 +1503,14 @@
         <header class="app-header">
             <div class="logo">
                 <div class="logo-icon"><i class="fas fa-motorcycle"></i></div>
-                <div class="logo-text">Bajaj Secure</div>
+                <div class="logo-text">Bajaj Secure 
+                    <span class="driver-badge" id="driver-badge">Chauffeur</span>
+                </div>
             </div>
             <div class="header-actions">
+                <button class="driver-access-btn" id="driver-access-btn">
+                    <i class="fas fa-id-card"></i> Mode Chauffeur
+                </button>
                 <div class="header-icon"><i class="fas fa-bell"></i></div>
                 <div class="header-icon"><i class="fas fa-user" id="profile-btn"></i></div>
             </div>
@@ -2274,23 +2302,6 @@
             }
         ];
 
-        // Données des conducteurs disponibles
-        const driversData = {
-            'bajaj': [
-                { name: 'Rakoto Jean', rating: 4.7, avatar: 'RJ', vehicle: 'Bajaj Jaune', plate: '1245 TB', experience: 3.2, trips: 1247, response: 94 },
-                { name: 'Paul Rabe', rating: 4.5, avatar: 'PR', vehicle: 'Bajaj Bleu', plate: '5687 TB', experience: 2.8, trips: 987, response: 92 },
-                { name: 'Marie Rasoa', rating: 4.8, avatar: 'MR', vehicle: 'Bajaj Rouge', plate: '9821 TB', experience: 4.1, trips: 1567, response: 96 }
-            ],
-            'taxi': [
-                { name: 'Robert Andria', rating: 4.6, avatar: 'RA', vehicle: 'Taxi Blanc', plate: 'TA 3456 BC', experience: 5.2, trips: 2345, response: 95 },
-                { name: 'Lucie Ravao', rating: 4.9, avatar: 'LR', vehicle: 'Taxi Jaune', plate: 'TA 7890 DE', experience: 6.1, trips: 2876, response: 98 }
-            ],
-            'car': [
-                { name: 'Eric Randria', rating: 4.8, avatar: 'ER', vehicle: 'Toyota Corolla', plate: 'CA 5678 HI', experience: 7.3, trips: 3456, response: 97 },
-                { name: 'Sophie Ralison', rating: 4.7, avatar: 'SR', vehicle: 'Nissan Sunny', plate: 'CA 9012 JK', experience: 5.9, trips: 2765, response: 94 }
-            ]
-        };
-
         // Initialiser la carte AVEC LE SYSTÈME AMÉLIORÉ
         function initMap() {
             // Initialisation de la carte centrée sur Mahajanga
@@ -2365,7 +2376,7 @@
                 document.getElementById('routeSummary').style.display = 'none';
             });
             
-            // Fonction pour basculer entre les couches de carte
+           // Fonction pour basculer entre les couches de carte
             function switchMapLayer(layer) {
                 // Retirer toutes les couches
                 map.removeLayer(standardLayer);
@@ -2437,7 +2448,11 @@
                 
                 // Générer de nouveaux conducteurs autour de la position de l'utilisateur
                 const userPos = userMarker.getLatLng();
-                const drivers = driversData[selectedVehicleType];
+                const drivers = [
+                    { name: 'Rakoto Jean', rating: 4.7, vehicle: 'Bajaj Jaune', plate: '1245 TB' },
+                    { name: 'Paul Rabe', rating: 4.5, vehicle: 'Bajaj Bleu', plate: '5687 TB' },
+                    { name: 'Marie Rasoa', rating: 4.8, vehicle: 'Bajaj Rouge', plate: '9821 TB' }
+                ];
                 const numDrivers = Math.floor(Math.random() * 3) + 2; // 2-4 conducteurs
                 
                 for (let i = 0; i < numDrivers; i++) {
@@ -2575,6 +2590,9 @@
         function showMainApp() {
             hideAllScreens();
             document.getElementById('main-content').style.display = 'block';
+            
+            // Mettre à jour l'interface utilisateur
+            updateUserInterface();
         }
 
         // Fonction de notification moderne
@@ -2593,6 +2611,30 @@
             }, 3000);
         }
 
+        // Mettre à jour l'interface utilisateur
+        function updateUserInterface() {
+            if (currentUser) {
+                // Mettre à jour le badge chauffeur et le bouton d'accès
+                if (userType === "driver") {
+                    document.getElementById('driver-badge').style.display = 'inline';
+                    document.getElementById('driver-access-btn').style.display = 'flex';
+                } else {
+                    document.getElementById('driver-badge').style.display = 'none';
+                    document.getElementById('driver-access-btn').style.display = 'none';
+                }
+                
+                // Mettre à jour le texte de bienvenue
+                if (currentUser.displayName) {
+                    document.getElementById('welcome-text').textContent = `Bonjour ${currentUser.displayName}!`;
+                }
+                
+                // Mettre à jour le profil
+                document.getElementById('user-display-name').textContent = currentUser.displayName || 'Utilisateur';
+                document.getElementById('user-email').textContent = currentUser.email;
+                document.getElementById('user-type').textContent = userType === "driver" ? "Chauffeur" : "Passager";
+            }
+        }
+
         // Références aux éléments
         const mainContent = document.getElementById('main-content');
 
@@ -2602,6 +2644,15 @@
                 showScreen('user-profile-screen');
             } else {
                 showScreen('auth-screen');
+            }
+        });
+
+        // Bouton pour accéder à l'interface chauffeur
+        document.getElementById('driver-access-btn').addEventListener('click', () => {
+            if (userType === "driver") {
+                showScreen('driver-interface-screen');
+            } else {
+                showNotification('Vous devez être chauffeur pour accéder à cette interface', 'error');
             }
         });
 
@@ -3001,18 +3052,17 @@
             currentUser = user;
             if (user) {
                 showMainApp();
-                document.getElementById('user-display-name').textContent = user.displayName || 'Utilisateur';
-                document.getElementById('user-email').textContent = user.email;
                 
                 db.collection('users').doc(user.uid).get().then((doc) => {
                     if (doc.exists) {
                         const userData = doc.data();
                         userType = userData.userType || "passenger";
-                        document.getElementById('user-type').textContent = userType === "driver" ? "Chauffeur" : "Passager";
+                        
+                        // Mettre à jour l'interface utilisateur
+                        updateUserInterface();
                         
                         if (userType === "driver") {
-                            // Rediriger vers l'interface chauffeur
-                            showScreen('driver-interface-screen');
+                            showNotification('Bienvenue dans votre interface chauffeur!', 'success');
                         }
                     }
                 });
@@ -3029,6 +3079,8 @@
             // Si utilisateur non connecté, afficher l'écran d'authentification
             if (!currentUser) {
                 showScreen('auth-screen');
+            } else {
+                showMainApp();
             }
         });
     </script>
