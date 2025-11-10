@@ -138,7 +138,7 @@
             right: -50px;
             width: 150px;
             height: 150px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
         }
         
@@ -149,7 +149,7 @@
             right: 20px;
             width: 100px;
             height: 100px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
         }
         
@@ -321,7 +321,7 @@
             margin-top: 5px;
         }
         
-        /* Map Container */
+        /* Map Container - NOUVEAU STYLE AMÉLIORÉ */
         .map-container {
             height: 300px;
             background: #e2e8f0;
@@ -341,29 +341,13 @@
             background: #e2e8f0;
         }
         
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-        }
-        
-        .map-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        /* Map Controls */
         .map-controls {
             position: absolute;
-            top: 10px;
+            bottom: 10px;
             right: 10px;
             z-index: 1000;
             display: flex;
+            flex-direction: column;
             gap: 5px;
         }
         
@@ -375,9 +359,225 @@
             font-size: 12px;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
         }
         
-        /* Close Button */
+        .map-options-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(30, 30, 30, 0.95);
+            padding: 10px;
+            border-radius: 8px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: none;
+            width: 150px;
+        }
+        
+        .map-options-panel h3 {
+            margin-bottom: 8px;
+            color: #4CAF50;
+            font-size: 1rem;
+        }
+        
+        .map-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .map-option:last-child {
+            border-bottom: none;
+        }
+        
+        .map-option i {
+            margin-right: 8px;
+            width: 16px;
+            text-align: center;
+        }
+        
+        .map-option.active {
+            color: #4CAF50;
+        }
+        
+        /* Marqueurs personnalisés */
+        .user-marker {
+            background: #2196F3;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .destination-marker {
+            background: #F44336;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .bajaj-marker {
+            background: #4CAF50;
+            border: 3px solid white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .available-driver-marker {
+            background: #4CAF50;
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        /* Animation pour le véhicule en mouvement */
+        @keyframes move {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .moving {
+            animation: move 0.5s infinite;
+        }
+        
+        /* Indicateur de conducteurs disponibles */
+        .available-drivers {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 8px 12px;
+            border-radius: 8px;
+            z-index: 1000;
+            font-size: 0.8rem;
+            color: white;
+            display: none;
+        }
+        
+        .drivers-count {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        /* Route Summary */
+        .route-summary {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            right: 10px;
+            background: rgba(30, 30, 30, 0.95);
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            color: white;
+        }
+        
+        .route-summary h3 {
+            margin-bottom: 8px;
+            color: #4CAF50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+        }
+        
+        .close-summary {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .trip-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #444;
+            font-size: 0.9rem;
+        }
+        
+        .info-label {
+            color: #aaa;
+        }
+        
+        .info-value {
+            font-weight: 600;
+        }
+        
+        .eta {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 8px 0;
+            text-align: center;
+        }
+        
+        /* Suggestions d'adresses */
+        .suggestions {
+            position: absolute;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            border-radius: 8px;
+            width: 100%;
+            max-height: 120px;
+            overflow-y: auto;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .suggestion {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #444;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .suggestion:hover {
+            background: #3d3d3d;
+        }
+        
+        .suggestion:last-child {
+            border-bottom: none;
+        }
+
+        /* Reste du CSS existant... */
         .close-btn {
             position: absolute;
             top: 15px;
@@ -423,35 +623,60 @@
             color: white;
         }
         
-        /* Screens */
+        /* Screens - Modern Modal Style */
         .screen {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: white;
-            z-index: 200;
+            z-index: 1000;
             padding: 20px;
             overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+            border-radius: 20px 20px 0 0;
         }
         
-        .auth-header {
+        .screen.active {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
             text-align: center;
             margin-bottom: 30px;
             position: relative;
+            padding-top: 10px;
         }
         
-        .auth-title {
+        .modal-title {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--primary);
         }
         
-        .auth-subtitle {
+        .modal-subtitle {
             color: var(--gray);
             font-size: 14px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--light);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            cursor: pointer;
+            font-size: 18px;
         }
         
         .auth-options {
@@ -1023,6 +1248,93 @@
             border-color: var(--primary);
         }
         
+        /* Nouveaux styles pour système amélioré */
+        .ride-confirmation {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .driver-arrival {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f0f7ff;
+            border-radius: 10px;
+        }
+        
+        .arrival-time {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .cancellation-warning {
+            background: #fef3c7;
+            border-left: 4px solid var(--accent);
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+        }
+        
+        .driver-online-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .online {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .offline {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        /* Interface Chauffeur */
+        .driver-interface {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .ride-request {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .request-info {
+            margin-bottom: 10px;
+        }
+        
+        .request-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-small {
+            flex: 1;
+            padding: 10px;
+            font-size: 14px;
+        }
+        
         /* Active when screens are shown */
         .hidden {
             display: none;
@@ -1074,6 +1386,86 @@
             font-size: 14px;
             display: none;
         }
+
+        /* Notification moderne */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 90%;
+        }
+
+        .notification.success {
+            border-left: 4px solid var(--secondary);
+        }
+
+        .notification.error {
+            border-left: 4px solid var(--danger);
+        }
+
+        .notification.info {
+            border-left: 4px solid var(--primary);
+        }
+        
+        /* Nouveaux styles pour la sélection de véhicule */
+        .vehicle-selection {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .vehicle-option {
+            flex: 1;
+            min-width: 80px;
+            background: #2d2d2d;
+            border: 2px solid #444;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .vehicle-option:hover {
+            background: #3d3d3d;
+        }
+        
+        .vehicle-option.selected {
+            border-color: #4CAF50;
+            background: #1b5e20;
+        }
+        
+        .vehicle-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .vehicle-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .vehicle-price {
+            font-size: 0.7rem;
+            color: #4CAF50;
+        }
+        
+        .vehicle-time {
+            font-size: 0.7rem;
+            color: #aaa;
+        }
     </style>
 </head>
 <body>
@@ -1107,40 +1499,95 @@
             <!-- Bajaj Image -->
             <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/331066df-ae56-9e10-0bc8-02861b11d8dd.png" alt="Bajaj Mahajanga" class="bajaj-image">
             
-            <!-- Regulations Info -->
-            <div class="regulations-info">
-                <div class="regulations-title">Réglementation Bajaj Mahajanga</div>
-                <div class="regulation-item">
-                    <div class="regulation-icon"><i class="fas fa-users"></i></div>
-                    <div>Maximum 3 passagers par bajaj</div>
-                </div>
-                <div class="regulation-item">
-                    <div class="regulation-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    <div>Vitesse limitée à 40 km/h</div>
-                </div>
-                <div class="regulation-item">
-                    <div class="regulation-icon"><i class="fas fa-suitcase"></i></div>
-                    <div>Bagages limités à 50kg</div>
-                </div>
-                <div class="regulation-item">
-                    <div class="regulation-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div>Interdit à l'aéroport d'Amborovy</div>
-                </div>
-            </div>
-            
             <!-- Search Bar -->
             <div class="search-container">
                 <div class="search-icon"><i class="fas fa-search"></i></div>
-                <input type="text" class="search-input" id="search-input" placeholder="Rechercher une destination...">
+                <input type="text" class="search-input" id="search-input" placeholder="Où allez-vous?">
             </div>
             
-            <!-- Map Section -->
+            <!-- Map Section AMÉLIORÉE -->
             <div class="map-container">
                 <div id="map"></div>
+                
+                <!-- Panneau des options de carte -->
+                <div class="map-options-panel" id="mapOptionsPanel">
+                    <h3>Type de carte</h3>
+                    <div class="map-option active" data-layer="standard">
+                        <i class="fas fa-map"></i>
+                        <span>Standard</span>
+                    </div>
+                    <div class="map-option" data-layer="satellite">
+                        <i class="fas fa-satellite"></i>
+                        <span>Satellite</span>
+                    </div>
+                    <div class="map-option" data-layer="terrain">
+                        <i class="fas fa-mountain"></i>
+                        <span>Relief</span>
+                    </div>
+                    <div class="map-option" data-layer="dark">
+                        <i class="fas fa-moon"></i>
+                        <span>Mode Nuit</span>
+                    </div>
+                </div>
+                
+                <!-- Résumé d'itinéraire -->
+                <div class="route-summary" id="routeSummary">
+                    <h3>
+                        Itinéraire
+                        <button class="close-summary" id="closeSummary">&times;</button>
+                    </h3>
+                    <div class="trip-info">
+                        <span class="info-label">Distance:</span>
+                        <span class="info-value" id="routeDistance">-</span>
+                    </div>
+                    <div class="trip-info">
+                        <span class="info-label">Durée:</span>
+                        <span class="info-value" id="routeDuration">-</span>
+                    </div>
+                    <div class="eta" id="routeEta">--:--</div>
+                </div>
+                
+                <!-- Indicateur de conducteurs disponibles -->
+                <div class="available-drivers" id="availableDrivers">
+                    <span class="drivers-count" id="driversCount">0</span> bajajs disponibles
+                </div>
+                
+                <!-- Contrôles de carte -->
                 <div class="map-controls">
-                    <button class="map-btn" id="locate-btn">
+                    <button class="map-btn" id="mapOptionsBtn" title="Options de carte">
+                        <i class="fas fa-layer-group"></i>
+                    </button>
+                    <button class="map-btn" id="locate-btn" title="Ma position">
                         <i class="fas fa-location-arrow"></i>
                     </button>
+                    <button class="map-btn" id="zoomIn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="map-btn" id="zoomOut">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sélection de véhicule -->
+            <div class="vehicle-selection">
+                <div class="vehicle-option selected" data-type="bajaj">
+                    <div class="vehicle-icon">🛺</div>
+                    <div class="vehicle-name">Bajaj</div>
+                    <div class="vehicle-price">500 Ar/km</div>
+                    <div class="vehicle-time">2-5 min</div>
+                </div>
+                <div class="vehicle-option" data-type="taxi">
+                    <div class="vehicle-icon">🚕</div>
+                    <div class="vehicle-name">Taxi</div>
+                    <div class="vehicle-price">800 Ar/km</div>
+                    <div class="vehicle-time">3-7 min</div>
+                </div>
+                <div class="vehicle-option" data-type="car">
+                    <div class="vehicle-icon">🚗</div>
+                    <div class="vehicle-name">Voiture</div>
+                    <div class="vehicle-price">1000 Ar/km</div>
+                    <div class="vehicle-time">5-10 min</div>
                 </div>
             </div>
             
@@ -1169,31 +1616,10 @@
                 </div>
             </div>
             
-            <!-- Ads Section -->
-            <div class="ads-section">
-                <div class="ads-title">Gagnez de l'argent</div>
-                <div class="ad-item" id="watch-ad-btn">
-                    <div class="ad-icon"><i class="fas fa-play-circle"></i></div>
-                    <div class="ad-info">
-                        <div class="ad-name">Regarder une publicité</div>
-                        <div class="ad-description">Regardez une vidéo de 30 secondes</div>
-                    </div>
-                    <div class="ad-reward">+100 Ar</div>
-                </div>
-                <div class="ad-item" id="survey-btn">
-                    <div class="ad-icon"><i class="fas fa-clipboard-list"></i></div>
-                    <div class="ad-info">
-                        <div class="ad-name">Répondre à un sondage</div>
-                        <div class="ad-description">5 minutes de votre temps</div>
-                    </div>
-                    <div class="ad-reward">+500 Ar</div>
-                </div>
-            </div>
-            
-            <!-- Drivers Section -->
+            <!-- Available Drivers Section -->
             <div class="drivers-section">
                 <div class="section-title">
-                    <span id="drivers-title">Bajajs à Proximité</span>
+                    <span id="drivers-title">Bajajs Disponibles</span>
                     <span class="see-all">Voir tout</span>
                 </div>
                 
@@ -1234,7 +1660,7 @@
                         </div>
                         <div class="driver-distance">À 1.2 km • 7 min</div>
                     </div>
-                    <div class="driver-status status-busy">En course</div>
+                    <div class="driver-status status-available">Disponible</div>
                 </div>
                 
                 <div class="driver-card" data-driver-id="3">
@@ -1278,15 +1704,15 @@
                 <div class="nav-text">Paramètres</div>
             </div>
         </nav>
-        
+
         <!-- Authentication Screen -->
-        <div class="screen hidden" id="auth-screen">
-            <button class="close-btn" id="close-auth-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="auth-header">
-                <div class="auth-title" id="auth-title">Connexion</div>
-                <div class="auth-subtitle" id="auth-subtitle">Connectez-vous à votre compte</div>
+        <div class="screen" id="auth-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-auth-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Connexion</div>
+                <div class="modal-subtitle">Connectez-vous à votre compte</div>
             </div>
             
             <div class="error-message" id="auth-error"></div>
@@ -1349,6 +1775,24 @@
                     <input type="password" class="form-input" id="register-confirm" placeholder="Confirmez votre mot de passe">
                 </div>
                 
+                <!-- Champs supplémentaires pour les chauffeurs -->
+                <div id="driver-fields" class="hidden">
+                    <div class="form-group">
+                        <label class="form-label" for="driver-license">Numéro de permis</label>
+                        <input type="text" class="form-input" id="driver-license" placeholder="Numéro de permis">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="vehicle-number">Numéro du véhicule</label>
+                        <input type="text" class="form-input" id="vehicle-number" placeholder="Ex: 1245 TB">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="vehicle-color">Couleur du bajaj</label>
+                        <input type="text" class="form-input" id="vehicle-color" placeholder="Ex: Jaune, Bleu, Vert">
+                    </div>
+                </div>
+                
                 <button class="btn btn-primary" id="register-btn">
                     <span id="register-btn-text">S'inscrire</span>
                     <div class="spinner hidden" id="register-spinner"></div>
@@ -1369,15 +1813,177 @@
                 </div>
             </div>
         </div>
-        
+
+        <!-- Ride Booking Screen -->
+        <div class="screen" id="ride-booking-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-booking-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Réserver un Bajaj</div>
+                <div class="modal-subtitle">Choisissez votre destination</div>
+            </div>
+            
+            <div class="ride-booking">
+                <div class="location-inputs">
+                    <div class="location-input">
+                        <div class="location-dot dot-start"><i class="fas fa-circle"></i></div>
+                        <input type="text" class="location-field" id="start-location" placeholder="Votre position actuelle" value="Mahajanga Centre">
+                    </div>
+                    <div class="location-input">
+                        <div class="location-dot dot-end"><i class="fas fa-map-marker-alt"></i></div>
+                        <input type="text" class="location-field" id="end-location" placeholder="Destination">
+                    </div>
+                </div>
+                
+                <div class="price-estimate">
+                    <div class="price-row">
+                        <span>Prix estimé:</span>
+                        <span id="ride-price">1,500 Ar</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Distance:</span>
+                        <span id="ride-distance">2.5 km</span>
+                    </div>
+                    <div class="price-row price-total">
+                        <span>Total:</span>
+                        <span id="total-price">1,500 Ar</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Nombre de passagers (max 3)</label>
+                    <select class="form-input" id="passenger-count">
+                        <option value="1">1 passager</option>
+                        <option value="2">2 passagers</option>
+                        <option value="3">3 passagers</option>
+                    </select>
+                </div>
+                
+                <div class="cancellation-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Attention: Annulation abusive = 500 Ar de frais après 3 annulations
+                </div>
+                
+                <button class="btn btn-primary" id="confirm-booking-btn">Confirmer la réservation</button>
+            </div>
+        </div>
+
+        <!-- Ride Confirmation Screen -->
+        <div class="screen" id="ride-confirmation-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-confirmation-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Course Confirmée</div>
+                <div class="modal-subtitle">Votre chauffeur arrive</div>
+            </div>
+            
+            <div class="ride-confirmation">
+                <div class="driver-arrival">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Driver" class="driver-photo" style="width: 80px; height: 80px;">
+                    <div>
+                        <div class="driver-name">Rakoto Jean</div>
+                        <div class="driver-vehicle">Bajaj Jaune • 1245 TB</div>
+                        <div class="arrival-time">Arrive dans 5 min</div>
+                    </div>
+                </div>
+                
+                <div class="price-estimate">
+                    <div class="price-row">
+                        <span>Destination:</span>
+                        <span id="confirmation-destination">Centre-ville</span>
+                    </div>
+                    <div class="price-row price-total">
+                        <span>Prix:</span>
+                        <span id="confirmation-price">1,500 Ar</span>
+                    </div>
+                </div>
+                
+                <div class="request-actions">
+                    <button class="btn btn-secondary" id="contact-driver-btn">
+                        <i class="fas fa-phone"></i> Appeler le chauffeur
+                    </button>
+                    <button class="btn btn-danger" id="cancel-ride-btn">
+                        <i class="fas fa-times"></i> Annuler la course
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Driver Interface Screen -->
+        <div class="screen" id="driver-interface-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-driver-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Interface Chauffeur</div>
+                <div class="modal-subtitle">Gérez vos courses</div>
+            </div>
+            
+            <div class="driver-interface">
+                <div class="status-indicator">
+                    <div class="driver-online-status online" id="driver-status">
+                        <i class="fas fa-circle"></i> En ligne
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <span>Courses en attente</span>
+                </div>
+                
+                <div class="ride-request">
+                    <div class="request-info">
+                        <strong>Destination:</strong> Centre-ville<br>
+                        <strong>Prix:</strong> 1,500 Ar<br>
+                        <strong>Distance:</strong> 2.5 km<br>
+                        <strong>Client:</strong> Jean Dupont
+                    </div>
+                    <div class="request-actions">
+                        <button class="btn btn-secondary btn-small accept-ride-btn">
+                            <i class="fas fa-check"></i> Accepter
+                        </button>
+                        <button class="btn btn-danger btn-small decline-ride-btn">
+                            <i class="fas fa-times"></i> Refuser
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <span>Course en cours</span>
+                </div>
+                
+                <div class="ride-request">
+                    <div class="request-info">
+                        <strong>Destination:</strong> Amborovy<br>
+                        <strong>Prix:</strong> 4,500 Ar<br>
+                        <strong>Client:</strong> Marie Rabe<br>
+                        <strong>Statut:</strong> En route
+                    </div>
+                    <div class="request-actions">
+                        <button class="btn btn-primary btn-small">
+                            <i class="fas fa-map-marker-alt"></i> Itinéraire
+                        </button>
+                        <button class="btn btn-secondary btn-small">
+                            <i class="fas fa-flag-checkered"></i> Terminer
+                        </button>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" id="toggle-online-btn">
+                    <i class="fas fa-toggle-on"></i> Passer hors ligne
+                </button>
+            </div>
+        </div>
+
         <!-- User Profile Screen -->
-        <div class="screen hidden" id="user-profile-screen">
-            <button class="close-btn" id="close-profile-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="auth-header">
-                <div class="auth-title">Mon Profil</div>
-                <div class="auth-subtitle">Informations de votre compte</div>
+        <div class="screen" id="user-profile-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-profile-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Mon Profil</div>
+                <div class="modal-subtitle">Informations de votre compte</div>
             </div>
             
             <div class="user-profile">
@@ -1425,115 +2031,15 @@
             <button class="btn btn-primary" style="margin-top: 20px;" id="edit-profile-btn">Modifier le profil</button>
             <button class="btn" style="margin-top: 10px; background: #f8fafc; color: var(--dark);" id="logout-btn">Se déconnecter</button>
         </div>
-        
-        <!-- Ride Booking Screen -->
-        <div class="screen hidden" id="ride-booking-screen">
-            <button class="close-btn" id="close-booking-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="auth-header">
-                <div class="auth-title">Réserver un Bajaj</div>
-                <div class="auth-subtitle">Choisissez votre destination</div>
-            </div>
-            
-            <div class="ride-booking">
-                <div class="location-inputs">
-                    <div class="location-input">
-                        <div class="location-dot dot-start"><i class="fas fa-circle"></i></div>
-                        <input type="text" class="location-field" id="start-location" placeholder="Votre position actuelle" value="Mahajanga Centre">
-                    </div>
-                    <div class="location-input">
-                        <div class="location-dot dot-end"><i class="fas fa-map-marker-alt"></i></div>
-                        <input type="text" class="location-field" id="end-location" placeholder="Destination">
-                    </div>
-                </div>
-                
-                <div class="price-estimate">
-                    <div class="price-row">
-                        <span>Prix estimé:</span>
-                        <span id="ride-price">1,500 Ar</span>
-                    </div>
-                    <div class="price-row">
-                        <span>Commission Bajaj Secure (10%):</span>
-                        <span id="commission-price">150 Ar</span>
-                    </div>
-                    <div class="price-row price-total">
-                        <span>Total:</span>
-                        <span id="total-price">1,650 Ar</span>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Nombre de passagers (max 3)</label>
-                    <select class="form-input" id="passenger-count">
-                        <option value="1">1 passager</option>
-                        <option value="2">2 passagers</option>
-                        <option value="3">3 passagers</option>
-                    </select>
-                </div>
-                
-                <button class="btn btn-primary" id="confirm-booking-btn">Confirmer la réservation</button>
-            </div>
-        </div>
-        
-        <!-- Payment Screen -->
-        <div class="screen hidden" id="payment-screen">
-            <button class="close-btn" id="close-payment-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="auth-header">
-                <div class="auth-title">Paiement</div>
-                <div class="auth-subtitle">Choisissez votre méthode de paiement</div>
-            </div>
-            
-            <div class="price-estimate" style="margin-top: 20px;">
-                <div class="price-row">
-                    <span>Montant à payer:</span>
-                    <span id="payment-amount">1,650 Ar</span>
-                </div>
-            </div>
-            
-            <div class="payment-options">
-                <div class="payment-option selected" data-payment="mvola">
-                    <div class="payment-icon mvola-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <div class="payment-info">
-                        <div class="payment-name">Mvola</div>
-                        <div class="payment-description">Paiement via Mvola</div>
-                    </div>
-                    <div><i class="fas fa-check-circle" style="color: var(--secondary);"></i></div>
-                </div>
-                
-                <div class="payment-option" data-payment="orange">
-                    <div class="payment-icon orange-money-icon"><i class="fas fa-money-bill-wave"></i></div>
-                    <div class="payment-info">
-                        <div class="payment-name">Orange Money</div>
-                        <div class="payment-description">Paiement via Orange Money</div>
-                    </div>
-                    <div><i class="far fa-circle" style="color: var(--gray);"></i></div>
-                </div>
-                
-                <div class="payment-option" data-payment="airtel">
-                    <div class="payment-icon airtel-money-icon"><i class="fas fa-wallet"></i></div>
-                    <div class="payment-info">
-                        <div class="payment-name">Airtel Money</div>
-                        <div class="payment-description">Paiement via Airtel Money</div>
-                    </div>
-                    <div><i class="far fa-circle" style="color: var(--gray);"></i></div>
-                </div>
-            </div>
-            
-            <button class="btn btn-primary" id="confirm-payment-btn">Payer maintenant</button>
-            <button class="btn" style="margin-top: 10px; background: #f8fafc; color: var(--dark);" id="back-to-booking-btn">Retour</button>
-        </div>
-        
+
         <!-- Wallet Screen -->
-        <div class="screen hidden" id="wallet-screen">
-            <button class="close-btn" id="close-wallet-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="auth-header">
-                <div class="auth-title">Mon Portefeuille</div>
-                <div class="auth-subtitle">Gérez votre solde et vos transactions</div>
+        <div class="screen" id="wallet-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-wallet-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Mon Portefeuille</div>
+                <div class="modal-subtitle">Gérez votre solde et vos transactions</div>
             </div>
             
             <div class="wallet-balance">
@@ -1571,15 +2077,15 @@
             
             <button class="btn btn-primary" style="margin-top: 20px;" id="add-money-btn">Ajouter des fonds</button>
         </div>
-        
+
         <!-- History Screen -->
-        <div class="screen hidden" id="history-screen">
-            <button class="close-btn" id="close-history-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="auth-header">
-                <div class="auth-title">Historique des courses</div>
-                <div class="auth-subtitle">Vos trajets précédents</div>
+        <div class="screen" id="history-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-history-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Historique des courses</div>
+                <div class="modal-subtitle">Vos trajets précédents</div>
             </div>
             
             <div class="history-filters">
@@ -1633,15 +2139,15 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Ratings Screen -->
-        <div class="screen hidden" id="ratings-screen">
-            <button class="close-btn" id="close-ratings-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="auth-header">
-                <div class="auth-title">Mes Notes</div>
-                <div class="auth-subtitle">Vos évaluations des chauffeurs</div>
+        <div class="screen" id="ratings-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-ratings-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Mes Notes</div>
+                <div class="modal-subtitle">Vos évaluations des chauffeurs</div>
             </div>
             
             <div class="driver-card">
@@ -1701,6 +2207,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- Leaflet JS -->
@@ -1727,19 +2234,240 @@
         let currentUser = null;
         let map = null;
         let userMarker = null;
+        let userType = "passenger";
+        let userLocation = { lat: -15.7167, lng: 46.3167 }; // Mahajanga
+        let currentRide = null;
+        
+        // Variables pour la nouvelle carte
+        let destinationMarker = null;
+        let routeLine = null;
+        let driverMarker = null;
+        let availableDriversMarkers = [];
+        let selectedVehicleType = 'bajaj';
+        let currentDriver = null;
+        let simulationInterval;
+        let currentStep = 0;
+        let isTripActive = false;
+        let pickupCoordinates = null;
+        let destinationCoordinates = null;
+        let routePoints = [];
 
-        // Initialiser la carte
+        // Données simulées
+        const availableDrivers = [
+            {
+                id: 1,
+                name: "Rakoto Jean",
+                vehicle: "Bajaj Jaune • 1245 TB",
+                rating: 4.5,
+                location: { lat: -15.7200, lng: 46.3200 },
+                status: "available",
+                phone: "+261340000001"
+            },
+            {
+                id: 2, 
+                name: "Rasoa Marie",
+                vehicle: "Bajaj Bleu • 5687 TB",
+                rating: 4.0,
+                location: { lat: -15.7180, lng: 46.3180 },
+                status: "available",
+                phone: "+261340000002"
+            }
+        ];
+
+        // Données des conducteurs disponibles
+        const driversData = {
+            'bajaj': [
+                { name: 'Rakoto Jean', rating: 4.7, avatar: 'RJ', vehicle: 'Bajaj Jaune', plate: '1245 TB', experience: 3.2, trips: 1247, response: 94 },
+                { name: 'Paul Rabe', rating: 4.5, avatar: 'PR', vehicle: 'Bajaj Bleu', plate: '5687 TB', experience: 2.8, trips: 987, response: 92 },
+                { name: 'Marie Rasoa', rating: 4.8, avatar: 'MR', vehicle: 'Bajaj Rouge', plate: '9821 TB', experience: 4.1, trips: 1567, response: 96 }
+            ],
+            'taxi': [
+                { name: 'Robert Andria', rating: 4.6, avatar: 'RA', vehicle: 'Taxi Blanc', plate: 'TA 3456 BC', experience: 5.2, trips: 2345, response: 95 },
+                { name: 'Lucie Ravao', rating: 4.9, avatar: 'LR', vehicle: 'Taxi Jaune', plate: 'TA 7890 DE', experience: 6.1, trips: 2876, response: 98 }
+            ],
+            'car': [
+                { name: 'Eric Randria', rating: 4.8, avatar: 'ER', vehicle: 'Toyota Corolla', plate: 'CA 5678 HI', experience: 7.3, trips: 3456, response: 97 },
+                { name: 'Sophie Ralison', rating: 4.7, avatar: 'SR', vehicle: 'Nissan Sunny', plate: 'CA 9012 JK', experience: 5.9, trips: 2765, response: 94 }
+            ]
+        };
+
+        // Initialiser la carte AVEC LE SYSTÈME AMÉLIORÉ
         function initMap() {
-            // Centrer sur Mahajanga par défaut
-            map = L.map('map').setView([-15.7167, 46.3167], 13);
+            // Initialisation de la carte centrée sur Mahajanga
+            map = L.map('map', {
+                zoomControl: false
+            }).setView([userLocation.lat, userLocation.lng], 14);
             
-            // Ajouter la couche de carte
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
+            // Définition des différentes couches de carte
+            const standardLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            });
             
-            // Bouton de localisation
+            const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: '&copy; <a href="https://www.esri.com/">Esri</a>'
+            });
+            
+            const terrainLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                attribution: '&a href="https://opentopomap.org/">OpenTopoMap</a> contributors'
+            });
+            
+            const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            });
+            
+            // Ajout de la couche standard par défaut
+            standardLayer.addTo(map);
+            let currentMapLayer = 'standard';
+            
+            // Marqueur pour la position de l'utilisateur
+            userMarker = L.marker([userLocation.lat, userLocation.lng], {
+                icon: L.divIcon({
+                    className: 'user-marker',
+                    iconSize: [40, 40],
+                    html: '📍'
+                })
+            }).addTo(map)
+            .bindPopup('Votre position')
+            .openPopup();
+            
+            // Mettre à jour les conducteurs disponibles
+            updateAvailableDrivers();
+            
+            // Événements pour les contrôles de carte
             document.getElementById('locate-btn').addEventListener('click', locateUser);
+            document.getElementById('zoomIn').addEventListener('click', () => map.zoomIn());
+            document.getElementById('zoomOut').addEventListener('click', () => map.zoomOut());
+            document.getElementById('mapOptionsBtn').addEventListener('click', toggleMapOptions);
+            document.getElementById('closeSummary').addEventListener('click', () => {
+                document.getElementById('routeSummary').style.display = 'none';
+            });
+            
+            // Événements pour les options de carte
+            document.querySelectorAll('.map-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const layer = this.getAttribute('data-layer');
+                    switchMapLayer(layer);
+                    document.getElementById('mapOptionsPanel').style.display = 'none';
+                });
+            });
+            
+            // Événements pour la sélection de véhicule
+            document.querySelectorAll('.vehicle-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const type = this.getAttribute('data-type');
+                    selectVehicle(type);
+                });
+            });
+            
+            // Fermer les panneaux en cliquant sur la carte
+            map.on('click', function() {
+                document.getElementById('mapOptionsPanel').style.display = 'none';
+                document.getElementById('routeSummary').style.display = 'none';
+            });
+            
+            // Fonction pour basculer entre les couches de carte
+            function switchMapLayer(layer) {
+                // Retirer toutes les couches
+                map.removeLayer(standardLayer);
+                map.removeLayer(satelliteLayer);
+                map.removeLayer(terrainLayer);
+                map.removeLayer(darkLayer);
+                
+                // Ajouter la couche sélectionnée
+                switch(layer) {
+                    case 'standard':
+                        standardLayer.addTo(map);
+                        break;
+                    case 'satellite':
+                        satelliteLayer.addTo(map);
+                        break;
+                    case 'terrain':
+                        terrainLayer.addTo(map);
+                        break;
+                    case 'dark':
+                        darkLayer.addTo(map);
+                        break;
+                }
+                
+                currentMapLayer = layer;
+                
+                // Mettre à jour l'interface
+                document.querySelectorAll('.map-option').forEach(option => {
+                    if (option.getAttribute('data-layer') === layer) {
+                        option.classList.add('active');
+                    } else {
+                        option.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Fonction pour basculer l'affichage du panneau des options de carte
+            function toggleMapOptions() {
+                const panel = document.getElementById('mapOptionsPanel');
+                if (panel.style.display === 'block') {
+                    panel.style.display = 'none';
+                } else {
+                    panel.style.display = 'block';
+                    // Masquer les autres panneaux
+                    document.getElementById('routeSummary').style.display = 'none';
+                }
+            }
+            
+            // Fonction pour sélectionner un type de véhicule
+            function selectVehicle(type) {
+                document.querySelectorAll('.vehicle-option').forEach(option => {
+                    if (option.getAttribute('data-type') === type) {
+                        option.classList.add('selected');
+                    } else {
+                        option.classList.remove('selected');
+                    }
+                });
+                
+                selectedVehicleType = type;
+                
+                // Mettre à jour les conducteurs disponibles
+                updateAvailableDrivers();
+            }
+            
+            // Fonction pour mettre à jour les conducteurs disponibles sur la carte
+            function updateAvailableDrivers() {
+                // Supprimer les anciens marqueurs
+                availableDriversMarkers.forEach(marker => map.removeLayer(marker));
+                availableDriversMarkers = [];
+                
+                // Générer de nouveaux conducteurs autour de la position de l'utilisateur
+                const userPos = userMarker.getLatLng();
+                const drivers = driversData[selectedVehicleType];
+                const numDrivers = Math.floor(Math.random() * 3) + 2; // 2-4 conducteurs
+                
+                for (let i = 0; i < numDrivers; i++) {
+                    const driver = drivers[Math.floor(Math.random() * drivers.length)];
+                    const lat = userPos.lat + (Math.random() - 0.5) * 0.01;
+                    const lng = userPos.lng + (Math.random() - 0.5) * 0.01;
+                    
+                    let iconHtml;
+                    switch(selectedVehicleType) {
+                        case 'bajaj': iconHtml = '🛺'; break;
+                        case 'taxi': iconHtml = '🚕'; break;
+                        case 'car': iconHtml = '🚗'; break;
+                    }
+                    
+                    const driverMarker = L.marker([lat, lng], {
+                        icon: L.divIcon({
+                            className: 'available-driver-marker',
+                            iconSize: [30, 30],
+                            html: iconHtml
+                        })
+                    }).addTo(map)
+                    .bindPopup(`${driver.name}<br>${driver.vehicle}<br>⭐ ${driver.rating}`);
+                    
+                    availableDriversMarkers.push(driverMarker);
+                }
+                
+                // Mettre à jour le compteur de conducteurs
+                document.getElementById('driversCount').textContent = numDrivers;
+                document.getElementById('availableDrivers').style.display = 'block';
+            }
         }
 
         // Localiser l'utilisateur
@@ -1747,70 +2475,142 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
-                        const userLat = position.coords.latitude;
-                        const userLng = position.coords.longitude;
+                        userLocation.lat = position.coords.latitude;
+                        userLocation.lng = position.coords.longitude;
                         
-                        // Mettre à jour ou créer le marqueur
                         if (userMarker) {
-                            userMarker.setLatLng([userLat, userLng]);
+                            userMarker.setLatLng([userLocation.lat, userLocation.lng]);
                         } else {
-                            userMarker = L.marker([userLat, userLng])
+                            userMarker = L.marker([userLocation.lat, userLocation.lng])
                                 .addTo(map)
                                 .bindPopup('Votre position')
                                 .openPopup();
                         }
                         
-                        // Centrer la carte sur la position
-                        map.setView([userLat, userLng], 15);
+                        map.setView([userLocation.lat, userLocation.lng], 15);
+                        
+                        // Mettre à jour les conducteurs disponibles
+                        updateAvailableDrivers();
                     },
                     (error) => {
-                        alert('Impossible de récupérer votre position');
+                        console.log('Géolocalisation non disponible');
                     }
                 );
-            } else {
-                alert('La géolocalisation n\'est pas supportée par votre navigateur');
             }
+        }
+
+        // Fonction pour calculer la distance entre deux points (simplifié)
+        function calculateDistance(start, end) {
+            const R = 6371; // Rayon de la Terre en km
+            const dLat = (end.lat - start.lat) * Math.PI / 180;
+            const dLon = (end.lng - start.lng) * Math.PI / 180;
+            const a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(start.lat * Math.PI / 180) * Math.cos(end.lat * Math.PI / 180) * 
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            const distance = R * c;
+            return distance.toFixed(1);
+        }
+
+        // Fonction pour formater la durée
+        function formatDuration(minutes) {
+            if (minutes < 60) {
+                return `${minutes} min`;
+            } else {
+                const hours = Math.floor(minutes / 60);
+                const mins = minutes % 60;
+                return `${hours}h${mins > 0 ? `${mins}min` : ''}`;
+            }
+        }
+
+        // Fonction pour calculer l'ETA
+        function calculateEta(minutes) {
+            const now = new Date();
+            now.setMinutes(now.getMinutes() + minutes);
+            return now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+
+        // Fonction pour générer des points d'itinéraire entre deux coordonnées
+        function generateRoutePoints(start, end) {
+            const points = [];
+            const numPoints = 20;
+            
+            for (let i = 0; i <= numPoints; i++) {
+                const ratio = i / numPoints;
+                const lat = start.lat + (end.lat - start.lat) * ratio;
+                const lng = start.lng + (end.lng - start.lng) * ratio;
+                
+                // Ajouter un peu de variation pour simuler un trajet réaliste
+                const variation = 0.001;
+                points.push([
+                    lat + (Math.random() - 0.5) * variation,
+                    lng + (Math.random() - 0.5) * variation
+                ]);
+            }
+            
+            return points;
+        }
+
+        // Fonctions pour gérer les écrans modaux
+        function showScreen(screenId) {
+            // Cacher tous les écrans
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            
+            // Afficher l'écran demandé
+            const screen = document.getElementById(screenId);
+            if (screen) {
+                screen.classList.add('active');
+            }
+        }
+
+        function hideAllScreens() {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+        }
+
+        function showMainApp() {
+            hideAllScreens();
+            document.getElementById('main-content').style.display = 'block';
+        }
+
+        // Fonction de notification moderne
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
         }
 
         // Références aux éléments
         const mainContent = document.getElementById('main-content');
-        const authScreen = document.getElementById('auth-screen');
-        const userProfileScreen = document.getElementById('user-profile-screen');
-        const rideBookingScreen = document.getElementById('ride-booking-screen');
-        const paymentScreen = document.getElementById('payment-screen');
-        const walletScreen = document.getElementById('wallet-screen');
-        const historyScreen = document.getElementById('history-screen');
-        const ratingsScreen = document.getElementById('ratings-screen');
-
-        // Fonctions de navigation
-        function showScreen(screen) {
-            // Cacher tous les écrans
-            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
-            mainContent.classList.add('hidden');
-            
-            // Afficher l'écran demandé
-            screen.classList.remove('hidden');
-        }
-
-        function showMainApp() {
-            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
-            mainContent.classList.remove('hidden');
-        }
 
         // Événements de navigation
         document.getElementById('profile-btn').addEventListener('click', () => {
             if (currentUser) {
-                showScreen(userProfileScreen);
+                showScreen('user-profile-screen');
             } else {
-                showScreen(authScreen);
+                showScreen('auth-screen');
             }
         });
 
         // Boutons de fermeture
         document.getElementById('close-auth-btn').addEventListener('click', showMainApp);
-        document.getElementById('close-profile-btn').addEventListener('click', showMainApp);
         document.getElementById('close-booking-btn').addEventListener('click', showMainApp);
-        document.getElementById('close-payment-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-confirmation-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-driver-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-profile-btn').addEventListener('click', showMainApp);
         document.getElementById('close-wallet-btn').addEventListener('click', showMainApp);
         document.getElementById('close-history-btn').addEventListener('click', showMainApp);
         document.getElementById('close-ratings-btn').addEventListener('click', showMainApp);
@@ -1818,37 +2618,51 @@
         // Actions rapides
         document.getElementById('book-ride-btn').addEventListener('click', () => {
             if (currentUser) {
-                showScreen(rideBookingScreen);
+                showScreen('ride-booking-screen');
             } else {
-                showScreen(authScreen);
+                showScreen('auth-screen');
             }
         });
 
         document.getElementById('history-btn').addEventListener('click', () => {
             if (currentUser) {
-                showScreen(historyScreen);
+                showScreen('history-screen');
             } else {
-                showScreen(authScreen);
+                showScreen('auth-screen');
             }
         });
 
         document.getElementById('ratings-btn').addEventListener('click', () => {
             if (currentUser) {
-                showScreen(ratingsScreen);
+                showScreen('ratings-screen');
             } else {
-                showScreen(authScreen);
+                showScreen('auth-screen');
             }
         });
 
         document.getElementById('wallet-btn').addEventListener('click', () => {
             if (currentUser) {
-                showScreen(walletScreen);
+                showScreen('wallet-screen');
             } else {
-                showScreen(authScreen);
+                showScreen('auth-screen');
             }
         });
 
         // Authentification
+        document.getElementById('passenger-option').addEventListener('click', () => {
+            document.getElementById('passenger-option').classList.add('active');
+            document.getElementById('driver-option').classList.remove('active');
+            document.getElementById('driver-fields').classList.add('hidden');
+            userType = "passenger";
+        });
+
+        document.getElementById('driver-option').addEventListener('click', () => {
+            document.getElementById('driver-option').classList.add('active');
+            document.getElementById('passenger-option').classList.remove('active');
+            document.getElementById('driver-fields').classList.remove('hidden');
+            userType = "driver";
+        });
+
         document.getElementById('show-register-link').addEventListener('click', () => {
             document.getElementById('login-form').classList.add('hidden');
             document.getElementById('register-form').classList.remove('hidden');
@@ -1865,16 +2679,51 @@
             const password = document.getElementById('password').value;
             
             if (!email || !password) {
-                alert('Veuillez remplir tous les champs');
+                showNotification('Veuillez remplir tous les champs', 'error');
                 return;
             }
             
             try {
                 const userCredential = await auth.signInWithEmailAndPassword(email, password);
                 currentUser = userCredential.user;
+                
+                const userDoc = await db.collection('users').doc(currentUser.uid).get();
+                if (userDoc.exists) {
+                    userType = userDoc.data().userType || "passenger";
+                }
+                
                 showMainApp();
+                showNotification('Connexion réussie!', 'success');
+                locateUser();
             } catch (error) {
-                alert('Erreur de connexion: ' + error.message);
+                showNotification('Erreur de connexion: ' + error.message, 'error');
+            }
+        });
+
+        // Connexion Google
+        document.getElementById('google-login-btn').addEventListener('click', async () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            try {
+                const result = await auth.signInWithPopup(provider);
+                currentUser = result.user;
+                
+                const userDoc = await db.collection('users').doc(currentUser.uid).get();
+                if (!userDoc.exists) {
+                    await db.collection('users').doc(currentUser.uid).set({
+                        name: currentUser.displayName,
+                        email: currentUser.email,
+                        userType: userType,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } else {
+                    userType = userDoc.data().userType || "passenger";
+                }
+                
+                showMainApp();
+                showNotification('Connexion Google réussie!', 'success');
+                locateUser();
+            } catch (error) {
+                showNotification('Erreur de connexion Google: ' + error.message, 'error');
             }
         });
 
@@ -1886,22 +2735,52 @@
             const confirm = document.getElementById('register-confirm').value;
             
             if (!name || !email || !password || !confirm) {
-                alert('Veuillez remplir tous les champs');
+                showNotification('Veuillez remplir tous les champs', 'error');
                 return;
             }
             
             if (password !== confirm) {
-                alert('Les mots de passe ne correspondent pas');
+                showNotification('Les mots de passe ne correspondent pas', 'error');
                 return;
+            }
+            
+            if (userType === "driver") {
+                const license = document.getElementById('driver-license').value;
+                const vehicleNumber = document.getElementById('vehicle-number').value;
+                const vehicleColor = document.getElementById('vehicle-color').value;
+                
+                if (!license || !vehicleNumber || !vehicleColor) {
+                    showNotification('Veuillez remplir tous les champs pour les chauffeurs', 'error');
+                    return;
+                }
             }
             
             try {
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 await userCredential.user.updateProfile({ displayName: name });
                 currentUser = userCredential.user;
+                
+                const userData = {
+                    name: name,
+                    email: email,
+                    userType: userType,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                };
+                
+                if (userType === "driver") {
+                    userData.driverLicense = document.getElementById('driver-license').value;
+                    userData.vehicleNumber = document.getElementById('vehicle-number').value;
+                    userData.vehicleColor = document.getElementById('vehicle-color').value;
+                    userData.status = "offline";
+                }
+                
+                await db.collection('users').doc(currentUser.uid).set(userData);
+                
                 showMainApp();
+                showNotification('Inscription réussie!', 'success');
+                locateUser();
             } catch (error) {
-                alert('Erreur d\'inscription: ' + error.message);
+                showNotification('Erreur d\'inscription: ' + error.message, 'error');
             }
         });
 
@@ -1910,25 +2789,211 @@
             try {
                 await auth.signOut();
                 currentUser = null;
+                userType = "passenger";
                 showMainApp();
+                showNotification('Déconnexion réussie', 'info');
             } catch (error) {
-                console.error('Erreur de déconnexion:', error);
+                showNotification('Erreur de déconnexion', 'error');
             }
         });
 
-        // Réservation
+        // Réservation de course
         document.getElementById('confirm-booking-btn').addEventListener('click', () => {
-            showScreen(paymentScreen);
+            const destination = document.getElementById('end-location').value;
+            const price = document.getElementById('total-price').textContent;
+            
+            if (!destination) {
+                showNotification('Veuillez entrer une destination', 'error');
+                return;
+            }
+            
+            // Simulation de recherche de chauffeur
+            const availableDriver = availableDrivers.find(driver => driver.status === "available");
+            if (availableDriver) {
+                currentRide = {
+                    driver: availableDriver,
+                    destination: destination,
+                    price: price,
+                    status: 'searching'
+                };
+                
+                document.getElementById('confirmation-destination').textContent = destination;
+                document.getElementById('confirmation-price').textContent = price;
+                showScreen('ride-confirmation-screen');
+                
+                // Simulation d'acceptation automatique
+                setTimeout(() => {
+                    availableDriver.status = "busy";
+                    showNotification(`Chauffeur ${availableDriver.name} a accepté votre course!`, 'success');
+                    
+                    // Mettre à jour l'interface
+                    document.querySelector('.driver-arrival .driver-name').textContent = availableDriver.name;
+                    document.querySelector('.driver-arrival .driver-vehicle').textContent = availableDriver.vehicle;
+                    
+                    // Simuler le trajet sur la carte
+                    simulateRideOnMap(availableDriver);
+                }, 2000);
+            } else {
+                showNotification('Aucun chauffeur disponible pour le moment', 'error');
+            }
         });
 
-        document.getElementById('back-to-booking-btn').addEventListener('click', () => {
-            showScreen(rideBookingScreen);
+        // Fonction pour simuler le trajet sur la carte
+        function simulateRideOnMap(driver) {
+            // Effacer les anciens marqueurs et tracés
+            if (destinationMarker) map.removeLayer(destinationMarker);
+            if (routeLine) map.removeLayer(routeLine);
+            if (driverMarker) map.removeLayer(driverMarker);
+            
+            // Ajouter le marqueur de destination
+            const destinationCoords = [userLocation.lat + 0.01, userLocation.lng + 0.01]; // Simulation
+            destinationMarker = L.marker(destinationCoords, {
+                icon: L.divIcon({
+                    className: 'destination-marker',
+                    iconSize: [40, 40],
+                    html: '🏁'
+                })
+            }).addTo(map)
+            .bindPopup('Destination');
+            
+            // Générer l'itinéraire
+            routePoints = generateRoutePoints(
+                { lat: driver.location.lat, lng: driver.location.lng },
+                { lat: destinationCoords[0], lng: destinationCoords[1] }
+            );
+            
+            // Tracer l'itinéraire
+            routeLine = L.polyline(routePoints, {
+                color: '#4CAF50',
+                weight: 5,
+                opacity: 0.7
+            }).addTo(map);
+            
+            // Ajouter le marqueur du chauffeur
+            driverMarker = L.marker([driver.location.lat, driver.location.lng], {
+                icon: L.divIcon({
+                    className: 'bajaj-marker',
+                    iconSize: [50, 50],
+                    html: '🛺'
+                })
+            }).addTo(map)
+            .bindPopup(`Votre chauffeur - ${driver.name}`);
+            
+            // Ajuster la vue de la carte pour montrer l'itinéraire complet
+            map.fitBounds(routeLine.getBounds());
+            
+            // Calculer les informations de trajet
+            const distance = calculateDistance(
+                { lat: driver.location.lat, lng: driver.location.lng },
+                { lat: destinationCoords[0], lng: destinationCoords[1] }
+            );
+            const duration = Math.round(distance * 3);
+            const eta = calculateEta(duration);
+            
+            // Mettre à jour le résumé d'itinéraire
+            document.getElementById('routeDistance').textContent = `${distance} km`;
+            document.getElementById('routeDuration').textContent = formatDuration(duration);
+            document.getElementById('routeEta').textContent = eta;
+            document.getElementById('routeSummary').style.display = 'block';
+            
+            // Démarrer la simulation du trajet
+            startRideSimulation();
+        }
+
+        // Fonction pour démarrer la simulation du trajet
+        function startRideSimulation() {
+            isTripActive = true;
+            currentStep = 0;
+            
+            // Ajouter l'animation de mouvement
+            driverMarker.getElement().classList.add('moving');
+            
+            simulationInterval = setInterval(function() {
+                if (currentStep >= routePoints.length) {
+                    clearInterval(simulationInterval);
+                    // Course terminée
+                    driverMarker.getElement().classList.remove('moving');
+                    showNotification('Course terminée!', 'success');
+                    return;
+                }
+                
+                // Mettre à jour la position du chauffeur
+                driverMarker.setLatLng(routePoints[currentStep]);
+                
+                currentStep++;
+            }, 800);
+        }
+
+         // Contact chauffeur
+        document.getElementById('contact-driver-btn').addEventListener('click', () => {
+            if (currentRide && currentRide.driver) {
+                showNotification(`Appel vers ${currentRide.driver.phone}...`, 'info');
+            }
         });
 
-        // Paiement
-        document.getElementById('confirm-payment-btn').addEventListener('click', () => {
-            alert('Paiement simulé avec succès!');
-            showMainApp();
+        // Annulation course
+        document.getElementById('cancel-ride-btn').addEventListener('click', () => {
+            if (confirm('Êtes-vous sûr de vouloir annuler cette course?')) {
+                if (currentRide && currentRide.driver) {
+                    currentRide.driver.status = "available";
+                }
+                currentRide = null;
+                
+                // Arrêter la simulation
+                if (simulationInterval) {
+                    clearInterval(simulationInterval);
+                }
+                if (driverMarker) {
+                    driverMarker.getElement().classList.remove('moving');
+                    map.removeLayer(driverMarker);
+                }
+                if (routeLine) {
+                    map.removeLayer(routeLine);
+                }
+                if (destinationMarker) {
+                    map.removeLayer(destinationMarker);
+                }
+                
+                showMainApp();
+                showNotification('Course annulée', 'info');
+            }
+        });
+
+        // Interface chauffeur
+        document.querySelectorAll('.accept-ride-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const rideInfo = this.closest('.ride-request').querySelector('.request-info').textContent;
+                showNotification('Course acceptée!', 'success');
+                this.closest('.ride-request').style.display = 'none';
+            });
+        });
+
+        document.querySelectorAll('.decline-ride-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Refuser cette course?')) {
+                    this.closest('.ride-request').style.display = 'none';
+                    showNotification('Course refusée', 'info');
+                }
+            });
+        });
+
+        document.getElementById('toggle-online-btn').addEventListener('click', function() {
+            const statusElement = document.getElementById('driver-status');
+            const isOnline = statusElement.classList.contains('online');
+            
+            if (isOnline) {
+                statusElement.className = 'driver-online-status offline';
+                statusElement.innerHTML = '<i class="fas fa-circle"></i> Hors ligne';
+                this.innerHTML = '<i class="fas fa-toggle-off"></i> Passer en ligne';
+                this.style.background = 'var(--primary)';
+                showNotification('Vous êtes maintenant hors ligne', 'info');
+            } else {
+                statusElement.className = 'driver-online-status online';
+                statusElement.innerHTML = '<i class="fas fa-circle"></i> En ligne';
+                this.innerHTML = '<i class="fas fa-toggle-on"></i> Passer hors ligne';
+                this.style.background = 'var(--secondary)';
+                showNotification('Vous êtes maintenant en ligne', 'success');
+            }
         });
 
         // Gestion de l'état d'authentification
@@ -1936,17 +3001,35 @@
             currentUser = user;
             if (user) {
                 showMainApp();
-                // Localiser automatiquement l'utilisateur après connexion
-                setTimeout(locateUser, 1000);
+                document.getElementById('user-display-name').textContent = user.displayName || 'Utilisateur';
+                document.getElementById('user-email').textContent = user.email;
+                
+                db.collection('users').doc(user.uid).get().then((doc) => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        userType = userData.userType || "passenger";
+                        document.getElementById('user-type').textContent = userType === "driver" ? "Chauffeur" : "Passager";
+                        
+                        if (userType === "driver") {
+                            // Rediriger vers l'interface chauffeur
+                            showScreen('driver-interface-screen');
+                        }
+                    }
+                });
             } else {
-                showScreen(authScreen);
+                showScreen('auth-screen');
             }
         });
 
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
             initMap();
-            // L'état d'authentification est géré par onAuthStateChanged
+            hideAllScreens();
+            
+            // Si utilisateur non connecté, afficher l'écran d'authentification
+            if (!currentUser) {
+                showScreen('auth-screen');
+            }
         });
     </script>
 </body>
