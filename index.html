@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOLDEST - Création de Sites Web & Marketing Snapchat Pro</title>
-    <meta name="description" content="Crée ton site web pro en 24h et transforme ton Snapchat en machine à ventes. Paiement unique, pas d'abonnement. Teste gratuitement notre système.">
-    <meta name="keywords" content="création site web, snapchat pro, site e-commerce, marketing digital, site pas cher">
-    <meta name="author" content="HOLDEST Services">
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-    
-    <!-- Font Awesome -->
+    <title>Bajaj Secure - Madagascar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         * {
             margin: 0;
@@ -23,1298 +20,1934 @@
         }
         
         :root {
-            --primary: #FFD700;
-            --primary-dark: #e6c200;
-            --secondary: #1a1a1a;
-            --accent: #ff6b6b;
-            --text: #ffffff;
-            --text-secondary: #cccccc;
-            --background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            --card-bg: #2d2d2d;
-            --success: #4CAF50;
-            --snap-yellow: #FFFC00;
-            --snap-yellow-dark: #e6e300;
+            --primary: #2c5aa0;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
         }
         
         body {
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.6;
+            background-color: #f1f5f9;
+            color: var(--dark);
+            max-width: 400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
             overflow-x: hidden;
         }
         
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
+        .app-container {
+            background: white;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        .app-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
+            color: white;
             padding: 15px;
-        }
-        
-        /* Header */
-        header {
-            text-align: center;
-            padding: 25px 0;
-            background: #000;
-            border-bottom: 3px solid var(--primary);
-            position: relative;
-        }
-        
-        .header-gradient {
-            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255,215,0,0.1) 0%, rgba(255,215,0,0.05) 100%);
-            z-index: 0;
+            z-index: 100;
         }
         
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 8px;
-            color: var(--primary);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-        
-        .tagline {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-        }
-        
-        /* Main Offer */
-        .main-offer {
-            background: linear-gradient(135deg, var(--primary) 0%, #ffed4e 100%);
-            color: #000;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
-            border: 2px solid #fff;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .main-offer h2 {
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-        }
-        
-        /* Services Grid */
-        .services {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin: 25px 0;
-        }
-        
-        .service-card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--primary);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        }
-        
-        .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-        }
-        
-        .price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin: 12px 0;
-            color: var(--primary);
-        }
-        
-        .features {
-            margin: 8px 0;
-        }
-        
-        .feature-item {
+        .logo {
             display: flex;
             align-items: center;
-            margin: 6px 0;
-            font-size: 0.9rem;
+            gap: 10px;
         }
         
-        .feature-item::before {
-            content: "✓";
-            color: var(--primary);
+        .logo-icon {
+            font-size: 24px;
+        }
+        
+        .logo-text {
             font-weight: bold;
-            margin-right: 8px;
+            font-size: 18px;
         }
         
-        /* Snapchat Services - Mise en avant */
-        .snap-services {
-            display: grid;
-            grid-template-columns: 1fr;
+        .header-actions {
+            display: flex;
             gap: 15px;
-            margin: 20px 0;
         }
         
-        .snap-service {
-            background: rgba(255, 252, 0, 0.1);
+        .header-icon {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        /* Navigation */
+        .app-nav {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 10px 0;
+            border-top: 1px solid #e2e8f0;
+            position: sticky;
+            bottom: 0;
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            color: var(--gray);
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .nav-item.active {
+            color: var(--primary);
+        }
+        
+        .nav-icon {
+            font-size: 20px;
+        }
+        
+        /* Main Content */
+        .app-content {
+            padding: 15px;
+            padding-bottom: 70px;
+        }
+        
+        .welcome-section {
+            background: linear-gradient(to right, var(--primary), #3b82f6);
+            color: white;
             padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(255, 252, 0, 0.3);
-            transition: all 0.3s ease;
+            border-radius: 15px;
+            margin-bottom: 20px;
             position: relative;
             overflow: hidden;
         }
         
-        .snap-service::before {
+        .welcome-section::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--snap-yellow);
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
         }
         
-        .snap-service:hover {
-            transform: translateY(-5px);
-            border-color: var(--snap-yellow);
-            box-shadow: 0 10px 25px rgba(255, 252, 0, 0.2);
+        .welcome-section::after {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
         }
         
-        .snap-service i {
-            font-size: 2.5rem;
-            color: var(--snap-yellow);
-            margin-bottom: 15px;
-            display: block;
+        .welcome-text {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
         }
         
-        .snap-service h4 {
-            color: var(--snap-yellow);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-            font-weight: bold;
+        .welcome-subtext {
+            font-size: 14px;
+            opacity: 0.9;
         }
         
-        .snap-service p {
-            color: var(--text);
-            line-height: 1.5;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+        /* Search Bar */
+        .search-container {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .snap-service p strong {
-            color: var(--snap-yellow);
-            font-weight: bold;
+        .search-icon {
+            color: var(--gray);
+            font-size: 20px;
         }
         
-        .snap-service p em {
-            color: var(--text-secondary);
-            font-style: italic;
-            font-size: 0.8rem;
-            display: block;
-            margin-top: 6px;
-        }
-        
-        /* Boutons */
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: #000;
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 8px 4px;
-            font-weight: bold;
+        .search-input {
+            flex: 1;
             border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-            font-size: 1rem;
-            text-align: center;
+            outline: none;
+            font-size: 16px;
+            color: var(--dark);
         }
         
-        .btn:hover {
-            background: #ffed4e;
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        .search-input::placeholder {
+            color: var(--gray);
         }
         
-        .btn-secondary {
-            background: transparent;
+        /* Quick Actions */
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .see-all {
+            font-size: 14px;
             color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .action-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--primary);
+        }
+        
+        .action-text {
+            font-size: 12px;
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        /* Drivers List */
+        .drivers-section {
+            margin-bottom: 25px;
+        }
+        
+        .driver-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .driver-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
             border: 2px solid var(--primary);
         }
         
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: #000;
+        .driver-info {
+            flex: 1;
         }
         
-        .btn-snap {
-            background: var(--snap-yellow);
-            color: #000;
+        .driver-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
         }
         
-        .btn-snap:hover {
-            background: var(--snap-yellow-dark);
-        }
-
-        /* Nouveau style pour le bouton Voir Exemple */
-        .btn-example {
-            background: transparent;
-            color: var(--snap-yellow);
-            border: 2px solid var(--snap-yellow);
-            margin-top: 8px;
+        .driver-vehicle {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 5px;
         }
         
-        .btn-example:hover {
-            background: var(--snap-yellow);
-            color: #000;
+        .driver-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
-        /* Section Contact */
-        .contact {
-            text-align: center;
-            padding: 30px 15px;
-            background: #000;
-            border-radius: 10px;
-            margin-top: 30px;
+        .rating-stars {
+            color: var(--accent);
         }
         
-        .contact h2 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+        .rating-value {
+            font-size: 14px;
+            color: var(--gray);
         }
         
-        .contact-info {
-            margin: 15px 0;
+        .driver-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
         }
         
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-            color: #777;
-            border-top: 1px solid #444;
-            font-size: 0.9rem;
+        .status-available {
+            background: #d1fae5;
+            color: #065f46;
         }
         
-        /* Sections de contenu */
-        .disruption-section {
-            background: rgba(255, 215, 0, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 25px 0;
-            border-left: 4px solid var(--primary);
+        .status-busy {
+            background: #fef3c7;
+            color: #92400e;
         }
         
-        .disruption-section h3 {
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
+        .driver-distance {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 5px;
         }
         
-        .guarantee {
-            background: rgba(0, 255, 0, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid #00ff00;
+        /* Map Container */
+        .map-container {
+            height: 300px;
+            background: #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
         }
         
-        .testimonial {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid var(--primary);
-            font-style: italic;
+        #map {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
         }
         
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin: 25px 0;
+        .leaflet-container {
+            background: #e2e8f0;
         }
         
-        .comparison-box {
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        
-        .others {
-            background: rgba(255, 0, 0, 0.1);
-            border: 2px solid #ff4444;
-        }
-        
-        .holdest {
-            background: rgba(0, 255, 0, 0.1);
-            border: 2px solid #00ff00;
-        }
-        
-        .payment-options {
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin: 15px 0;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
         }
         
-        .payment-option {
-            background: var(--card-bg);
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .payment-option:hover {
-            transform: translateY(-3px);
-        }
-        
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            margin: 25px 0;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            padding: 12px;
-        }
-        
-        .stat-number {
-            font-size: 1.8rem;
+        .map-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
             color: var(--primary);
-            font-weight: bold;
         }
         
-        .badge {
+        /* Map Controls */
+        .map-controls {
             position: absolute;
             top: 10px;
-            right: -25px;
-            background: var(--accent);
-            color: white;
-            padding: 4px 25px;
-            transform: rotate(45deg);
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        
-        .urgency {
-            background: rgba(255, 0, 0, 0.2);
-            padding: 12px;
-            border-radius: 8px;
-            margin: 12px 0;
-            text-align: center;
-            border: 1px solid #ff4444;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4); }
-            70% { box-shadow: 0 0 0 8px rgba(255, 68, 68, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
-        }
-        
-        .social-proof {
+            right: 10px;
+            z-index: 1000;
             display: flex;
+            gap: 5px;
+        }
+        
+        .map-btn {
+            background: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin: 15px 0;
-            flex-wrap: wrap;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
         }
         
-        .social-item {
-            text-align: center;
-        }
-        
-        .social-icon {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-        
-        /* Modal Styles - Optimisé mobile */
-        .modal {
-            display: none;
+        /* Language Toggle */
+        .language-toggle {
             position: fixed;
+            top: 80px;
+            right: 15px;
+            background: white;
+            border-radius: 20px;
+            padding: 5px;
+            display: flex;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 50;
+        }
+        
+        .lang-btn {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Screens */
+        .screen {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
+            background: white;
+            z-index: 200;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .auth-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .auth-subtitle {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .auth-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .auth-option {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .auth-option.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-google {
+            background: white;
+            color: var(--dark);
+            border: 1px solid #e2e8f0;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
-            overflow-y: auto;
+            gap: 10px;
         }
         
-        .modal-content {
-            background: var(--card-bg);
-            width: 100%;
-            max-width: 500px;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
-            position: relative;
-            animation: modalFadeIn 0.3s;
-            max-height: 90vh;
-            overflow-y: auto;
+        .btn-google:hover {
+            background: #f8fafc;
         }
         
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--gray);
         }
         
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.8rem;
+        .auth-link {
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
             cursor: pointer;
-            color: var(--text-secondary);
-            transition: color 0.3s;
-            z-index: 10;
-            background: rgba(0,0,0,0.5);
-            width: 30px;
-            height: 30px;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: var(--gray);
+        }
+        
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .divider-text {
+            padding: 0 15px;
+            font-size: 14px;
+        }
+        
+        /* Driver Profile */
+        .driver-profile {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .profile-header {
+            background: linear-gradient(to right, var(--primary), #3b82f6);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        
+        .profile-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .profile-vehicle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .profile-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .profile-body {
+            padding: 20px;
+        }
+        
+        .info-group {
+            margin-bottom: 20px;
+        }
+        
+        .info-label {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 10px;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        /* Verification Badge */
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        
+        /* Trip History */
+        .trip-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .trip-info {
+            flex: 1;
+        }
+        
+        .trip-date {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 5px;
+        }
+        
+        .trip-route {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .trip-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .trip-rating {
+            color: var(--accent);
+        }
+        
+        /* User Profile */
+        .user-profile {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .user-header {
+            background: linear-gradient(to right, var(--primary), #3b82f6);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .user-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            margin-bottom: 10px;
+            background: #ddd;
+        }
+        
+        .user-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .user-email {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        /* Payment Screen */
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .payment-option.selected {
+            border-color: var(--primary);
+            background: #f0f7ff;
+        }
+        
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .mvola-icon {
+            background: #ff6b00;
+        }
+        
+        .orange-money-icon {
+            background: #ff6600;
+        }
+        
+        .airtel-money-icon {
+            background: #e60000;
+        }
+        
+        .payment-info {
+            flex: 1;
+        }
+        
+        .payment-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .payment-description {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* Ride Booking Screen */
+        .ride-booking {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .location-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .location-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .location-dot {
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 12px;
+            color: white;
         }
         
-        .close-modal:hover {
-            color: var(--primary);
-            background: rgba(0,0,0,0.7);
+        .dot-start {
+            background: var(--secondary);
         }
         
-        .form-group {
-            margin-bottom: 15px;
+        .dot-end {
+            background: var(--primary);
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--text);
-            font-size: 0.9rem;
+        .location-field {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
         }
         
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #444;
-            background: #1a1a1a;
-            color: var(--text);
-            font-size: 1rem;
-            transition: border 0.3s;
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary);
-            outline: none;
-        }
-        
-        .success-message {
-            display: none;
-            text-align: center;
+        .price-estimate {
+            background: #f0f7ff;
             padding: 15px;
-            background: rgba(76, 175, 80, 0.1);
-            border-radius: 5px;
-            border: 1px solid var(--success);
-            margin-top: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
         
-        .success-message i {
-            font-size: 2.5rem;
-            color: var(--success);
+        .price-row {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 10px;
         }
         
-        /* Section Webcam */
-        .webcam-section {
-            background: rgba(0, 123, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 25px 0;
-            border-left: 4px solid #007bff;
-            text-align: center;
-        }
-        
-        .webcam-section h3 {
-            color: #007bff;
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-        }
-        
-        /* Section Demo */
-        .demo {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px 0;
-            border: 1px solid #444;
-        }
-        
-        .demo h2 {
+        .price-total {
+            font-weight: 700;
+            font-size: 18px;
             color: var(--primary);
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 1.5rem;
-        }
-        
-        .code-container {
-            background: #000;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            overflow-x: auto;
-            border: 1px solid #444;
-        }
-        
-        .code-container pre {
-            color: var(--primary);
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-        }
-        
-        .test-area {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-        
-        .instructions {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-        
-        .instructions ol {
-            margin-left: 20px;
-        }
-        
-        .instructions li {
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-        
-        /* Snapchat Promo Banner */
-        .snap-promo {
-            background: linear-gradient(135deg, var(--snap-yellow) 0%, #fff500 100%);
-            color: #000;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(255, 252, 0, 0.3);
-            border: 2px solid #fff;
-        }
-        
-        .snap-promo h3 {
-            margin-bottom: 8px;
-            font-size: 1.3rem;
-        }
-        
-        /* Analytics Tracking */
-        .analytics-badge {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background: var(--primary);
-            color: #000;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        /* Style pour l'image d'exemple dans le modal */
-        .example-image {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
-            border: 3px solid var(--snap-yellow);
-            margin: 15px auto;
-            display: block;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .image-caption {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
             margin-top: 10px;
-            font-style: italic;
         }
         
-        /* Animation douce pour le popup Snapchat */
-        @keyframes snapPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        #snapchatPopup .modal-content {
-            animation: snapPulse 2s infinite;
+        /* Bajaj Image */
+        .bajaj-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
         }
         
-        /* Media Queries pour tablettes et desktop */
-        @media (min-width: 768px) {
-            .container {
-                max-width: 720px;
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .main-offer h2 {
-                font-size: 2rem;
-            }
-            
-            .services {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .snap-services {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .payment-options {
-                flex-direction: row;
-            }
-            
-            .comparison {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .btn {
-                width: auto;
-            }
+        /* Regulations Info */
+        .regulations-info {
+            background: #f0f7ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
         }
         
-        @media (min-width: 992px) {
-            .container {
-                max-width: 960px;
-            }
-            
-            .services {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .regulations-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .regulation-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .regulation-icon {
+            color: var(--primary);
+            margin-top: 2px;
+        }
+        
+        /* Ads Section */
+        .ads-section {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .ads-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .ad-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        .ad-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            background: var(--accent);
+        }
+        
+        .ad-info {
+            flex: 1;
+        }
+        
+        .ad-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .ad-description {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .ad-reward {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Wallet Screen */
+        .wallet-balance {
+            background: linear-gradient(to right, var(--primary), #3b82f6);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .balance-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .balance-amount {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        /* History Screen */
+        .history-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Active when screens are shown */
+        .hidden {
+            display: none;
+        }
+        
+        /* Animation for switching content */
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Error Message */
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            display: none;
         }
     </style>
 </head>
 <body>
-            <!-- Analytics Badge -->
-    <div class="analytics-badge">
-        <i class="fas fa-chart-line"></i> TRACKING ACTIF
-    </div>
-    
-    <header>
-        <div class="header-gradient"></div>
-        <div class="container header-content">
-            <h1>🇯🇲 HOLDEST 🗿 SERVICES</h1>
-            <p class="tagline">CRÉATION DE SITES WEB & MARKETING SNAPCHAT PRO</p>
-        </div>
-    </header>
-    
-    <div class="container">
-        <!-- Bannière Snapchat Promo -->
-        <div class="snap-promo">
-            <h3>🚀 OFFRE SPÉCIALE SNAPCHAT PRO</h3>
-            <p>Stories 7 jours - Paiement unique - Pas d'abonnement mensuel</p>
+    <div class="app-container">
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button class="lang-btn active" id="fr-btn">FR</button>
+            <button class="lang-btn" id="mg-btn">MG</button>
         </div>
         
-        <div class="main-offer">
-            <h2>💎 TESTE GRATUITEMENT MON SYSTÈME !</h2>
-            <p>Essaie le code ci-dessous, et si ça te plaît, je te crée un site personnalisé</p>
-        </div>
+        <!-- App Header -->
+        <header class="app-header">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-motorcycle"></i></div>
+                <div class="logo-text">Bajaj Secure</div>
+            </div>
+            <div class="header-actions">
+                <div class="header-icon"><i class="fas fa-bell"></i></div>
+                <div class="header-icon"><i class="fas fa-user" id="profile-btn"></i></div>
+            </div>
+        </header>
         
-         <!-- Services Snapchat en premier -->
-        <div class="service-card">
-            <div class="badge">POPULAIRE</div>
-            <h3><i class="fab fa-snapchat-ghost"></i> SERVICES SNAPCHAT</h3>
-            <p>Transforme ton Snapchat en machine à ventes</p>
+        <!-- Main Content (shown when user is logged in) -->
+        <div class="app-content" id="main-content">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-text" id="welcome-text">Bonjour à Mahajanga!</div>
+                <div class="welcome-subtext" id="welcome-subtext">Réservez votre Bajaj en toute sécurité</div>
+            </div>
             
-            <div class="snap-services">
-                <div class="snap-service">
-                    <i class="fas fa-user-tie"></i>
-                    <h4>Compte Pro Snapchat</h4>
-                    <p>Création de compte professionnel avec profil public<br>
-                       <strong>Stories visibles pendant 1 SEMAINE</strong><br>
-                       <em>Différence avec Snapchat+ : Snapchat+ = abonnement mensuel, nous = paiement unique</em></p>
-                    <div class="price">70€</div>
-                    <button class="btn btn-snap open-order-modal" data-service="Compte Pro Snapchat">AJOUTER</button>
-                    <!-- NOUVEAU BOUTON VOIR EXEMPLE -->
-                    <button class="btn btn-example open-example-modal" data-service="Compte Pro Snapchat">📱 VOIR EXEMPLE</button>
+            <!-- Bajaj Image -->
+            <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/331066df-ae56-9e10-0bc8-02861b11d8dd.png" alt="Bajaj Mahajanga" class="bajaj-image">
+            
+            <!-- Regulations Info -->
+            <div class="regulations-info">
+                <div class="regulations-title">Réglementation Bajaj Mahajanga</div>
+                <div class="regulation-item">
+                    <div class="regulation-icon"><i class="fas fa-users"></i></div>
+                    <div>Maximum 3 passagers par bajaj</div>
                 </div>
-                
-                <div class="snap-service">
-                    <i class="fas fa-filter"></i>
-                    <h4>Filtre Personnalisé</h4>
-                    <p>Filtre unique pour ton entreprise</p>
-                    <div class="price">15€</div>
-                    <button class="btn btn-snap open-order-modal" data-service="Filtre Personnalisé Snapchat">AJOUTER</button>
+                <div class="regulation-item">
+                    <div class="regulation-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div>Vitesse limitée à 40 km/h</div>
                 </div>
-                
-                <div class="snap-service">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h4>Géolocalisation</h4>
-                    <p>Ta boutique sur la carte Snapchat</p>
-                    <div class="price">30€</div>
-                    <button class="btn btn-snap open-order-modal" data-service="Géolocalisation Snapchat">AJOUTER</button>
+                <div class="regulation-item">
+                    <div class="regulation-icon"><i class="fas fa-suitcase"></i></div>
+                    <div>Bagages limités à 50kg</div>
+                </div>
+                <div class="regulation-item">
+                    <div class="regulation-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>Interdit à l'aéroport d'Amborovy</div>
                 </div>
             </div>
-        </div>
-        
-        <div class="disruption-section">
-            <h3>💥 POURQUOI TU PERDS DES VENTES ?</h3>
-            <p>Les gens ne te prennent pas au sérieux quand tu n'as pas de site web. Ils pensent que c'est temporaire ou pas professionnel.</p>
-            <p>Avec un site HOLDEST, tu montres que ton business est sérieux et permanent.</p>
-        </div>
-        
-        <div class="urgency">
-            <h3>⚠️ OFFRE SPÉCIALE LIMITÉE</h3>
-            <p>Les 5 premiers à commander cette semaine reçoivent 20% de réduction !</p>
-            <p>Temps restant: <span id="countdown">30:00</span></p>
-        </div>
-        
-        <div class="stats">
-            <div class="stat-item">
-                <div class="stat-number">24h</div>
-                <div>Délai de création</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">97%</div>
-                <div>Clients satisfaits</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div>Sites créés</div>
-            </div>
-        </div>
-        <!-- Section Webcam -->
-        <div class="webcam-section">
-            <h3><i class="fas fa-video"></i> CONSULTATION EN LIGNE</h3>
-            <p>Tu ne peux pas te déplacer ? On discute en vidéo !</p>
-            <p>Je t'explique tout en direct et tu ne payes que la moitié pour commencer</p>
-            <button class="btn" onclick="openWebcamModal()">PRENDRE RENDEZ-VOUS</button>
-        </div>
-        
-        <div class="disruption-section">
-            <h3>🚫 PAS D'ABONNEMENT !</h3>
-            <p>Les autres te promettent 14 jours gratuits puis t'abonnent à vie.</p>
-            <p>Moi, tu payes une fois et c'est fini. Ton site reste en ligne.</p>
-        </div>
-
-        <div class="comparison">
-            <div class="comparison-box others">
-                <h3>❌ LES AUTRES</h3>
-                <p>Essais gratuits piégés</p>
-                <p>Abonnements cachés</p>
-                <p>Site disparaît après</p>
-                <p>Support inexistant</p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-icon"><i class="fas fa-search"></i></div>
+                <input type="text" class="search-input" id="search-input" placeholder="Rechercher une destination...">
             </div>
             
-            <div class="comparison-box holdest">
-                <h3>✅ HOLDEST</h3>
-                <p>Site permanent</p>
-                <p>Paiement unique</p>
-                <p>Site reste en ligne</p>
-                <p>Support rapide</p>
-            </div>
-        </div>
-        
-        <div class="social-proof">
-            <div class="social-item">
-                <div class="social-icon">👥</div>
-                <div>50+ clients</div>
-            </div>
-            <div class="social-item">
-                <div class="social-icon">⭐</div>
-                <div>97% satisfaction</div>
-            </div>
-            <div class="social-item">
-                <div class="social-icon">🚀</div>
-                <div>24h livraison</div>
-            </div>
-        </div>
-        
-        <div class="disruption-section">
-            <h3>💡 COMMENT ÇA MARCHE ?</h3>
-            <p>1. Tu me dis ce que tu veux</p>
-            <p>2. Je crée en 24-48h</p>
-            <p>3. Tu reçois ton site et tu vends</p>
-            <p>4. Tu gagnes en crédibilité</p>
-        </div>
-
-        <div class="guarantee">
-            <h3>🛡️ GARANTIE 7 JOURS</h3>
-            <p>Si ça ne te plaît pas dans les 7 jours, remboursement complet.</p>
-        </div>
-<div class="payment-options">
-            <div class="payment-option">
-                <h4>💳 Paiement Complet</h4>
-                <p>-10%</p>
-            </div>
-            <div class="payment-option">
-                <h4>📅 2 Paiements</h4>
-                <p>50% maintenant</p>
-                <p>50% après</p>
-            </div>
-            <div class="payment-option">
-                <h4>🔄 Échange</h4>
-                <p>Sneakers, vêtements</p>
-                <p>Électronique</p>
-            </div>
-        </div>
-        
-        <div class="testimonial">
-            <p>"J'avais peur des arnaques mais Holdest m'a créé un site pro en 2 jours. Maintenant je vends 3x plus !"</p>
-            <p><strong>- Kevin, vente de sneakers</strong></p>
-        </div>
-        
-        <div class="demo">
-            <h2>🎯 TESTE MON SYSTÈME MAINTENANT !</h2>
-            <p>Copie-colle ce code pour voir à quel point c'est simple</p>
-            
-            <div class="instructions">
-                <h3>Comment tester :</h3>
-                <ol>
-                    <li>Copie le code ci-dessous</li>
-                    <li>Ouvre le Bloc-notes sur ton téléphone ou ordinateur</li>
-                    <li>Colle le code et enregistre le fichier avec le nom "test.html"</li>
-                    <li>Ouvre le fichier dans ton navigateur pour voir le résultat</li>
-                </ol>
+            <!-- Map Section -->
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-controls">
+                    <button class="map-btn" id="locate-btn">
+                        <i class="fas fa-location-arrow"></i>
+                    </button>
+                </div>
             </div>
             
-            <div class="code-container">
-                <pre>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;Mon Site Test&lt;/title&gt;
-  &lt;style&gt;
-    body { font-family: Arial; text-align: center; padding: 50px; }
-    h1 { color: #FFD700; }
-    button { background: #000; color: white; padding: 10px; border: none; }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Mon Premier Site Web!&lt;/h1&gt;
-  &lt;p&gt;Félicitations, tu viens de créer ton premier site!&lt;/p&gt;
-  &lt;button onclick="alert('Ça fonctionne! Contacte-moi pour un site personnalisé.')"&gt;
-    Clique ici pour tester
-  &lt;/button&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-                </pre>
+            <!-- Quick Actions -->
+            <div class="section-title">
+                <span id="quick-actions-title">Actions Rapides</span>
+                <span class="see-all">Voir tout</span>
             </div>
             
-            <div class="test-area">
-                <h3>Tu veux modifier quelque chose ?</h3>
-                <p>Dans le code, essaie de changer le texte "Mon Premier Site Web!" par le nom de ton business.</p>
-                <p>Enregistre le fichier et actualise la page dans ton navigateur pour voir le changement.</p>
-                <p>C'est aussi simple que ça de créer un site web !</p>
+            <div class="quick-actions">
+                <div class="action-item" id="book-ride-btn">
+                    <div class="action-icon"><i class="fas fa-motorcycle"></i></div>
+                    <div class="action-text" id="action-ride">Réserver</div>
+                </div>
+                <div class="action-item" id="history-btn">
+                    <div class="action-icon"><i class="fas fa-history"></i></div>
+                    <div class="action-text" id="action-history">Historique</div>
+                </div>
+                <div class="action-item" id="ratings-btn">
+                    <div class="action-icon"><i class="fas fa-star"></i></div>
+                    <div class="action-text" id="action-ratings">Notes</div>
+                </div>
+                <div class="action-item" id="wallet-btn">
+                    <div class="action-icon"><i class="fas fa-wallet"></i></div>
+                    <div class="action-text" id="action-wallet">Portefeuille</div>
+                </div>
             </div>
-        </div>
-        
-        <div class="contact">
-            <h2>📞 TU VEUX AUGMENTER TES VENTES ?</h2>
-            <p>Ne reste pas à vendre comme un amateur. Passe au niveau supérieur.</p>
             
-            <div class="contact-info">
-                <p>📧 Email: oldestlucious@gmail.com</p>
-                <p>📱 Snapchat: @lucious-lion04</p>
-                <p>💬 Réponse en moins de 2 heures</p>
+            <!-- Ads Section -->
+            <div class="ads-section">
+                <div class="ads-title">Gagnez de l'argent</div>
+                <div class="ad-item" id="watch-ad-btn">
+                    <div class="ad-icon"><i class="fas fa-play-circle"></i></div>
+                    <div class="ad-info">
+                        <div class="ad-name">Regarder une publicité</div>
+                        <div class="ad-description">Regardez une vidéo de 30 secondes</div>
+                    </div>
+                    <div class="ad-reward">+100 Ar</div>
+                </div>
+                <div class="ad-item" id="survey-btn">
+                    <div class="ad-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <div class="ad-info">
+                        <div class="ad-name">Répondre à un sondage</div>
+                        <div class="ad-description">5 minutes de votre temps</div>
+                    </div>
+                    <div class="ad-reward">+500 Ar</div>
+                </div>
             </div>
             
-            <button class="btn open-order-modal" data-service="Consultation">JE VEUX MON SITE</button>
-            <button class="btn btn-secondary" onclick="openContactModal()">MESSAGE SNAPCHAT</button>
-        </div>
-    </div>
-    
-    <!-- Modal de commande FORMSPREE -->
-    <div class="modal" id="orderModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 style="color: var(--primary); margin-bottom: 15px;">Commander</h2>
-            
-            <!-- FORMULAIRE FORMSPREE DIRECT -->
-            <form action="https://formspree.io/f/xjkazbql" method="POST">
-                <input type="hidden" id="serviceInput" name="service" value="">
+            <!-- Drivers Section -->
+            <div class="drivers-section">
+                <div class="section-title">
+                    <span id="drivers-title">Bajajs à Proximité</span>
+                    <span class="see-all">Voir tout</span>
+                </div>
                 
+                <div class="driver-card" data-driver-id="1">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Driver" class="driver-photo">
+                    <div class="driver-info">
+                        <div class="driver-name">Rakoto Jean</div>
+                        <div class="driver-vehicle">Bajaj Jaune • 1245 TB</div>
+                        <div class="driver-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="rating-value">4.5</div>
+                        </div>
+                        <div class="driver-distance">À 0.8 km • 5 min</div>
+                    </div>
+                    <div class="driver-status status-available">Disponible</div>
+                </div>
+                
+                <div class="driver-card" data-driver-id="2">
+                    <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Driver" class="driver-photo">
+                    <div class="driver-info">
+                        <div class="driver-name">Rasoa Marie</div>
+                        <div class="driver-vehicle">Bajaj Bleu • 5687 TB</div>
+                        <div class="driver-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="rating-value">4.0</div>
+                        </div>
+                        <div class="driver-distance">À 1.2 km • 7 min</div>
+                    </div>
+                    <div class="driver-status status-busy">En course</div>
+                </div>
+                
+                <div class="driver-card" data-driver-id="3">
+                    <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Driver" class="driver-photo">
+                    <div class="driver-info">
+                        <div class="driver-name">Rabe Patrick</div>
+                        <div class="driver-vehicle">Bajaj Vert • 9821 TB</div>
+                        <div class="driver-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="rating-value">5.0</div>
+                        </div>
+                        <div class="driver-distance">À 0.5 km • 3 min</div>
+                    </div>
+                    <div class="driver-status status-available">Disponible</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="app-nav">
+            <div class="nav-item active" id="nav-home">
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
+                <div class="nav-text">Accueil</div>
+            </div>
+            <div class="nav-item" id="nav-map">
+                <div class="nav-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="nav-text">Carte</div>
+            </div>
+            <div class="nav-item" id="nav-offers">
+                <div class="nav-icon"><i class="fas fa-ticket-alt"></i></div>
+                <div class="nav-text">Offres</div>
+            </div>
+            <div class="nav-item" id="nav-settings">
+                <div class="nav-icon"><i class="fas fa-cog"></i></div>
+                <div class="nav-text">Paramètres</div>
+            </div>
+        </nav>
+        
+        <!-- Authentication Screen -->
+        <div class="screen hidden" id="auth-screen">
+            <button class="close-btn" id="close-auth-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <div class="auth-title" id="auth-title">Connexion</div>
+                <div class="auth-subtitle" id="auth-subtitle">Connectez-vous à votre compte</div>
+            </div>
+            
+            <div class="error-message" id="auth-error"></div>
+            <div class="success-message" id="auth-success"></div>
+            
+            <div class="auth-options">
+                <div class="auth-option active" id="passenger-option">Passager</div>
+                <div class="auth-option" id="driver-option">Chauffeur</div>
+            </div>
+            
+            <div id="login-form">
                 <div class="form-group">
-                    <label for="name">Ton nom *</label>
-                    <input type="text" id="name" name="name" class="form-control" required>
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" class="form-input" id="email" placeholder="votre@email.com">
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Ton email *</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
+                    <label class="form-label" for="password">Mot de passe</label>
+                    <input type="password" class="form-input" id="password" placeholder="Entrez votre mot de passe">
                 </div>
                 
-                <div class="form-group">
-                    <label for="phone">Ton téléphone</label>
-                    <input type="tel" id="phone" name="phone" class="form-control">
-                </div>
-                
-                <div class="form-group">
-                    <label for="details">Détails de ta commande</label>
-                    <textarea id="details" name="details" class="form-control" rows="3" placeholder="Décris ce que tu veux..."></textarea>
-                </div>
-                
-                <button type="submit" class="btn" style="width: 100%;">
-                    🚀 ENVOYER MA COMMANDE
+                <button class="btn btn-primary" id="login-btn">
+                    <span id="login-btn-text">Se connecter</span>
+                    <div class="spinner hidden" id="login-spinner"></div>
                 </button>
-            </form>
+                
+                <div class="divider">
+                    <div class="divider-text">Ou</div>
+                </div>
+                
+                <button class="btn btn-google" id="google-login-btn">
+                    <i class="fab fa-google"></i>
+                    <span>Se connecter avec Google</span>
+                </button>
+                
+                <div class="auth-footer">
+                    <span id="auth-footer-text">Vous n'avez pas de compte?</span>
+                    <a class="auth-link" id="show-register-link">S'inscrire</a>
+                </div>
+            </div>
             
-            <div style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: var(--text-secondary);">
-                <p>✅ Je te contacte dans les 2 heures</p>
-                <p>📱 Ou message direct sur Snapchat: @lucious-lion04</p>
+            <div id="register-form" class="hidden">
+                <div class="form-group">
+                    <label class="form-label" for="register-name">Nom complet</label>
+                    <input type="text" class="form-input" id="register-name" placeholder="Votre nom complet">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="register-email">Email</label>
+                    <input type="email" class="form-input" id="register-email" placeholder="votre@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="register-password">Mot de passe</label>
+                    <input type="password" class="form-input" id="register-password" placeholder="Créez un mot de passe">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="register-confirm">Confirmer le mot de passe</label>
+                    <input type="password" class="form-input" id="register-confirm" placeholder="Confirmez votre mot de passe">
+                </div>
+                
+                <button class="btn btn-primary" id="register-btn">
+                    <span id="register-btn-text">S'inscrire</span>
+                    <div class="spinner hidden" id="register-spinner"></div>
+                </button>
+                
+                <div class="divider">
+                    <div class="divider-text">Ou</div>
+                </div>
+                
+                <button class="btn btn-google" id="google-register-btn">
+                    <i class="fab fa-google"></i>
+                    <span>S'inscrire avec Google</span>
+                </button>
+                
+                <div class="auth-footer">
+                    <span>Vous avez déjà un compte?</span>
+                    <a class="auth-link" id="show-login-link">Se connecter</a>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Modal webcam FORMSPREE -->
-    <div class="modal" id="webcamModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 style="color: #007bff; margin-bottom: 15px;">Consultation Webcam</h2>
-            
-            <div style="text-align: center; margin-bottom: 15px;">
-                <i class="fas fa-video" style="font-size: 3.5rem; color: #007bff;"></i>
-                <p style="margin: 12px 0;">Discutons en vidéo pour ton projet</p>
+        
+        <!-- User Profile Screen -->
+        <div class="screen hidden" id="user-profile-screen">
+            <button class="close-btn" id="close-profile-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <div class="auth-title">Mon Profil</div>
+                <div class="auth-subtitle">Informations de votre compte</div>
             </div>
             
-            <!-- FORMULAIRE FORMSPREE DIRECT -->
-            <form action="https://formspree.io/f/xjvnzzzz" method="POST">
-                <input type="hidden" name="service" value="Consultation Webcam">
+            <div class="user-profile">
+                <div class="user-header">
+                    <div class="user-photo" id="user-photo">
+                        <i class="fas fa-user" style="font-size: 40px; line-height: 100px; color: white;"></i>
+                    </div>
+                    <div class="user-name" id="user-display-name">Utilisateur</div>
+                    <div class="user-email" id="user-email">utilisateur@example.com</div>
+                </div>
                 
-                <div class="form-group">
-                    <label for="webcamName">Nom *</label>
-                    <input type="text" id="webcamName" name="name" class="form-control" required>
+                <div class="profile-body">
+                    <div class="info-group">
+                        <div class="info-label">Type de compte</div>
+                        <div class="info-value" id="user-type">Passager</div>
+                    </div>
+                    
+                    <div class="info-group">
+                        <div class="info-label">Membre depuis</div>
+                        <div class="info-value" id="user-join-date">Janvier 2023</div>
+                    </div>
+                    
+                    <div class="info-group">
+                        <div class="info-label">Nombre de courses</div>
+                        <div class="info-value">24</div>
+                    </div>
+                    
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-value">4.8</div>
+                            <div class="stat-label">Note moyenne</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Chauffeurs favoris</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">85%</div>
+                            <div class="stat-label">Taux de ponctualité</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" style="margin-top: 20px;" id="edit-profile-btn">Modifier le profil</button>
+            <button class="btn" style="margin-top: 10px; background: #f8fafc; color: var(--dark);" id="logout-btn">Se déconnecter</button>
+        </div>
+        
+        <!-- Ride Booking Screen -->
+        <div class="screen hidden" id="ride-booking-screen">
+            <button class="close-btn" id="close-booking-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <div class="auth-title">Réserver un Bajaj</div>
+                <div class="auth-subtitle">Choisissez votre destination</div>
+            </div>
+            
+            <div class="ride-booking">
+                <div class="location-inputs">
+                    <div class="location-input">
+                        <div class="location-dot dot-start"><i class="fas fa-circle"></i></div>
+                        <input type="text" class="location-field" id="start-location" placeholder="Votre position actuelle" value="Mahajanga Centre">
+                    </div>
+                    <div class="location-input">
+                        <div class="location-dot dot-end"><i class="fas fa-map-marker-alt"></i></div>
+                        <input type="text" class="location-field" id="end-location" placeholder="Destination">
+                    </div>
+                </div>
+                
+                <div class="price-estimate">
+                    <div class="price-row">
+                        <span>Prix estimé:</span>
+                        <span id="ride-price">1,500 Ar</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Commission Bajaj Secure (10%):</span>
+                        <span id="commission-price">150 Ar</span>
+                    </div>
+                    <div class="price-row price-total">
+                        <span>Total:</span>
+                        <span id="total-price">1,650 Ar</span>
+                    </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="webcamEmail">Email *</label>
-                    <input type="email" id="webcamEmail" name="email" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="webcamDate">Date souhaitée *</label>
-                    <input type="date" id="webcamDate" name="date" class="form-control" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="webcamTime">Heure souhaitée *</label>
-                    <select id="webcamTime" name="time" class="form-control" required>
-                        <option value="">Choisis une heure</option>
-                        <option value="09:00">09:00</option>
-                        <option value="10:00">10:00</option>
-                        <option value="11:00">11:00</option>
-                        <option value="14:00">14:00</option>
-                        <option value="15:00">15:00</option>
-                        <option value="16:00">16:00</option>
+                    <label class="form-label">Nombre de passagers (max 3)</label>
+                    <select class="form-input" id="passenger-count">
+                        <option value="1">1 passager</option>
+                        <option value="2">2 passagers</option>
+                        <option value="3">3 passagers</option>
                     </select>
                 </div>
                 
-                <div class="form-group">
-                    <label for="webcamProject">Ton projet</label>
-                    <textarea id="webcamProject" name="project" class="form-control" rows="3" placeholder="Décris ton projet..."></textarea>
+                <button class="btn btn-primary" id="confirm-booking-btn">Confirmer la réservation</button>
+            </div>
+        </div>
+        
+        <!-- Payment Screen -->
+        <div class="screen hidden" id="payment-screen">
+            <button class="close-btn" id="close-payment-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <div class="auth-title">Paiement</div>
+                <div class="auth-subtitle">Choisissez votre méthode de paiement</div>
+            </div>
+            
+            <div class="price-estimate" style="margin-top: 20px;">
+                <div class="price-row">
+                    <span>Montant à payer:</span>
+                    <span id="payment-amount">1,650 Ar</span>
+                </div>
+            </div>
+            
+            <div class="payment-options">
+                <div class="payment-option selected" data-payment="mvola">
+                    <div class="payment-icon mvola-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="payment-info">
+                        <div class="payment-name">Mvola</div>
+                        <div class="payment-description">Paiement via Mvola</div>
+                    </div>
+                    <div><i class="fas fa-check-circle" style="color: var(--secondary);"></i></div>
                 </div>
                 
-                <button type="submit" class="btn" style="width: 100%; background: #007bff;">PRENDRE RENDEZ-VOUS</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal contact Snapchat -->
-    <div class="modal" id="contactModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 style="color: var(--primary); margin-bottom: 15px;">Contact Snapchat</h2>
-            
-            <div style="text-align: center; margin-bottom: 15px;">
-                <i class="fab fa-snapchat-ghost" style="font-size: 3.5rem; color: var(--snap-yellow);"></i>
-                <h3 style="margin: 12px 0;">@lucious-lion04</h3>
-                <p>Ajoute-moi et envoie un message !</p>
-            </div>
-            
-            <button class="btn btn-snap" onclick="window.open('https://snapchat.com/add/lucious-lion04', '_blank')" style="width: 100%;">
-                <i class="fab fa-snapchat-ghost"></i> AJOUTER SUR SNAPCHAT
-            </button>
-        </div>
-    </div>
-
-    <!-- NOUVEAU MODAL POUR L'EXEMPLE DE PROFIL SNAPCHAT -->
-    <div class="modal" id="exampleModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 style="color: var(--snap-yellow); margin-bottom: 15px; text-align: center;">📱 Exemple de Profil Snapchat Pro</h2>
-            
-            <div style="text-align: center; margin-bottom: 20px;">
-                <p>Voici à quoi ressemble un profil Snapchat professionnel que nous créons :</p>
-                
-                <!-- REMPLACEZ CETTE URL PAR VOTRE PROPRE IMAGE -->
-                <img src="https://mcusercontent.com/6ce25ea8296b12e3b67c52a85/images/ec034d08-7498-55c1-236c-3fe09605d752.jpg" alt="Exemple de profil Snapchat Pro" class="example-image">
-                
-                <p class="image-caption">Profil public professionnel avec stories visibles 7 jours</p>
-            </div>
-            
-            <div style="background: rgba(255, 252, 0, 0.1); padding: 15px; border-radius: 8px; margin: 15px 0;">
-                <h4 style="color: var(--snap-yellow); margin-bottom: 10px;">🎯 Ce que tu obtiens :</h4>
-                <div class="feature-item">✓ Profil public professionnel</div>
-                <div class="feature-item">✓ Stories visibles pendant 7 JOURS</div>
-                <div class="feature-item">✓ Design optimisé pour ton business</div>
-                <div class="feature-item">✓ Paiement unique (pas d'abonnement)</div>
-            </div>
-            
-            <button class="btn btn-snap open-order-modal" data-service="Compte Pro Snapchat" style="width: 100%; margin-bottom: 10px;">
-                🚀 COMMANDER MAINTENANT - 70€
-            </button>
-            
-            <button class="btn btn-secondary" onclick="closeExampleModal()" style="width: 100%;">
-                📞 Poser une question d'abord
-            </button>
-        </div>
-    </div>
-
-    <!-- Popup Snapchat Promotion -->
-    <div class="modal" id="snapchatPopup">
-        <div class="modal-content" style="max-width: 400px;">
-            <span class="close-modal">&times;</span>
-            <div style="text-align: center; padding: 15px;">
-                <i class="fab fa-snapchat-ghost" style="font-size: 3rem; color: var(--snap-yellow); margin-bottom: 15px;"></i>
-                <h3 style="color: var(--snap-yellow); margin-bottom: 10px;">🚀 Boost ton Snapchat !</h3>
-                <p style="margin-bottom: 15px; font-size: 0.95rem;">
-                    Tu veux transformer ton Snapchat en <strong>machine à ventes</strong> ? 
-                    Profite de nos services Snapchat Pro !
-                </p>
-                
-                <div style="background: rgba(255, 252, 0, 0.1); padding: 12px; border-radius: 8px; margin: 15px 0;">
-                    <p style="margin: 5px 0; font-size: 0.9rem;">✓ <strong>Stories visibles 7 jours</strong></p>
-                    <p style="margin: 5px 0; font-size: 0.9rem;">✓ <strong>Compte professionnel</strong></p>
-                    <p style="margin: 5px 0; font-size: 0.9rem;">✓ <strong>Paiement unique</strong></p>
+                <div class="payment-option" data-payment="orange">
+                    <div class="payment-icon orange-money-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="payment-info">
+                        <div class="payment-name">Orange Money</div>
+                        <div class="payment-description">Paiement via Orange Money</div>
+                    </div>
+                    <div><i class="far fa-circle" style="color: var(--gray);"></i></div>
                 </div>
                 
-                <button class="btn btn-snap" onclick="openSnapchatServices()" style="width: 100%; margin-bottom: 10px;">
-                    Voir les services Snapchat
-                </button>
-                
-                <button class="btn btn-secondary" onclick="closeSnapchatPopup()" style="width: 100%;">
-                    Plus tard
-                </button>
+                <div class="payment-option" data-payment="airtel">
+                    <div class="payment-icon airtel-money-icon"><i class="fas fa-wallet"></i></div>
+                    <div class="payment-info">
+                        <div class="payment-name">Airtel Money</div>
+                        <div class="payment-description">Paiement via Airtel Money</div>
+                    </div>
+                    <div><i class="far fa-circle" style="color: var(--gray);"></i></div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" id="confirm-payment-btn">Payer maintenant</button>
+            <button class="btn" style="margin-top: 10px; background: #f8fafc; color: var(--dark);" id="back-to-booking-btn">Retour</button>
+        </div>
+        
+        <!-- Wallet Screen -->
+        <div class="screen hidden" id="wallet-screen">
+            <button class="close-btn" id="close-wallet-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <div class="auth-title">Mon Portefeuille</div>
+                <div class="auth-subtitle">Gérez votre solde et vos transactions</div>
+            </div>
+            
+            <div class="wallet-balance">
+                <div class="balance-label">Solde disponible</div>
+                <div class="balance-amount" id="wallet-balance">12,500 Ar</div>
+            </div>
+            
+            <div class="section-title">
+                <span>Transactions récentes</span>
+            </div>
+            
+            <div class="trip-item">
+                <div class="trip-info">
+                    <div class="trip-date">Aujourd'hui, 10:23</div>
+                    <div class="trip-route">Course - Mahajanga Centre → Analakely</div>
+                    <div class="trip-price">- 1,650 Ar</div>
+                </div>
+            </div>
+            
+            <div class="trip-item">
+                <div class="trip-info">
+                    <div class="trip-date">Hier, 18:45</div>
+                    <div class="trip-route">Publicité visionnée</div>
+                    <div class="trip-price" style="color: var(--secondary);">+ 100 Ar</div>
+                </div>
+            </div>
+            
+            <div class="trip-item">
+                <div class="trip-info">
+                    <div class="trip-date">Hier, 15:30</div>
+                    <div class="trip-route">Course - Isoraka → Ampandrana</div>
+                    <div class="trip-price">- 2,800 Ar</div>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" style="margin-top: 20px;" id="add-money-btn">Ajouter des fonds</button>
+        </div>
+        
+        <!-- History Screen -->
+        <div class="screen hidden" id="history-screen">
+            <button class="close-btn" id="close-history-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <div class="auth-title">Historique des courses</div>
+                <div class="auth-subtitle">Vos trajets précédents</div>
+            </div>
+            
+            <div class="history-filters">
+                <button class="filter-btn active">Tous</button>
+                <button class="filter-btn">Cette semaine</button>
+                <button class="filter-btn">Ce mois</button>
+            </div>
+            
+            <div class="trip-item">
+                <div class="trip-info">
+                    <div class="trip-date">Aujourd'hui, 10:23</div>
+                    <div class="trip-route">Mahajanga Centre → Analakely</div>
+                    <div class="trip-price">1,650 Ar</div>
+                </div>
+                <div class="trip-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            
+            <div class="trip-item">
+                <div class="trip-info">
+                    <div class="trip-date">Hier, 18:45</div>
+                    <div class="trip-route">Isoraka → Ampandrana</div>
+                    <div class="trip-price">2,800 Ar</div>
+                </div>
+                <div class="trip-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+            </div>
+            
+            <div class="trip-item">
+                <div class="trip-info">
+                    <div class="trip-date">12 Avril 2024</div>
+                    <div class="trip-route">Mahajanga Centre → Petite Plage</div>
+                    <div class="trip-price">2,200 Ar</div>
+                </div>
+                <div class="trip-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ratings Screen -->
+        <div class="screen hidden" id="ratings-screen">
+            <button class="close-btn" id="close-ratings-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-header">
+                <div class="auth-title">Mes Notes</div>
+                <div class="auth-subtitle">Vos évaluations des chauffeurs</div>
+            </div>
+            
+            <div class="driver-card">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Driver" class="driver-photo">
+                <div class="driver-info">
+                    <div class="driver-name">Rakoto Jean</div>
+                    <div class="driver-vehicle">Bajaj Jaune • 1245 TB</div>
+                    <div class="driver-rating">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="rating-value">5.0</div>
+                    </div>
+                    <div class="driver-distance">Aujourd'hui, 10:23</div>
+                </div>
+            </div>
+            
+            <div class="driver-card">
+                <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Driver" class="driver-photo">
+                <div class="driver-info">
+                    <div class="driver-name">Rasoa Marie</div>
+                    <div class="driver-vehicle">Bajaj Bleu • 5687 TB</div>
+                    <div class="driver-rating">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="rating-value">4.0</div>
+                    </div>
+                    <div class="driver-distance">Hier, 18:45</div>
+                </div>
+            </div>
+            
+            <div class="driver-card">
+                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Driver" class="driver-photo">
+                <div class="driver-info">
+                    <div class="driver-name">Rabe Patrick</div>
+                    <div class="driver-vehicle">Bajaj Vert • 9821 TB</div>
+                    <div class="driver-rating">
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="rating-value">4.5</div>
+                    </div>
+                    <div class="driver-distance">12 Avril 2024</div>
+                </div>
             </div>
         </div>
     </div>
-    
-    <footer>
-        <div class="container">
-            <p>HOLDEST SERVICES - Marketing digital professionnel</p>
-            <p>Email: oldestlucious@gmail.com | Snap: @lucious-lion04</p>
-            <p style="font-size: 0.8rem; margin-top: 10px; color: var(--primary);">
-                
-                  </p>
-        </div>
-    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script>
-        // Compteur de temps
-        let countdown = 30 * 60;
-        function updateCountdown() {
-            const minutes = Math.floor(countdown / 60);
-            const seconds = countdown % 60;
-            document.getElementById('countdown').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            
-            if (countdown > 0) {
-                countdown--;
-                setTimeout(updateCountdown, 1000);
-            }
-        }
-        
-        // Gestion des modales SIMPLIFIÉE
-        const orderModal = document.getElementById('orderModal');
-        const webcamModal = document.getElementById('webcamModal');
-        const contactModal = document.getElementById('contactModal');
-        const exampleModal = document.getElementById('exampleModal');
-        const snapchatPopup = document.getElementById('snapchatPopup');
-        
-        // Ouvrir modale commande
-        document.querySelectorAll('.open-order-modal').forEach(button => {
-            button.addEventListener('click', function() {
-                const service = this.getAttribute('data-service');
-                document.getElementById('serviceInput').value = service;
-                orderModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        // Ouvrir modale exemple
-        document.querySelectorAll('.open-example-modal').forEach(button => {
-            button.addEventListener('click', function() {
-                exampleModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        
-        // Ouvrir modale webcam
-        function openWebcamModal() {
-            webcamModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // Ouvrir modale contact
-        function openContactModal() {
-            contactModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Fermer modale exemple
-        function closeExampleModal() {
-            exampleModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            openContactModal();
-        }
-        
-        // Fermer modales
-        document.querySelectorAll('.close-modal').forEach(closeBtn => {
-            closeBtn.addEventListener('click', function() {
-                orderModal.style.display = 'none';
-                webcamModal.style.display = 'none';
-                contactModal.style.display = 'none';
-                exampleModal.style.display = 'none';
-                snapchatPopup.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-        });
-        
-        // Fermer en cliquant dehors
-        window.addEventListener('click', function(event) {
-            if (event.target === orderModal) {
-                orderModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-            if (event.target === webcamModal) {
-                webcamModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-            if (event.target === contactModal) {
-                contactModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-            if (event.target === exampleModal) {
-                exampleModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-            if (event.target === snapchatPopup) {
-                snapchatPopup.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // Animation au défilement
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDZsgZuAfDCCQie8Zdgs2b-liXNGmbcj0A",
+            authDomain: "salon-de-lissage-lirina.firebaseapp.com",
+            projectId: "salon-de-lissage-lirina",
+            storageBucket: "salon-de-lissage-lirina.firebasestorage.app",
+            messagingSenderId: "1076363528985",
+            appId: "1:1076363528985:web:e72b30009c33315809d388",
+            measurementId: "G-P75QP0VRE7"
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-        // Appliquer l'animation aux sections
-        document.querySelectorAll('.service-card, .disruption-section, .comparison-box, .payment-option, .snap-service').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        // État de l'application
+        let currentUser = null;
+        let map = null;
+        let userMarker = null;
 
-        // Popup Snapchat - Affichage intelligent
-        let snapchatPopupShown = false;
-
-        function showSnapchatPopup() {
-            // Vérifier si le popup a déjà été montré
-            if (snapchatPopupShown) return;
+        // Initialiser la carte
+        function initMap() {
+            // Centrer sur Mahajanga par défaut
+            map = L.map('map').setView([-15.7167, 46.3167], 13);
             
-            // Afficher après un délai (5 secondes)
-            setTimeout(() => {
-                const popup = document.getElementById('snapchatPopup');
-                if (popup) {
-                    popup.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                    snapchatPopupShown = true;
-                }
-            }, 5000);
+            // Ajouter la couche de carte
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Bouton de localisation
+            document.getElementById('locate-btn').addEventListener('click', locateUser);
         }
 
-        function closeSnapchatPopup() {
-            const popup = document.getElementById('snapchatPopup');
-            if (popup) {
-                popup.style.display = 'none';
-                document.body.style.overflow = 'auto';
+        // Localiser l'utilisateur
+        function locateUser() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        
+                        // Mettre à jour ou créer le marqueur
+                        if (userMarker) {
+                            userMarker.setLatLng([userLat, userLng]);
+                        } else {
+                            userMarker = L.marker([userLat, userLng])
+                                .addTo(map)
+                                .bindPopup('Votre position')
+                                .openPopup();
+                        }
+                        
+                        // Centrer la carte sur la position
+                        map.setView([userLat, userLng], 15);
+                    },
+                    (error) => {
+                        alert('Impossible de récupérer votre position');
+                    }
+                );
+            } else {
+                alert('La géolocalisation n\'est pas supportée par votre navigateur');
             }
         }
 
-        function openSnapchatServices() {
-            closeSnapchatPopup();
-            // Faire défiler jusqu'à la section Snapchat
-            const snapSection = document.querySelector('.service-card:first-child');
-            if (snapSection) {
-                snapSection.scrollIntoView({ behavior: 'smooth' });
-            }
+        // Références aux éléments
+        const mainContent = document.getElementById('main-content');
+        const authScreen = document.getElementById('auth-screen');
+        const userProfileScreen = document.getElementById('user-profile-screen');
+        const rideBookingScreen = document.getElementById('ride-booking-screen');
+        const paymentScreen = document.getElementById('payment-screen');
+        const walletScreen = document.getElementById('wallet-screen');
+        const historyScreen = document.getElementById('history-screen');
+        const ratingsScreen = document.getElementById('ratings-screen');
+
+        // Fonctions de navigation
+        function showScreen(screen) {
+            // Cacher tous les écrans
+            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+            mainContent.classList.add('hidden');
+            
+            // Afficher l'écran demandé
+            screen.classList.remove('hidden');
         }
-        
-        // Démarrer compte à rebours
-        window.addEventListener('load', function() {
-            updateCountdown();
-            showSnapchatPopup();
+
+        function showMainApp() {
+            document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+            mainContent.classList.remove('hidden');
+        }
+
+        // Événements de navigation
+        document.getElementById('profile-btn').addEventListener('click', () => {
+            if (currentUser) {
+                showScreen(userProfileScreen);
+            } else {
+                showScreen(authScreen);
+            }
         });
-        
-        // REMPLACER LES FORMSPREE ID
-        // Remplacer "your-form-id" dans les formulaires par ton vrai ID Formspree
-        // Exemple: action="https://formspree.io/f/xjvnzzzz"
+
+        // Boutons de fermeture
+        document.getElementById('close-auth-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-profile-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-booking-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-payment-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-wallet-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-history-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-ratings-btn').addEventListener('click', showMainApp);
+
+        // Actions rapides
+        document.getElementById('book-ride-btn').addEventListener('click', () => {
+            if (currentUser) {
+                showScreen(rideBookingScreen);
+            } else {
+                showScreen(authScreen);
+            }
+        });
+
+        document.getElementById('history-btn').addEventListener('click', () => {
+            if (currentUser) {
+                showScreen(historyScreen);
+            } else {
+                showScreen(authScreen);
+            }
+        });
+
+        document.getElementById('ratings-btn').addEventListener('click', () => {
+            if (currentUser) {
+                showScreen(ratingsScreen);
+            } else {
+                showScreen(authScreen);
+            }
+        });
+
+        document.getElementById('wallet-btn').addEventListener('click', () => {
+            if (currentUser) {
+                showScreen(walletScreen);
+            } else {
+                showScreen(authScreen);
+            }
+        });
+
+        // Authentification
+        document.getElementById('show-register-link').addEventListener('click', () => {
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('register-form').classList.remove('hidden');
+        });
+
+        document.getElementById('show-login-link').addEventListener('click', () => {
+            document.getElementById('register-form').classList.add('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+        });
+
+        // Connexion
+        document.getElementById('login-btn').addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            try {
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                currentUser = userCredential.user;
+                showMainApp();
+            } catch (error) {
+                alert('Erreur de connexion: ' + error.message);
+            }
+        });
+
+        // Inscription
+        document.getElementById('register-btn').addEventListener('click', async () => {
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+            
+            if (!name || !email || !password || !confirm) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            if (password !== confirm) {
+                alert('Les mots de passe ne correspondent pas');
+                return;
+            }
+            
+            try {
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                await userCredential.user.updateProfile({ displayName: name });
+                currentUser = userCredential.user;
+                showMainApp();
+            } catch (error) {
+                alert('Erreur d\'inscription: ' + error.message);
+            }
+        });
+
+        // Déconnexion
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            try {
+                await auth.signOut();
+                currentUser = null;
+                showMainApp();
+            } catch (error) {
+                console.error('Erreur de déconnexion:', error);
+            }
+        });
+
+        // Réservation
+        document.getElementById('confirm-booking-btn').addEventListener('click', () => {
+            showScreen(paymentScreen);
+        });
+
+        document.getElementById('back-to-booking-btn').addEventListener('click', () => {
+            showScreen(rideBookingScreen);
+        });
+
+        // Paiement
+        document.getElementById('confirm-payment-btn').addEventListener('click', () => {
+            alert('Paiement simulé avec succès!');
+            showMainApp();
+        });
+
+        // Gestion de l'état d'authentification
+        auth.onAuthStateChanged((user) => {
+            currentUser = user;
+            if (user) {
+                showMainApp();
+                // Localiser automatiquement l'utilisateur après connexion
+                setTimeout(locateUser, 1000);
+            } else {
+                showScreen(authScreen);
+            }
+        });
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            // L'état d'authentification est géré par onAuthStateChanged
+        });
     </script>
 </body>
-</html
+    </html>
