@@ -1728,6 +1728,124 @@
             align-items: center;
             gap: 8px;
         }
+
+        /* Styles pour les paramètres */
+        .settings-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+        
+        .settings-info {
+            flex: 1;
+        }
+        
+        .settings-label {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .settings-description {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: var(--primary);
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Styles pour le téléchargement de fichiers */
+        .file-upload-container {
+            margin-top: 10px;
+        }
+        
+        .file-upload-label {
+            display: block;
+            padding: 10px 15px;
+            background: var(--light);
+            border: 1px dashed var(--primary);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .file-upload-label i {
+            margin-right: 8px;
+        }
+        
+        .file-name {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* Styles pour le bouton Google désactivé */
+        .google-btn-disabled {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+        }
+        
+        .google-btn-disabled:hover {
+            background: white !important;
+        }
     </style>
 </head>
 <body>
@@ -2104,27 +2222,57 @@
                     <input type="password" class="form-input" id="register-confirm" placeholder="Confirmez votre mot de passe">
                 </div>
                 
-                <!-- Champs supplémentaires pour les chauffeurs -->
-                <div id="driver-fields" class="hidden">
-                    <div class="driver-form-section">
-                        <div class="form-section-title">
-                            <i class="fas fa-id-card"></i>
-                            Informations du conducteur
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="driver-license">Numéro de permis</label>
-                            <input type="text" class="form-input" id="driver-license" placeholder="Numéro de permis">
+                <!-- Champs supplémentaires pour les chauffeurs - AMÉLIORÉS -->
+                <div id="driver-fields" class="driver-form-section hidden">
+                    <div class="form-section-title">
+                        <i class="fas fa-id-card"></i>
+                        Informations du conducteur
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="driver-license">Numéro de permis</label>
+                        <input type="text" class="form-input" id="driver-license" placeholder="Numéro de permis">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="vehicle-number">Numéro du véhicule</label>
+                        <input type="text" class="form-input" id="vehicle-number" placeholder="Ex: 1245 TB">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="vehicle-color">Couleur du bajaj</label>
+                        <input type="text" class="form-input" id="vehicle-color" placeholder="Ex: Jaune, Bleu, Vert">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Documents requis</label>
+                        <div class="file-upload-container">
+                            <label class="file-upload-label" for="license-photo">
+                                <i class="fas fa-upload"></i>Télécharger la photo du permis
+                            </label>
+                            <input type="file" id="license-photo" accept="image/*" class="hidden">
+                            <div class="file-name" id="license-file-name">Aucun fichier sélectionné</div>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label" for="vehicle-number">Numéro du véhicule</label>
-                            <input type="text" class="form-input" id="vehicle-number" placeholder="Ex: 1245 TB">
+                        <div class="file-upload-container">
+                            <label class="file-upload-label" for="vehicle-photo">
+                                <i class="fas fa-upload"></i>Télécharger la photo du véhicule
+                            </label>
+                            <input type="file" id="vehicle-photo" accept="image/*" class="hidden">
+                            <div class="file-name" id="vehicle-file-name">Aucun fichier sélectionné</div>
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label" for="vehicle-color">Couleur du bajaj</label>
-                            <input type="text" class="form-input" id="vehicle-color" placeholder="Ex: Jaune, Bleu, Vert">
+                        <div class="file-upload-container">
+                            <label class="file-upload-label" for="insurance-photo">
+                                <i class="fas fa-upload"></i>Télécharger la carte d'assurance
+                            </label>
+                            <input type="file" id="insurance-photo" accept="image/*" class="hidden">
+                            <div class="file-name" id="insurance-file-name">Aucun fichier sélectionné</div>
                         </div>
+                    </div>
+                    
+                    <div class="cancellation-warning">
+                        <i class="fas fa-info-circle"></i>
+                        Les chauffeurs doivent être vérifiés avant de pouvoir accepter des courses.
                     </div>
                 </div>
                 
@@ -2137,6 +2285,7 @@
                     <div class="divider-text">Ou</div>
                 </div>
                 
+                <!-- Bouton Google désactivé pour les chauffeurs -->
                 <button class="btn btn-google" id="google-register-btn">
                     <i class="fab fa-google"></i>
                     <span>S'inscrire avec Google</span>
@@ -2618,6 +2767,155 @@
             </div>
         </div>
 
+        <!-- Settings Screen - NOUVEAU -->
+        <div class="screen" id="settings-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-settings-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Paramètres</div>
+                <div class="modal-subtitle">Personnalisez votre expérience</div>
+            </div>
+            
+            <div class="settings-section">
+                <div class="section-title">
+                    <span>Notifications</span>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Notifications de courses</div>
+                        <div class="settings-description">Recevoir des alertes pour les nouvelles courses</div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Notifications promotionnelles</div>
+                        <div class="settings-description">Recevoir des offres et promotions</div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Notifications sonores</div>
+                        <div class="settings-description">Activer les sons pour les notifications</div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <div class="section-title">
+                    <span>Préférences</span>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Langue</div>
+                        <div class="settings-description">Français</div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Mode sombre</div>
+                        <div class="settings-description">Activer l'apparence sombre</div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Géolocalisation automatique</div>
+                        <div class="settings-description">Détecter automatiquement ma position</div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <div class="section-title">
+                    <span>Compte et confidentialité</span>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Modifier le profil</div>
+                        <div class="settings-description">Changer vos informations personnelles</div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Changer le mot de passe</div>
+                        <div class="settings-description">Mettre à jour votre mot de passe</div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Confidentialité</div>
+                        <div class="settings-description">Gérer vos paramètres de confidentialité</div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <div class="section-title">
+                    <span>Aide et support</span>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Centre d'aide</div>
+                        <div class="settings-description">Trouvez des réponses à vos questions</div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Nous contacter</div>
+                        <div class="settings-description">Obtenir de l'aide de notre équipe</div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+                
+                <div class="settings-item">
+                    <div class="settings-info">
+                        <div class="settings-label">Conditions d'utilisation</div>
+                        <div class="settings-description">Lire nos conditions de service</div>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--gray);"></i>
+                </div>
+            </div>
+            
+            <button class="btn" style="margin-top: 30px; background: #f8fafc; color: var(--dark);" id="clear-cache-btn">Effacer le cache</button>
+            <button class="btn btn-danger" style="margin-top: 10px;" id="delete-account-btn">Supprimer le compte</button>
+        </div>
+
     </div>
 
     <!-- Leaflet JS -->
@@ -2848,7 +3146,7 @@
                     
                     let iconHtml;
                     switch(selectedVehicleType) {
-                        case 'bajaj': iconHtml = '🛺'; break;
+                        case 'bajaj': iconHtml = '🛺 ⭐️'; break;
                         case 'taxi': iconHtml = '🚕'; break;
                         case 'car': iconHtml = '🚗'; break;
                     }
@@ -3301,6 +3599,7 @@
         document.getElementById('close-wallet-btn').addEventListener('click', showMainApp);
         document.getElementById('close-history-btn').addEventListener('click', showMainApp);
         document.getElementById('close-ratings-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-settings-btn').addEventListener('click', showMainApp);
         document.getElementById('close-matching-btn').addEventListener('click', function() {
             if (confirm('Annuler la recherche de chauffeur?')) {
                 if (currentRide && currentRide.driver) {
@@ -3362,7 +3661,11 @@
             showNotification('Section offres en cours de développement', 'info');
         });
         document.getElementById('nav-settings').addEventListener('click', function() {
-            showNotification('Section paramètres en cours de développement', 'info');
+            if (currentUser) {
+                showScreen('settings-screen');
+            } else {
+                showScreen('auth-screen');
+            }
         });
 
         // Authentification
@@ -3370,6 +3673,8 @@
             document.getElementById('passenger-option').classList.add('active');
             document.getElementById('driver-option').classList.remove('active');
             document.getElementById('driver-fields').classList.add('hidden');
+            document.getElementById('google-register-btn').classList.remove('google-btn-disabled');
+            document.getElementById('google-register-btn').disabled = false;
             userType = "passenger";
         });
 
@@ -3377,6 +3682,8 @@
             document.getElementById('driver-option').classList.add('active');
             document.getElementById('passenger-option').classList.remove('active');
             document.getElementById('driver-fields').classList.remove('hidden');
+            document.getElementById('google-register-btn').classList.add('google-btn-disabled');
+            document.getElementById('google-register-btn').disabled = true;
             userType = "driver";
         });
 
@@ -3389,6 +3696,51 @@
             document.getElementById('register-form').classList.add('hidden');
             document.getElementById('login-form').classList.remove('hidden');
         });
+
+        // Gestion des fichiers uploadés
+        function setupFileUploads() {
+            // Permis de conduire
+            document.getElementById('license-photo').addEventListener('change', function(e) {
+                const fileName = e.target.files[0] ? e.target.files[0].name : 'Aucun fichier sélectionné';
+                document.getElementById('license-file-name').textContent = fileName;
+            });
+            
+            // Photo du véhicule
+            document.getElementById('vehicle-photo').addEventListener('change', function(e) {
+                const fileName = e.target.files[0] ? e.target.files[0].name : 'Aucun fichier sélectionné';
+                document.getElementById('vehicle-file-name').textContent = fileName;
+            });
+            
+            // Carte d'assurance
+            document.getElementById('insurance-photo').addEventListener('change', function(e) {
+                const fileName = e.target.files[0] ? e.target.files[0].name : 'Aucun fichier sélectionné';
+                document.getElementById('insurance-file-name').textContent = fileName;
+            });
+        }
+
+        // Validation du formulaire chauffeur
+        function validateDriverForm() {
+            if (userType !== "driver") return true;
+            
+            const license = document.getElementById('driver-license').value;
+            const vehicleNumber = document.getElementById('vehicle-number').value;
+            const vehicleColor = document.getElementById('vehicle-color').value;
+            const licenseFile = document.getElementById('license-photo').files[0];
+            const vehicleFile = document.getElementById('vehicle-photo').files[0];
+            const insuranceFile = document.getElementById('insurance-photo').files[0];
+            
+            if (!license || !vehicleNumber || !vehicleColor) {
+                showNotification('Veuillez remplir tous les champs obligatoires pour les chauffeurs', 'error');
+                return false;
+            }
+            
+            if (!licenseFile || !vehicleFile || !insuranceFile) {
+                showNotification('Veuillez télécharger tous les documents requis', 'error');
+                return false;
+            }
+            
+            return true;
+        }
 
         // Connexion
         document.getElementById('login-btn').addEventListener('click', async () => {
@@ -3481,15 +3833,9 @@
                 return;
             }
             
-            if (userType === "driver") {
-                const license = document.getElementById('driver-license').value;
-                const vehicleNumber = document.getElementById('vehicle-number').value;
-                const vehicleColor = document.getElementById('vehicle-color').value;
-                
-                if (!license || !vehicleNumber || !vehicleColor) {
-                    showNotification('Veuillez remplir tous les champs pour les chauffeurs', 'error');
-                    return;
-                }
+            // Validation spécifique pour les chauffeurs
+            if (userType === "driver" && !validateDriverForm()) {
+                return;
             }
             
             try {
@@ -3512,6 +3858,7 @@
                     userData.vehicleNumber = document.getElementById('vehicle-number').value;
                     userData.vehicleColor = document.getElementById('vehicle-color').value;
                     userData.status = "offline";
+                    userData.verified = false; // Les chauffeurs doivent être vérifiés
                 }
                 
                 await db.collection('users').doc(currentUser.uid).set(userData);
@@ -3871,6 +4218,7 @@
             initMap();
             hideAllScreens();
             updatePriceEstimate();
+            setupFileUploads();
             
             // Si utilisateur non connecté, afficher l'écran d'authentification
             if (!currentUser) {
@@ -3881,4 +4229,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
