@@ -188,13 +188,20 @@
             opacity: 0.9;
         }
         
-        /* Search Bar */
+        /* Search Bar - REPOSITIONNÉE AU-DESSUS DE LA CARTE */
+        .search-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        
         .search-container {
             background: white;
             border-radius: 12px;
             padding: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -217,22 +224,57 @@
             color: var(--gray);
         }
         
-        /* Quick Actions */
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1001;
+            display: none;
         }
         
-        .see-all {
-            font-size: 14px;
-            color: var(--primary);
+        .search-result-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
+        .search-result-item:hover {
+            background: #f8fafc;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-result-icon {
+            color: var(--primary);
+            font-size: 16px;
+        }
+        
+        .search-result-text {
+            flex: 1;
+        }
+        
+        .search-result-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        
+        .search-result-subtitle {
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        /* Quick Actions - CACHÉ POUR LES CHAUFFEURS */
         .quick-actions {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -266,7 +308,7 @@
             color: var(--dark);
         }
         
-        /* Drivers List */
+        /* Drivers List - CACHÉ POUR LES CHAUFFEURS */
         .drivers-section {
             margin-bottom: 25px;
         }
@@ -1489,6 +1531,203 @@
             font-size: 0.7rem;
             color: #aaa;
         }
+
+        /* Styles pour les nouvelles fonctionnalités */
+        .ride-matching {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .matching-animation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .matching-dots {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .matching-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: pulse 1.5s infinite;
+        }
+        
+        .matching-dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        
+        .matching-dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        .driver-found {
+            background: #d1fae5;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .driver-info-compact {
+            flex: 1;
+        }
+        
+        .driver-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .driver-vehicle {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .communication-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .comm-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .call-btn {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .message-btn {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .trip-progress {
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--secondary);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--gray);
+        }
+        
+        .trip-updates {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .update-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .update-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .update-time {
+            font-size: 12px;
+            color: var(--gray);
+            min-width: 50px;
+        }
+        
+        .update-text {
+            flex: 1;
+        }
+        
+        .update-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Section Title */
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .see-all {
+            font-size: 14px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Formulaire chauffeur amélioré */
+        .driver-form-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+        
+        .form-section-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
     </style>
 </head>
 <body>
@@ -1527,14 +1766,19 @@
             <!-- Bajaj Image -->
             <img src="https://mcusercontent.com/91c139bf21c12fb6688667dc7/images/331066df-ae56-9e10-0bc8-02861b11d8dd.png" alt="Bajaj Mahajanga" class="bajaj-image">
             
-            <!-- Search Bar -->
-            <div class="search-container">
-                <div class="search-icon"><i class="fas fa-search"></i></div>
-                <input type="text" class="search-input" id="search-input" placeholder="Où allez-vous?">
-            </div>
-            
             <!-- Map Section AMÉLIORÉE -->
             <div class="map-container">
+                <!-- Barre de recherche repositionnée au-dessus de la carte -->
+                <div class="search-overlay">
+                    <div class="search-container">
+                        <div class="search-icon"><i class="fas fa-search"></i></div>
+                        <input type="text" class="search-input" id="search-input" placeholder="Où allez-vous?">
+                        <div class="search-results" id="search-results">
+                            <!-- Les résultats de recherche seront ajoutés ici dynamiquement -->
+                        </div>
+                    </div>
+                </div>
+                
                 <div id="map"></div>
                 
                 <!-- Panneau des options de carte -->
@@ -1597,8 +1841,8 @@
                 </div>
             </div>
             
-            <!-- Sélection de véhicule -->
-            <div class="vehicle-selection">
+            <!-- Sélection de véhicule - CACHÉ POUR LES CHAUFFEURS -->
+            <div class="vehicle-selection" id="vehicle-selection">
                 <div class="vehicle-option selected" data-type="bajaj">
                     <div class="vehicle-icon">🛺</div>
                     <div class="vehicle-name">Bajaj</div>
@@ -1619,35 +1863,35 @@
                 </div>
             </div>
             
-            <!-- Quick Actions -->
-            <div class="section-title">
-                <span id="quick-actions-title">Actions Rapides</span>
+            <!-- Quick Actions - CACHÉ POUR LES CHAUFFEURS -->
+            <div class="section-title" id="quick-actions-title">
+                <span>Actions Rapides</span>
                 <span class="see-all">Voir tout</span>
             </div>
             
-            <div class="quick-actions">
+            <div class="quick-actions" id="quick-actions">
                 <div class="action-item" id="book-ride-btn">
                     <div class="action-icon"><i class="fas fa-motorcycle"></i></div>
-                    <div class="action-text" id="action-ride">Réserver</div>
+                    <div class="action-text">Réserver</div>
                 </div>
                 <div class="action-item" id="history-btn">
                     <div class="action-icon"><i class="fas fa-history"></i></div>
-                    <div class="action-text" id="action-history">Historique</div>
+                    <div class="action-text">Historique</div>
                 </div>
                 <div class="action-item" id="ratings-btn">
                     <div class="action-icon"><i class="fas fa-star"></i></div>
-                    <div class="action-text" id="action-ratings">Notes</div>
+                    <div class="action-text">Notes</div>
                 </div>
                 <div class="action-item" id="wallet-btn">
                     <div class="action-icon"><i class="fas fa-wallet"></i></div>
-                    <div class="action-text" id="action-wallet">Portefeuille</div>
+                    <div class="action-text">Portefeuille</div>
                 </div>
             </div>
             
-            <!-- Available Drivers Section -->
-            <div class="drivers-section">
+            <!-- Available Drivers Section - CACHÉ POUR LES CHAUFFEURS -->
+            <div class="drivers-section" id="drivers-section">
                 <div class="section-title">
-                    <span id="drivers-title">Bajajs Disponibles</span>
+                    <span>Bajajs Disponibles</span>
                     <span class="see-all">Voir tout</span>
                 </div>
                 
@@ -1709,6 +1953,63 @@
                         <div class="driver-distance">À 0.5 km • 3 min</div>
                     </div>
                     <div class="driver-status status-available">Disponible</div>
+                </div>
+            </div>
+            
+            <!-- Interface Chauffeur - CACHÉ POUR LES PASSAGERS -->
+            <div id="driver-dashboard" class="hidden">
+                <div class="driver-interface">
+                    <div class="status-indicator">
+                        <div class="driver-online-status online" id="driver-status">
+                            <i class="fas fa-circle"></i> En ligne
+                        </div>
+                    </div>
+                    
+                    <div class="section-title">
+                        <span>Courses en attente</span>
+                    </div>
+                    
+                    <div class="ride-request">
+                        <div class="request-info">
+                            <strong>Destination:</strong> Centre-ville<br>
+                            <strong>Prix:</strong> 1,500 Ar<br>
+                            <strong>Distance:</strong> 2.5 km<br>
+                            <strong>Client:</strong> Jean Dupont
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-secondary btn-small accept-ride-btn">
+                                <i class="fas fa-check"></i> Accepter
+                            </button>
+                            <button class="btn btn-danger btn-small decline-ride-btn">
+                                <i class="fas fa-times"></i> Refuser
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="section-title">
+                        <span>Course en cours</span>
+                    </div>
+                    
+                    <div class="ride-request">
+                        <div class="request-info">
+                            <strong>Destination:</strong> Amborovy<br>
+                            <strong>Prix:</strong> 4,500 Ar<br>
+                            <strong>Client:</strong> Marie Rabe<br>
+                            <strong>Statut:</strong> En route
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-primary btn-small">
+                                <i class="fas fa-map-marker-alt"></i> Itinéraire
+                            </button>
+                            <button class="btn btn-secondary btn-small">
+                                <i class="fas fa-flag-checkered"></i> Terminer
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="toggle-online-btn">
+                        <i class="fas fa-toggle-on"></i> Passer hors ligne
+                    </button>
                 </div>
             </div>
         </div>
@@ -1805,19 +2106,25 @@
                 
                 <!-- Champs supplémentaires pour les chauffeurs -->
                 <div id="driver-fields" class="hidden">
-                    <div class="form-group">
-                        <label class="form-label" for="driver-license">Numéro de permis</label>
-                        <input type="text" class="form-input" id="driver-license" placeholder="Numéro de permis">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="vehicle-number">Numéro du véhicule</label>
-                        <input type="text" class="form-input" id="vehicle-number" placeholder="Ex: 1245 TB">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="vehicle-color">Couleur du bajaj</label>
-                        <input type="text" class="form-input" id="vehicle-color" placeholder="Ex: Jaune, Bleu, Vert">
+                    <div class="driver-form-section">
+                        <div class="form-section-title">
+                            <i class="fas fa-id-card"></i>
+                            Informations du conducteur
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="driver-license">Numéro de permis</label>
+                            <input type="text" class="form-input" id="driver-license" placeholder="Numéro de permis">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="vehicle-number">Numéro du véhicule</label>
+                            <input type="text" class="form-input" id="vehicle-number" placeholder="Ex: 1245 TB">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="vehicle-color">Couleur du bajaj</label>
+                            <input type="text" class="form-input" id="vehicle-color" placeholder="Ex: Jaune, Bleu, Vert">
+                        </div>
                     </div>
                 </div>
                 
@@ -1842,7 +2149,7 @@
             </div>
         </div>
 
-        <!-- Ride Booking Screen -->
+        <!-- Ride Booking Screen - CACHÉ POUR LES CHAUFFEURS -->
         <div class="screen" id="ride-booking-screen">
             <div class="modal-header">
                 <button class="modal-close" id="close-booking-btn">
@@ -1897,7 +2204,82 @@
             </div>
         </div>
 
-        <!-- Ride Confirmation Screen -->
+        <!-- Ride Matching Screen (Nouvel écran) - CACHÉ POUR LES CHAUFFEURS -->
+        <div class="screen" id="ride-matching-screen">
+            <div class="modal-header">
+                <button class="modal-close" id="close-matching-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="modal-title">Recherche d'un chauffeur</div>
+                <div class="modal-subtitle">Nous trouvons le meilleur bajaj pour vous</div>
+            </div>
+            
+            <div class="ride-matching">
+                <div class="matching-animation">
+                    <div class="matching-dots">
+                        <div class="matching-dot"></div>
+                        <div class="matching-dot"></div>
+                        <div class="matching-dot"></div>
+                    </div>
+                </div>
+                
+                <p>Recherche de chauffeurs disponibles près de vous...</p>
+                
+                <div id="matching-results" class="hidden">
+                    <div class="driver-found">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Driver" class="driver-photo" style="width: 60px; height: 60px;">
+                        <div class="driver-info-compact">
+                            <div class="driver-name">Rakoto Jean</div>
+                            <div class="driver-vehicle">Bajaj Jaune • 1245 TB</div>
+                            <div class="driver-rating">
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="rating-value">4.5</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="communication-options">
+                        <button class="comm-btn call-btn" id="call-driver-btn">
+                            <i class="fas fa-phone"></i> Appeler
+                        </button>
+                        <button class="comm-btn message-btn" id="message-driver-btn">
+                            <i class="fas fa-comment"></i> Message
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="trip-progress hidden" id="trip-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span>Départ</span>
+                        <span>En route</span>
+                        <span>Arrivée</span>
+                    </div>
+                </div>
+                
+                <div class="trip-updates hidden" id="trip-updates">
+                    <div class="update-item">
+                        <div class="update-time">2 min</div>
+                        <div class="update-icon"><i class="fas fa-motorcycle"></i></div>
+                        <div class="update-text">Votre chauffeur arrive au point de prise en charge</div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-danger hidden" id="cancel-matching-btn" style="margin-top: 20px;">
+                    <i class="fas fa-times"></i> Annuler la recherche
+                </button>
+            </div>
+        </div>
+
+        <!-- Ride Confirmation Screen - CACHÉ POUR LES CHAUFFEURS -->
         <div class="screen" id="ride-confirmation-screen">
             <div class="modal-header">
                 <button class="modal-close" id="close-confirmation-btn">
@@ -1939,7 +2321,7 @@
             </div>
         </div>
 
-        <!-- Driver Interface Screen -->
+        <!-- Driver Interface Screen - CACHÉ POUR LES PASSAGERS -->
         <div class="screen" id="driver-interface-screen">
             <div class="modal-header">
                 <button class="modal-close" id="close-driver-btn">
@@ -1951,7 +2333,7 @@
             
             <div class="driver-interface">
                 <div class="status-indicator">
-                    <div class="driver-online-status online" id="driver-status">
+                    <div class="driver-online-status online" id="driver-status-modal">
                         <i class="fas fa-circle"></i> En ligne
                     </div>
                 </div>
@@ -1998,7 +2380,7 @@
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" id="toggle-online-btn">
+                <button class="btn btn-primary" id="toggle-online-btn-modal">
                     <i class="fas fa-toggle-on"></i> Passer hors ligne
                 </button>
             </div>
@@ -2060,7 +2442,7 @@
             <button class="btn" style="margin-top: 10px; background: #f8fafc; color: var(--dark);" id="logout-btn">Se déconnecter</button>
         </div>
 
-        <!-- Wallet Screen -->
+        <!-- Wallet Screen - CACHÉ POUR LES CHAUFFEURS -->
         <div class="screen" id="wallet-screen">
             <div class="modal-header">
                 <button class="modal-close" id="close-wallet-btn">
@@ -2106,7 +2488,7 @@
             <button class="btn btn-primary" style="margin-top: 20px;" id="add-money-btn">Ajouter des fonds</button>
         </div>
 
-        <!-- History Screen -->
+        <!-- History Screen - CACHÉ POUR LES CHAUFFEURS -->
         <div class="screen" id="history-screen">
             <div class="modal-header">
                 <button class="modal-close" id="close-history-btn">
@@ -2168,7 +2550,7 @@
             </div>
         </div>
 
-        <!-- Ratings Screen -->
+        <!-- Ratings Screen - CACHÉ POUR LES CHAUFFEURS -->
         <div class="screen" id="ratings-screen">
             <div class="modal-header">
                 <button class="modal-close" id="close-ratings-btn">
@@ -2242,7 +2624,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-        // Firebase configuration
+        // Configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyDZsgZuAfDCCQie8Zdgs2b-liXNGmbcj0A",
             authDomain: "salon-de-lissage-lirina.firebaseapp.com",
@@ -2253,7 +2635,7 @@
             measurementId: "G-P75QP0VRE7"
         };
 
-        // Initialize Firebase
+        // Initialiser Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
@@ -2266,7 +2648,7 @@
         let userLocation = { lat: -15.7167, lng: 46.3167 }; // Mahajanga
         let currentRide = null;
         
-        // Variables pour la nouvelle carte
+        // Variables pour la carte
         let destinationMarker = null;
         let routeLine = null;
         let driverMarker = null;
@@ -2279,6 +2661,7 @@
         let pickupCoordinates = null;
         let destinationCoordinates = null;
         let routePoints = [];
+        let locationWatchId = null;
 
         // Données simulées
         const availableDrivers = [
@@ -2302,7 +2685,7 @@
             }
         ];
 
-        // Initialiser la carte AVEC LE SYSTÈME AMÉLIORÉ
+        // Initialiser la carte
         function initMap() {
             // Initialisation de la carte centrée sur Mahajanga
             map = L.map('map', {
@@ -2438,6 +2821,9 @@
                 
                 // Mettre à jour les conducteurs disponibles
                 updateAvailableDrivers();
+                
+                // Mettre à jour le prix estimé
+                updatePriceEstimate();
             }
             
             // Fonction pour mettre à jour les conducteurs disponibles sur la carte
@@ -2506,11 +2892,29 @@
                         
                         // Mettre à jour les conducteurs disponibles
                         updateAvailableDrivers();
+                        
+                        // Si l'utilisateur est un chauffeur, mettre à jour sa position
+                        if (currentUser && userType === "driver") {
+                            updateDriverLocation(userLocation.lat, userLocation.lng);
+                        }
                     },
                     (error) => {
                         console.log('Géolocalisation non disponible');
                     }
                 );
+            }
+        }
+
+        // Fonction pour mettre à jour la position du chauffeur
+        function updateDriverLocation(lat, lng) {
+            if (currentUser && userType === "driver") {
+                // Ici, vous enverriez la position à votre backend
+                console.log(`Mise à jour position chauffeur: ${lat}, ${lng}`);
+                
+                // Pour l'instant, on simule juste la mise à jour
+                if (driverMarker) {
+                    driverMarker.setLatLng([lat, lng]);
+                }
             }
         }
 
@@ -2567,6 +2971,24 @@
             return points;
         }
 
+        // Fonction pour mettre à jour l'estimation de prix
+        function updatePriceEstimate() {
+            const distance = 2.5; // Distance simulée en km
+            let pricePerKm = 500;
+            
+            switch(selectedVehicleType) {
+                case 'bajaj': pricePerKm = 500; break;
+                case 'taxi': pricePerKm = 800; break;
+                case 'car': pricePerKm = 1000; break;
+            }
+            
+            const totalPrice = Math.round(distance * pricePerKm);
+            
+            document.getElementById('ride-price').textContent = `${totalPrice.toLocaleString()} Ar`;
+            document.getElementById('ride-distance').textContent = `${distance} km`;
+            document.getElementById('total-price').textContent = `${totalPrice.toLocaleString()} Ar`;
+        }
+
         // Fonctions pour gérer les écrans modaux
         function showScreen(screenId) {
             // Cacher tous les écrans
@@ -2618,20 +3040,234 @@
                 if (userType === "driver") {
                     document.getElementById('driver-badge').style.display = 'inline';
                     document.getElementById('driver-access-btn').style.display = 'flex';
+                    
+                    // Afficher l'interface chauffeur et cacher l'interface passager
+                    document.getElementById('driver-dashboard').classList.remove('hidden');
+                    document.getElementById('vehicle-selection').classList.add('hidden');
+                    document.getElementById('quick-actions-title').classList.add('hidden');
+                    document.getElementById('quick-actions').classList.add('hidden');
+                    document.getElementById('drivers-section').classList.add('hidden');
+                    
+                    // Mettre à jour le texte de bienvenue pour les chauffeurs
+                    document.getElementById('welcome-text').textContent = `Bonjour ${currentUser.displayName || 'Chauffeur'}!`;
+                    document.getElementById('welcome-subtext').textContent = 'Gérez vos courses efficacement';
+                    
+                    // Démarrer le suivi de position pour les chauffeurs
+                    startLocationTracking();
                 } else {
                     document.getElementById('driver-badge').style.display = 'none';
                     document.getElementById('driver-access-btn').style.display = 'none';
-                }
-                
-                // Mettre à jour le texte de bienvenue
-                if (currentUser.displayName) {
-                    document.getElementById('welcome-text').textContent = `Bonjour ${currentUser.displayName}!`;
+                    
+                    // Afficher l'interface passager et cacher l'interface chauffeur
+                    document.getElementById('driver-dashboard').classList.add('hidden');
+                    document.getElementById('vehicle-selection').classList.remove('hidden');
+                    document.getElementById('quick-actions-title').classList.remove('hidden');
+                    document.getElementById('quick-actions').classList.remove('hidden');
+                    document.getElementById('drivers-section').classList.remove('hidden');
+                    
+                    // Mettre à jour le texte de bienvenue pour les passagers
+                    document.getElementById('welcome-text').textContent = `Bonjour ${currentUser.displayName || 'Utilisateur'}!`;
+                    document.getElementById('welcome-subtext').textContent = 'Réservez votre Bajaj en toute sécurité';
+                    
+                    // Arrêter le suivi de position pour les passagers
+                    stopLocationTracking();
                 }
                 
                 // Mettre à jour le profil
                 document.getElementById('user-display-name').textContent = currentUser.displayName || 'Utilisateur';
                 document.getElementById('user-email').textContent = currentUser.email;
                 document.getElementById('user-type').textContent = userType === "driver" ? "Chauffeur" : "Passager";
+            }
+        }
+
+        // Fonction pour démarrer le suivi de position
+        function startLocationTracking() {
+            if (navigator.geolocation && userType === "driver") {
+                locationWatchId = navigator.geolocation.watchPosition(
+                    (position) => {
+                        userLocation.lat = position.coords.latitude;
+                        userLocation.lng = position.coords.longitude;
+                        
+                        if (userMarker) {
+                            userMarker.setLatLng([userLocation.lat, userLocation.lng]);
+                        }
+                        
+                        // Mettre à jour la position du chauffeur
+                        updateDriverLocation(userLocation.lat, userLocation.lng);
+                    },
+                    (error) => {
+                        console.log('Erreur de géolocalisation:', error);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    }
+                );
+            }
+        }
+
+        // Fonction pour arrêter le suivi de position
+        function stopLocationTracking() {
+            if (locationWatchId) {
+                navigator.geolocation.clearWatch(locationWatchId);
+                locationWatchId = null;
+            }
+        }
+
+        // NOUVELLES FONCTIONS POUR LA MISE EN RELATION
+
+        // Fonction pour rechercher un chauffeur
+        function findDriver(destination, vehicleType) {
+            showScreen('ride-matching-screen');
+            
+            // Afficher l'animation de recherche
+            document.getElementById('matching-results').classList.add('hidden');
+            document.getElementById('trip-progress').classList.add('hidden');
+            document.getElementById('trip-updates').classList.add('hidden');
+            document.getElementById('cancel-matching-btn').classList.remove('hidden');
+            
+            // Simulation de recherche de chauffeur
+            setTimeout(() => {
+                const availableDriver = availableDrivers.find(driver => driver.status === "available");
+                
+                if (availableDriver) {
+                    // Chauffeur trouvé
+                    document.getElementById('matching-results').classList.remove('hidden');
+                    
+                    // Mettre à jour les informations du chauffeur
+                    document.querySelector('.driver-found .driver-name').textContent = availableDriver.name;
+                    document.querySelector('.driver-found .driver-vehicle').textContent = availableDriver.vehicle;
+                    
+                    // Mettre à jour l'évaluation
+                    const starsContainer = document.querySelector('.driver-found .rating-stars');
+                    starsContainer.innerHTML = '';
+                    for (let i = 1; i <= 5; i++) {
+                        const star = document.createElement('i');
+                        if (i <= Math.floor(availableDriver.rating)) {
+                            star.className = 'fas fa-star';
+                        } else if (i === Math.ceil(availableDriver.rating) && availableDriver.rating % 1 !== 0) {
+                            star.className = 'fas fa-star-half-alt';
+                        } else {
+                            star.className = 'far fa-star';
+                        }
+                        starsContainer.appendChild(star);
+                    }
+                    document.querySelector('.driver-found .rating-value').textContent = availableDriver.rating;
+                    
+                    // Mettre à jour la photo
+                    document.querySelector('.driver-found .driver-photo').src = `https://randomuser.me/api/portraits/men/${availableDriver.id + 30}.jpg`;
+                    
+                    // Mettre à jour l'état de l'application
+                    currentRide = {
+                        driver: availableDriver,
+                        destination: destination,
+                        vehicleType: vehicleType,
+                        status: 'driver_found'
+                    };
+                    
+                    // Simuler l'acceptation de la course par le chauffeur
+                    setTimeout(() => {
+                        acceptRide(availableDriver);
+                    }, 2000);
+                    
+                } else {
+                    // Aucun chauffeur disponible
+                    showNotification('Aucun chauffeur disponible pour le moment. Veuillez réessayer.', 'error');
+                    showMainApp();
+                }
+            }, 3000);
+        }
+
+        // Fonction pour accepter une course (côté chauffeur)
+        function acceptRide(driver) {
+            driver.status = "busy";
+            
+            // Mettre à jour l'interface
+            document.getElementById('trip-progress').classList.remove('hidden');
+            document.getElementById('trip-updates').classList.remove('hidden');
+            
+            // Mettre à jour l'état de la course
+            currentRide.status = 'accepted';
+            
+            // Ajouter une mise à jour de statut
+            const updatesContainer = document.getElementById('trip-updates');
+            const newUpdate = document.createElement('div');
+            newUpdate.className = 'update-item';
+            newUpdate.innerHTML = `
+                <div class="update-time">Maintenant</div>
+                <div class="update-icon"><i class="fas fa-check"></i></div>
+                <div class="update-text">Votre chauffeur a accepté la course</div>
+            `;
+            updatesContainer.appendChild(newUpdate);
+            
+            // Simuler la progression
+            simulateTripProgress();
+            
+            // Simuler le trajet sur la carte
+            simulateRideOnMap(driver);
+        }
+
+        // Fonction pour simuler la progression du trajet
+        function simulateTripProgress() {
+            const progressFill = document.getElementById('progress-fill');
+            let progress = 0;
+            
+            const progressInterval = setInterval(() => {
+                progress += 5;
+                progressFill.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    // Course terminée
+                    completeRide();
+                }
+            }, 1000);
+        }
+
+        // Fonction pour terminer une course
+        function completeRide() {
+            // Ajouter une mise à jour de statut
+            const updatesContainer = document.getElementById('trip-updates');
+            const newUpdate = document.createElement('div');
+            newUpdate.className = 'update-item';
+            newUpdate.innerHTML = `
+                <div class="update-time">Maintenant</div>
+                <div class="update-icon"><i class="fas fa-flag-checkered"></i></div>
+                <div class="update-text">Course terminée. Merci d'avoir choisi Bajaj Secure!</div>
+            `;
+            updatesContainer.appendChild(newUpdate);
+            
+            // Réinitialiser l'état du chauffeur
+            if (currentRide && currentRide.driver) {
+                currentRide.driver.status = "available";
+            }
+            
+            // Afficher un message de confirmation
+            setTimeout(() => {
+                showNotification('Course terminée avec succès!', 'success');
+                showMainApp();
+            }, 3000);
+        }
+
+        // FONCTIONS POUR LA COMMUNICATION ENTRE UTILISATEUR ET CHAUFFEUR
+
+        // Fonction pour appeler le chauffeur
+        function callDriver() {
+            if (currentRide && currentRide.driver) {
+                showNotification(`Appel en cours vers ${currentRide.driver.phone}...`, 'info');
+                // Ici, vous intégreriez un service d'appel téléphonique réel
+            }
+        }
+
+        // Fonction pour envoyer un message au chauffeur
+        function messageDriver() {
+            if (currentRide && currentRide.driver) {
+                const message = prompt("Que souhaitez-vous dire à votre chauffeur?");
+                if (message) {
+                    showNotification(`Message envoyé à ${currentRide.driver.name}: "${message}"`, 'success');
+                    // Ici, vous intégreriez un service de messagerie réel
+                }
             }
         }
 
@@ -2665,38 +3301,68 @@
         document.getElementById('close-wallet-btn').addEventListener('click', showMainApp);
         document.getElementById('close-history-btn').addEventListener('click', showMainApp);
         document.getElementById('close-ratings-btn').addEventListener('click', showMainApp);
+        document.getElementById('close-matching-btn').addEventListener('click', function() {
+            if (confirm('Annuler la recherche de chauffeur?')) {
+                if (currentRide && currentRide.driver) {
+                    currentRide.driver.status = "available";
+                }
+                currentRide = null;
+                showMainApp();
+            }
+        });
 
-        // Actions rapides
+        // Actions rapides - CACHÉES POUR LES CHAUFFEURS
         document.getElementById('book-ride-btn').addEventListener('click', () => {
-            if (currentUser) {
+            if (currentUser && userType === "passenger") {
                 showScreen('ride-booking-screen');
+            } else if (currentUser && userType === "driver") {
+                showNotification('Cette fonctionnalité est réservée aux passagers', 'error');
             } else {
                 showScreen('auth-screen');
             }
         });
 
         document.getElementById('history-btn').addEventListener('click', () => {
-            if (currentUser) {
+            if (currentUser && userType === "passenger") {
                 showScreen('history-screen');
+            } else if (currentUser && userType === "driver") {
+                showNotification('Cette fonctionnalité est réservée aux passagers', 'error');
             } else {
                 showScreen('auth-screen');
             }
         });
 
         document.getElementById('ratings-btn').addEventListener('click', () => {
-            if (currentUser) {
+            if (currentUser && userType === "passenger") {
                 showScreen('ratings-screen');
+            } else if (currentUser && userType === "driver") {
+                showNotification('Cette fonctionnalité est réservée aux passagers', 'error');
             } else {
                 showScreen('auth-screen');
             }
         });
 
         document.getElementById('wallet-btn').addEventListener('click', () => {
-            if (currentUser) {
+            if (currentUser && userType === "passenger") {
                 showScreen('wallet-screen');
+            } else if (currentUser && userType === "driver") {
+                showNotification('Cette fonctionnalité est réservée aux passagers', 'error');
             } else {
                 showScreen('auth-screen');
             }
+        });
+
+        // Navigation
+        document.getElementById('nav-home').addEventListener('click', showMainApp);
+        document.getElementById('nav-map').addEventListener('click', function() {
+            showMainApp();
+            // Recentrer la carte si nécessaire
+        });
+        document.getElementById('nav-offers').addEventListener('click', function() {
+            showNotification('Section offres en cours de développement', 'info');
+        });
+        document.getElementById('nav-settings').addEventListener('click', function() {
+            showNotification('Section paramètres en cours de développement', 'info');
         });
 
         // Authentification
@@ -2735,6 +3401,9 @@
             }
             
             try {
+                document.getElementById('login-spinner').classList.remove('hidden');
+                document.getElementById('login-btn-text').textContent = 'Connexion...';
+                
                 const userCredential = await auth.signInWithEmailAndPassword(email, password);
                 currentUser = userCredential.user;
                 
@@ -2747,7 +3416,24 @@
                 showNotification('Connexion réussie!', 'success');
                 locateUser();
             } catch (error) {
-                showNotification('Erreur de connexion: ' + error.message, 'error');
+                let errorMessage = 'Erreur de connexion';
+                switch(error.code) {
+                    case 'auth/user-not-found':
+                        errorMessage = 'Aucun utilisateur trouvé avec cet email';
+                        break;
+                    case 'auth/wrong-password':
+                        errorMessage = 'Mot de passe incorrect';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'Email invalide';
+                        break;
+                    default:
+                        errorMessage = 'Erreur de connexion: ' + error.message;
+                }
+                showNotification(errorMessage, 'error');
+            } finally {
+                document.getElementById('login-spinner').classList.add('hidden');
+                document.getElementById('login-btn-text').textContent = 'Se connecter';
             }
         });
 
@@ -2807,6 +3493,9 @@
             }
             
             try {
+                document.getElementById('register-spinner').classList.remove('hidden');
+                document.getElementById('register-btn-text').textContent = 'Inscription...';
+                
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 await userCredential.user.updateProfile({ displayName: name });
                 currentUser = userCredential.user;
@@ -2831,7 +3520,24 @@
                 showNotification('Inscription réussie!', 'success');
                 locateUser();
             } catch (error) {
-                showNotification('Erreur d\'inscription: ' + error.message, 'error');
+                let errorMessage = 'Erreur d\'inscription';
+                switch(error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = 'Cet email est déjà utilisé';
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = 'Le mot de passe est trop faible';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'Email invalide';
+                        break;
+                    default:
+                        errorMessage = 'Erreur d\'inscription: ' + error.message;
+                }
+                showNotification(errorMessage, 'error');
+            } finally {
+                document.getElementById('register-spinner').classList.add('hidden');
+                document.getElementById('register-btn-text').textContent = 'S\'inscrire';
             }
         });
 
@@ -2848,45 +3554,18 @@
             }
         });
 
-        // Réservation de course
+        // Réservation de course - CACHÉ POUR LES CHAUFFEURS
         document.getElementById('confirm-booking-btn').addEventListener('click', () => {
             const destination = document.getElementById('end-location').value;
-            const price = document.getElementById('total-price').textContent;
+            const vehicleType = selectedVehicleType;
             
             if (!destination) {
                 showNotification('Veuillez entrer une destination', 'error');
                 return;
             }
             
-            // Simulation de recherche de chauffeur
-            const availableDriver = availableDrivers.find(driver => driver.status === "available");
-            if (availableDriver) {
-                currentRide = {
-                    driver: availableDriver,
-                    destination: destination,
-                    price: price,
-                    status: 'searching'
-                };
-                
-                document.getElementById('confirmation-destination').textContent = destination;
-                document.getElementById('confirmation-price').textContent = price;
-                showScreen('ride-confirmation-screen');
-                
-                // Simulation d'acceptation automatique
-                setTimeout(() => {
-                    availableDriver.status = "busy";
-                    showNotification(`Chauffeur ${availableDriver.name} a accepté votre course!`, 'success');
-                    
-                    // Mettre à jour l'interface
-                    document.querySelector('.driver-arrival .driver-name').textContent = availableDriver.name;
-                    document.querySelector('.driver-arrival .driver-vehicle').textContent = availableDriver.vehicle;
-                    
-                    // Simuler le trajet sur la carte
-                    simulateRideOnMap(availableDriver);
-                }, 2000);
-            } else {
-                showNotification('Aucun chauffeur disponible pour le moment', 'error');
-            }
+            // Lancer la recherche de chauffeur
+            findDriver(destination, vehicleType);
         });
 
         // Fonction pour simuler le trajet sur la carte
@@ -3010,6 +3689,22 @@
             }
         });
 
+        // Boutons de communication
+        document.getElementById('call-driver-btn').addEventListener('click', callDriver);
+        document.getElementById('message-driver-btn').addEventListener('click', messageDriver);
+        
+        // Bouton d'annulation de recherche
+        document.getElementById('cancel-matching-btn').addEventListener('click', function() {
+            if (confirm('Êtes-vous sûr de vouloir annuler la recherche de chauffeur?')) {
+                if (currentRide && currentRide.driver) {
+                    currentRide.driver.status = "available";
+                }
+                currentRide = null;
+                showMainApp();
+                showNotification('Recherche annulée', 'info');
+            }
+        });
+
         // Interface chauffeur
         document.querySelectorAll('.accept-ride-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -3038,12 +3733,112 @@
                 this.innerHTML = '<i class="fas fa-toggle-off"></i> Passer en ligne';
                 this.style.background = 'var(--primary)';
                 showNotification('Vous êtes maintenant hors ligne', 'info');
+                
+                // Arrêter le suivi de position
+                stopLocationTracking();
             } else {
                 statusElement.className = 'driver-online-status online';
                 statusElement.innerHTML = '<i class="fas fa-circle"></i> En ligne';
                 this.innerHTML = '<i class="fas fa-toggle-on"></i> Passer hors ligne';
                 this.style.background = 'var(--secondary)';
                 showNotification('Vous êtes maintenant en ligne', 'success');
+                
+                // Démarrer le suivi de position
+                startLocationTracking();
+            }
+        });
+
+        // Interface chauffeur dans la modale
+        document.getElementById('toggle-online-btn-modal').addEventListener('click', function() {
+            const statusElement = document.getElementById('driver-status-modal');
+            const isOnline = statusElement.classList.contains('online');
+            
+            if (isOnline) {
+                statusElement.className = 'driver-online-status offline';
+                statusElement.innerHTML = '<i class="fas fa-circle"></i> Hors ligne';
+                this.innerHTML = '<i class="fas fa-toggle-off"></i> Passer en ligne';
+                this.style.background = 'var(--primary)';
+                showNotification('Vous êtes maintenant hors ligne', 'info');
+                
+                // Arrêter le suivi de position
+                stopLocationTracking();
+            } else {
+                statusElement.className = 'driver-online-status online';
+                statusElement.innerHTML = '<i class="fas fa-circle"></i> En ligne';
+                this.innerHTML = '<i class="fas fa-toggle-on"></i> Passer hors ligne';
+                this.style.background = 'var(--secondary)';
+                showNotification('Vous êtes maintenant en ligne', 'success');
+                
+                // Démarrer le suivi de position
+                startLocationTracking();
+            }
+        });
+
+        // Recherche d'adresses
+        document.getElementById('search-input').addEventListener('input', function() {
+            const query = this.value.trim();
+            const resultsContainer = document.getElementById('search-results');
+            
+            if (query.length < 3) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+            
+            // Simulation de résultats de recherche
+            const mockResults = [
+                { title: 'Mahajanga Centre', subtitle: 'Centre-ville, Mahajanga' },
+                { title: 'Plage de Mahajanga', subtitle: 'Bord de mer, Mahajanga' },
+                { title: 'Marché de Mahajanga', subtitle: 'Centre-ville, Mahajanga' },
+                { title: 'Aéroport de Mahajanga', subtitle: 'Amborovy, Mahajanga' },
+                { title: 'Port de Mahajanga', subtitle: 'Zone portuaire, Mahajanga' }
+            ];
+            
+            // Filtrer les résultats basés sur la requête
+            const filteredResults = mockResults.filter(result => 
+                result.title.toLowerCase().includes(query.toLowerCase()) || 
+                result.subtitle.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            // Afficher les résultats
+            if (filteredResults.length > 0) {
+                resultsContainer.innerHTML = '';
+                filteredResults.forEach(result => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'search-result-item';
+                    resultItem.innerHTML = `
+                        <div class="search-result-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="search-result-text">
+                            <div class="search-result-title">${result.title}</div>
+                            <div class="search-result-subtitle">${result.subtitle}</div>
+                        </div>
+                    `;
+                    resultItem.addEventListener('click', function() {
+                        document.getElementById('search-input').value = result.title;
+                        resultsContainer.style.display = 'none';
+                        
+                        // Si l'utilisateur est un passager, afficher l'écran de réservation avec la destination pré-remplie
+                        if (currentUser && userType === "passenger") {
+                            document.getElementById('end-location').value = result.title;
+                            showScreen('ride-booking-screen');
+                            showNotification(`Destination définie: ${result.title}`, 'success');
+                        } else if (!currentUser) {
+                            showNotification(`Destination sélectionnée: ${result.title}. Connectez-vous pour réserver.`, 'info');
+                        }
+                    });
+                    resultsContainer.appendChild(resultItem);
+                });
+                resultsContainer.style.display = 'block';
+            } else {
+                resultsContainer.style.display = 'none';
+            }
+        });
+
+        // Fermer les résultats de recherche en cliquant ailleurs
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.search-overlay')) {
+                document.getElementById('search-results').style.display = 'none';
             }
         });
 
@@ -3075,6 +3870,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             initMap();
             hideAllScreens();
+            updatePriceEstimate();
             
             // Si utilisateur non connecté, afficher l'écran d'authentification
             if (!currentUser) {
